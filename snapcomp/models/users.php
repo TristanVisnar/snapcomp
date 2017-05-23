@@ -53,20 +53,20 @@
     // vrne id uporabnika ali false, ob napaki pa "error"
     public function login($ACC_NAME,$PASS){
         $db = Db::getInstance();
-			if($stmt = mysqli_prepare($db,"Select * from UPORABNIK where ACCNAME=? and PASS=?;")){
+		if($stmt = mysqli_prepare($db,"Select * from UPORABNIK where ACCNAME=? and PASS=?;")){
 			mysqli_stmt_bind_param($stmt,"ss",$ACC_NAME,$PASS);
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
 			mysqli_stmt_close($stmt);
-			if($result){ 
-				$row = mysqli_fetch_assoc($result);
+			$row = mysqli_fetch_assoc($result);
+			if($row){ 
 				return $row;
 			}
 			else
 				return "false";
-			
-			return "error";
-	    }
+		}
+		return "error";
+	    
 	}
 	/*
 	if($stmt = mysqli_prepare($db,"Select * from UPORABNIK where ACCNAME=? and PASS=?;")){
