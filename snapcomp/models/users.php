@@ -61,9 +61,10 @@
 			if($result){ 
 				$row = mysqli_fetch_assoc($result);
 				return $row;
+			}
 			else
 				return "false";
-			}
+			
 			return "error";
 	    }
 	}
