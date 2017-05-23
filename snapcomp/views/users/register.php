@@ -28,6 +28,8 @@
 
   </head>
   <body>
+<?php isset($_SESSION["reg"]) echo $_SESSION["reg"]; ?>
+
     <div class="container">
       <div class="panel-title text-center">
           <h1><font face="Segoe UI" size="30px">SnapComp</font></h1>
@@ -43,7 +45,7 @@
         </p>
         <br>
 
-        <form method="POST" class="form-horizontal" style="margin:auto; width:650px;">
+        <form method="POST"  action="?controller=users&action=register" class="form-horizontal" style="margin:auto; width:650px;">
           <div class="form-group">
             <label class="control-label col-sm-2" for="regUsername">*Username: </label>
             <div class="col-sm-10">
@@ -115,7 +117,7 @@
           </div>
 
           <div class="form-group">
-            <label class="control-label col-sm-2" for="regLanguage">Gender:</label>
+            <label class="control-label col-sm-2" for="regGender">Gender:</label>
             <div class="col-sm-10">
               <label class="radio-inline"><input type="radio" name="optradio">Male</label>
               <label class="radio-inline"><input type="radio" name="optradio">Female</label>

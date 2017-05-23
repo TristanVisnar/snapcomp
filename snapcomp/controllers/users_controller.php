@@ -44,7 +44,7 @@
 
     //NASTAVI NASLOVE ZA POST in PREVERJAJ PRAVILNOST PODATKOV -- PREVERI EMAIL in če ACC_NAME obstaja
 
-    var_dump($_SESSION);
+    $_SESSION["reg"] = var_dump($_POST);
     /*
 	    	$email = $_POST["regEmail"];
 
