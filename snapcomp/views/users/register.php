@@ -28,7 +28,7 @@
 
   </head>
   <body>
-<?php isset($_SESSION["reg"]) echo $_SESSION["reg"]; ?>
+<?php if(isset($_SESSION["reg"])) echo $_SESSION["reg"]; ?>
 
     <div class="container">
       <div class="panel-title text-center">
