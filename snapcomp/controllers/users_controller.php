@@ -48,10 +48,10 @@
     //na strani je tudi opisan format odgovora, nas bo zanimala predvsem mx_found lastnost
 
         echo "start";
-    		$ret_email = Users::check_EMAIL($email);      /// preveri EMAIL
+    		$ret_email = User::check_EMAIL($email);      /// preveri EMAIL
         echo "check email ... OK <br/>";
     		$user = $_POST["regAccountName"];
-    		$ret_user = Users::check_ACC_NAME($user);     /// preveri ACC_NAME
+    		$ret_user = User::check_ACC_NAME($user);     /// preveri ACC_NAME
         echo "check acc_name ... OK <br/>";
     		if($ret_email == "error" || $ret_user == "error")
       			return call('pages', 'error');
@@ -72,7 +72,7 @@
         echo "check acc_set ... OK <br/>";
     		if($ret_email == "false" && $ret_user == "false"){
         //SE ZGODI OB USPEŠNI PREVERITVI PODATKOV
-  			    $user=Users::save($_POST["regEmail"],$_POST["regAccountName"],$_POST["regUsername"],$_POST["regPassword"],$_POST["regBirthDate"],$_POST["regFirstName"],$_POST["regLastName"],$_POST["regCountry"],$_POST["optradio1"],$_POST["optradio2"]);
+  			    $user=User::save($_POST["regEmail"],$_POST["regAccountName"],$_POST["regUsername"],$_POST["regPassword"],$_POST["regBirthDate"],$_POST["regFirstName"],$_POST["regLastName"],$_POST["regCountry"],$_POST["optradio1"],$_POST["optradio2"]);
             echo "adding user ... OK <br/>";
             if($user=="error"){
                 return call("pages","error");
