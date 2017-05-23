@@ -57,13 +57,13 @@
         <form action="?controller=users&action=login" method="POST">
           <div class="input-group" style="width:250px; margin:auto">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <input id="LoginAccountName" type="text" class="form-control" name="ACCNAME" placeholder="Account Name">
+            <input id="LoginAccountName" type="text" required="true" class="form-control" name="ACCNAME" placeholder="Account Name">
           </div>
           <br>
 
           <div class="input-group" style="width:250px; margin:auto">
             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-            <input id="LoginPassword" type="password" class="form-control" name="PASS" placeholder="Password">
+            <input id="LoginPassword" type="password" required="true" class="form-control" name="PASS" placeholder="Password">
           </div>
           <br>
 

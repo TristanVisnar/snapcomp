@@ -82,16 +82,12 @@
 */
 
 	public function login(){
-		$_SESSION["LOGIN"] = "FAILJU";
 		$id = User::login($_POST["ACCNAME"],$_POST["PASS"]);
 		var_dump($_POST);
 		if($id == "error"){
-			$_SESSION["FAIL1"] = "FAILJU";
 			return call('pages','error');
 		}
 		if($id == "false"){
-
-			$_SESSION["FAIL2"] = "FAILJURE";
 			//error napačna prijava -- preusmeri nazaj na
 			require_once('views/users/loginError.php'); // vsebuje header, ki nas vrne nazaj na login samo, da je refreshano
 		}else{
@@ -99,9 +95,9 @@
 			$_SESSION["ID"] = $id["ID"];
 			$_SESSION["USERNAME"] = $id["USERNAME"];
 			$_SESSION["ACCNAME"] = $id["ACCNAME"];
+			$_SESSION["USERNAME"] = $id["USERNAME"];
 			return call('pages','home'); // vrne nas na home page;
 		}
-		$_SESSION["ID1"] = $id;
 	}
 
 }
