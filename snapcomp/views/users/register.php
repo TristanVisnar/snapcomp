@@ -49,21 +49,21 @@
           <div class="form-group">
             <label class="control-label col-sm-2" for="regUsername">*Username: </label>
             <div class="col-sm-10">
-              <input required="true" type="text" class="form-control" id="regUsername" placeholder="Enter username" data-toggle="tooltip" data-placement="right" title="This is your display name. It can be changed any time.">
+              <input required="true" type="text" class="form-control" id="regUsername" name="regUsername" placeholder="Enter username" data-toggle="tooltip" data-placement="right" title="This is your display name. It can be changed any time.">
             </div>
           </div>
 
           <div class="form-group">
             <label class="control-label col-sm-2" for="regAccountName">*Acc. Name: </label>
             <div class="col-sm-10">
-              <input required="true" type="text" class="form-control" id="regAccountName" placeholder="Enter account name" data-toggle="tooltip" data-placement="right" title="This is your login name. It cannot be changed.">
+              <input required="true" type="text" class="form-control" id="regAccountName" name="regAccountName" placeholder="Enter account name" data-toggle="tooltip" data-placement="right" title="This is your login name. It cannot be changed.">
             </div>
           </div>
 
           <div class="form-group">
             <label class="control-label col-sm-2" for="regPassword">*Password:</label>
             <div class="col-sm-10">
-              <input required="true" type="password" class="form-control" id="regPassword" placeholder="Enter password">
+              <input required="true" type="password" class="form-control" id="regPassword" name="regPassword" placeholder="Enter password">
             </div>
           </div>
 
@@ -77,21 +77,21 @@
           <div class="form-group">
             <label class="control-label col-sm-2" for="regEmail">*Email:</label>
             <div class="col-sm-10">
-              <input required="true" type="email" class="form-control" id="regEmail" placeholder="Enter email">
+              <input required="true" type="email" class="form-control" id="regEmail"  name="regEmail" placeholder="Enter email">
             </div>
           </div>
 
           <div class="form-group">
             <label class="control-label col-sm-2" for="regFirstName">First Name:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="regFirstName" placeholder="Enter first name">
+              <input type="text" class="form-control" id="regFirstName" name="regFirstName" placeholder="Enter first name">
             </div>
           </div>
 
           <div class="form-group">
             <label class="control-label col-sm-2" for="regLastName">Last Name:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="regLastName" placeholder="Enter last name">
+              <input type="text" class="form-control" id="regLastName" name="regLastName" placeholder="Enter last name">
             </div>
           </div>
 
@@ -104,23 +104,23 @@
           <div class="form-group">
             <label class="control-label col-sm-2" for="regBirthDate">*Birth Date:</label>
             <div class="col-sm-10">
-              <input required="true" style="width:160px" type="date" class="form-control" id="regBirthDate">
+              <input required="true" style="width:160px" type="date" class="form-control" id="regBirthDate" name="regBirthDate">
             </div>
           </div>
 
           <div class="form-group">
             <label class="control-label col-sm-2" for="regLanguage">Language:</label>
             <div class="col-sm-10">
-              <label class="radio-inline"><input type="radio" name="optradio1">English</label>
-              <label class="radio-inline"><input type="radio" name="optradio1">Slovenski</label>
+              <label class="radio-inline"><input type="radio" name="optradio1" value="ENG">English</label>
+              <label class="radio-inline"><input type="radio" name="optradio1" value="SLO">Slovenski</label>
             </div>
           </div>
 
           <div class="form-group">
             <label class="control-label col-sm-2" for="regGender">Gender:</label>
             <div class="col-sm-10">
-              <label class="radio-inline"><input type="radio" name="optradio2">Male</label>
-              <label class="radio-inline"><input type="radio" name="optradio2">Female</label>
+              <label class="radio-inline"><input type="radio" name="optradio2" value="1">Male</label>
+              <label class="radio-inline"><input type="radio" name="optradio2" value="2">Female</label>
             </div>
           </div>
 
@@ -132,7 +132,7 @@
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <a href="login.php"><u>Already have an account? Click here to log in.</u></a>
+              <a href="?controller=pages&action=login"><u>Already have an account? Click here to log in.</u></a>
             </div>
           </div>
         </form>
