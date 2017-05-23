@@ -165,14 +165,19 @@ echo "Error!  ";
         $LANG == "";
       if($GENDER == "NULL" || $GENDER == "" || $GENDER == null)
         $GENDER == 'NULL';
+      else
+        $GENDER = intval($GENDER);
+
+      echo "$EMAIL;$ACC_NAME;$USERNAME;$PASS;$DATEOFBIRTH;$FIRSTNAME;$SURNAME;$COUNTRY;$LANG;$GENDER<br/>";
+
       $db = Db::getInstance();
       echo "before prepare ... OK <br/>";
-      if ($stmt = mysqli_prepare($db, "Insert into UPORABNIK (EMAIL,ACCNAME,USERNAME,PASS,DATEOFBIRTH,FIRSTNAME,SURNAME,COUNTRY,LANG,GENDER,NUMBEROFPOSTS,NUMOFWINS) Values (?,?,?,?,?,?,?,?,?,?,0,0);")) {
+      if ($stmt = mysqli_prepare($db, "INSERT into UPORABNIK (EMAIL,ACCNAME,USERNAME,PASS,DATEOFBIRTH,FIRSTNAME,SURNAME,COUNTRY,LANG,GENDER,NUMBEROFPOSTS,NUMOFWINS) Values (?,?,?,?,?,?,?,?,?,?,?,?);")) {
           echo "after prepare ... OK <br/>";
-			    mysqli_stmt_bind_param($stmt, "ssssssssi",$EMAIL,$ACC_NAME,$USERNAME,$PASS,$DATEOFBIRTH,$FIRSTNAME,$SURNAME,$COUNTRY,$LANG,$GENDER);
+			    mysqli_stmt_bind_param($stmt, "ssssssssiii",$EMAIL,$ACC_NAME,$USERNAME,$PASS,$DATEOFBIRTH,$FIRSTNAME,$SURNAME,$COUNTRY,$LANG,$GENDER,0,0);
+          echo "after bind ... OK <br/>";
 			   //izvedemo poizvedbo
 			    mysqli_stmt_execute($stmt);
-
 	        mysqli_stmt_close($stmt);
           return User::login($ACC_NAME,$PASS);
  	    }else{
