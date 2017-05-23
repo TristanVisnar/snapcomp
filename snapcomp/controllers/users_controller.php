@@ -77,19 +77,21 @@
 
 	public function login(){
 		$id = User::login($_POST["ACCNAME"],$_POST["PASS"]);
-		var_dump($_POST);
+		//var_dump($_POST);
 		if($id == "error"){
 			return call('pages','error');
 		}
 		if($id == "false"){
 			//error napačna prijava -- preusmeri nazaj na
       header("../index.php?controller=pages&action=login&error=true");
+      return;
 		}else{
 			//nastavimo sessionu id
 			$_SESSION["ID"] = $id["ID"];
 			$_SESSION["USERNAME"] = $id["USERNAME"];
 			$_SESSION["ACCNAME"] = $id["ACCNAME"];
 			$_SESSION["USERNAME"] = $id["USERNAME"];
+      $_SESSION["TEST"] = $id["LANG"];
 			return call('pages','home'); // vrne nas na home page;
 		}
 	}
