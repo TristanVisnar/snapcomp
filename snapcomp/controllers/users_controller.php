@@ -12,12 +12,6 @@
 
   class users_controller {
 
-	public function redirect()
-	{
-		echo "it is here";
-		$id = User::login("JANEZACC","JANEZPASS");
-		var_dump($id);
-	}
  /*   // ob klicu find nam vrne podatke od uporabnika z id-jem
     	public function getUser() {
 //		echo "   wurk";
@@ -89,7 +83,7 @@
 		}
 		if($id == "false"){
 			//error napačna prijava -- preusmeri nazaj na
-			require_once('views/users/loginError.php'); // vsebuje header, ki nas vrne nazaj na login samo, da je refreshano
+      header("../index.php?controller=pages&action=login&error=true");
 		}else{
 			//nastavimo sessionu id
 			$_SESSION["ID"] = $id["ID"];
