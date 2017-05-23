@@ -29,22 +29,22 @@
 
 
     //konstrutkor, ki nam ustvari novi primerek razreda
-      public function __construct($ID,$ACCNAME,$USERNAME,$PASS,$FIRSTNAME,$SURNAME,$COUNTRY,$LANG,$DATEOFBIRTH,$NUMOFPOSTS,$NUMOFWINS,$ROLE,$EMAIL,$GENDER) {
-        $this->ID       = $ID;
-        $this->EMAIL    = $EMAIL;
-        $this->ACCNAME = $ACCNAME;
-  	$this->USERNAME = $USERNAME;
-        $this->PASS     = $PASS;
-        $this->DATEOFBIRTH = $DATEOFBIRTH;
-        $this->FIRSTNAME = $FIRSTNAME;
-        $this->SURNAME  = $SURNAME;
-        $this->COUNTRY = $COUNTRY;
-        $this->LANG = $LANG;
-        $this->GENDER = $GENDER;
-        $this->NUMOFPOSTS = $NUMOFPOSTS;
-        $this->NUMOFWINS = $NUMOFWINS;
-	$this->ROLE = $ROLE;
-      }
+    public function __construct($ID,$ACCNAME,$USERNAME,$PASS,$FIRSTNAME,$SURNAME,$COUNTRY,$LANG,$DATEOFBIRTH,$NUMOFPOSTS,$NUMOFWINS,$ROLE,											$EMAIL,$GENDER) {
+		$this->ID       = $ID;
+		$this->EMAIL    = $EMAIL;
+		$this->ACCNAME = $ACCNAME;
+		$this->USERNAME = $USERNAME;
+		$this->PASS     = $PASS;
+		$this->DATEOFBIRTH = $DATEOFBIRTH;
+		$this->FIRSTNAME = $FIRSTNAME;
+		$this->SURNAME  = $SURNAME;
+		$this->COUNTRY = $COUNTRY;
+		$this->LANG = $LANG;
+		$this->GENDER = $GENDER;
+		$this->NUMOFPOSTS = $NUMOFPOSTS;
+		$this->NUMOFWINS = $NUMOFWINS;
+		$this->ROLE = $ROLE;
+    }
 
 
 
@@ -61,7 +61,7 @@
 			var_dump($result);
 			//mysqli_stmt_close($stmt);
 			if($result){ 
-				$row = $mysqli_fetch_assoc($result);
+				$row = mysqli_fetch_assoc($result);
 				return $row;
 			else
 				return "false";
@@ -69,7 +69,17 @@
 			return "error";
 	    }
 	}
-
+	/*_
+	if($stmt = mysqli_prepare($db,"Select * from UPORABNIK where ACCNAME=? and PASS=?;")){
+		mysqli_stmt_bind_param($stmt,"ss",$ac,$pass);
+		mysqli_stmt_execute($stmt);
+		$res = mysqli_stmt_get_result($stmt);
+		$r = mysqli_fetch_assoc($res);
+	var_dump($r);
+	mysqli_stmt_close($stmt);
+}else{
+echo "Error!  ";
+	*/
 
 
 
@@ -77,22 +87,20 @@
     // vrne index uporabnika s tem emailom drugače "false", ob napaki pa "error"
     public function check_EMAIL($EMAIL){
 
-      $db = Db::getInstance();
+		$db = Db::getInstance();
 
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK where EMAIL=?;")) {
+		if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK where EMAIL=?;")) {
+			mysqli_stmt_bind_param($stmt, "s",$EMAIL);
+			//izvedemo poizvedbo
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+		if($result)
+			return $result['ID'];
+		else
+			return "false";
+		}
 
-       mysqli_stmt_bind_param($stmt, "s",$EMAIL);
-
-       //izvedemo poizvedbo
-        mysqli_stmt_execute($stmt);
-	$result = mysqli_stmt_get_result($stmt);
-       if($result)
-        return $result['ID'];
-       else
-        return "false";
-     }
-
-     return "error";
+		return "error";
     }
 
 
@@ -101,25 +109,23 @@
     // vrne index uporabnika s tem ACC_NAME drugače "false", ob napaki pa "error"
     public function check_ACC_NAME($ACC_NAME){
 
-      $db = Db::getInstance();
+		$db = Db::getInstance();
 
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK where ACCNAME=?;")) {
+		if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK where ACCNAME=?;")) {
 
-       mysqli_stmt_bind_param($stmt, "s",$ACC_NAME);
+			mysqli_stmt_bind_param($stmt, "s",$ACC_NAME);
 
-       //izvedemo poizvedbo
-       $result = mysqli_stmt_execute($stmt);
+		//izvedemo poizvedbo
+		$result = mysqli_stmt_execute($stmt);
 
-       if($result){
-	$list = ["ID"=>$result["ID"],"USERNAME"=>$result["USERNAME"],"ACCNAME"=>$result["ACCNAME"]];
-        return $list;
-       }
-       else
-        return "false";
-
-     }
-
-     return "error";
+		if($result){
+			$list = ["ID"=>$result["ID"],"USERNAME"=>$result["USERNAME"],"ACCNAME"=>$result["ACCNAME"]];
+			return $list;
+		}
+		else
+			return "false";
+		}
+		return "error";
 
   }
 
