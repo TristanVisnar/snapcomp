@@ -73,10 +73,11 @@
     		if($ret_email == "false" && $ret_user == "false"){
         //SE ZGODI OB USPEŠNI PREVERITVI PODATKOV
   			    $user=User::save($_POST["regEmail"],$_POST["regAccountName"],$_POST["regUsername"],$_POST["regPassword"],$_POST["regBirthDate"],$_POST["regFirstName"],$_POST["regLastName"],$_POST["regCountry"],$_POST["optradio1"],$_POST["optradio2"]);
-            echo "adding user ... OK <br/>";
             if($user=="error"){
+                echo "adding user ... error <br/>";
                 return call("pages","error");
             }else{
+                echo "adding user ... OK <br/>";
                 $_SESSION["ID"] = $user["ID"];
         				$_SESSION["USERNAME"] = $user["USERNAME"];
         				$_SESSION["ACCNAME"] = $user["ACCNAME"];
