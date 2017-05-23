@@ -47,7 +47,7 @@
     //če bo ključ prekoračil 1000 zahtev na mesec, si na strani ustvarite svoj ključ
     //na strani je tudi opisan format odgovora, nas bo zanimala predvsem mx_found lastnost
 
-
+        echo "start";
     		$ret_email = Users::check_EMAIL($email);      /// preveri EMAIL
         echo "check email ... OK <br/>";
     		$user = $_POST["regAccountName"];
