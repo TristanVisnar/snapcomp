@@ -137,7 +137,7 @@ echo "Error!  ";
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
 		  mysqli_stmt_close($stmt);
-			if($row = mysqli_fetch_assoc($result){
+			if($row = mysqli_fetch_assoc($result)){
 				return new User($row['ID'], $row['ACCNAME'], $row['USERNAME'],$row['PASS'],$row['FIRSTNAME'], $row['SURNAME'],$row['COUNTRY'],$row['LANG'], $row['DATEOFBIRTH'],$row['NUMOFPOSTS'],$row['NUMOFWINS'],$row['ROLE'],$row['EMAIL'],$row['GENDER']);
 			}else{
 				return "false";

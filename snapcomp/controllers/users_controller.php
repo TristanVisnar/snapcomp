@@ -48,27 +48,25 @@
     //na strani je tudi opisan format odgovora, nas bo zanimala predvsem mx_found lastnost
 
         echo "start";
-    		//$ret_email = Users::check_EMAIL($email);      /// preveri EMAIL
+    		$ret_email = Users::check_EMAIL($email);      /// preveri EMAIL
         echo "check email ... OK <br/>";
     		$user = $_POST["regAccountName"];
-    		//$ret_user = Users::check_ACC_NAME($user);     /// preveri ACC_NAME
-        $ret_email = "false";
-        $ret_user = "false";
+    		$ret_user = Users::check_ACC_NAME($user);     /// preveri ACC_NAME
         echo "check acc_name ... OK <br/>";
     		if($ret_email == "error" || $ret_user == "error")
       			return call('pages', 'error');
         echo "check errors ... OK <br/>";
         if($ret_email != "false" && $ret_user!="false"){
-            //header("?controller=pages&action=register&email=$email&acc=$user");
+            header("?controller=pages&action=register&email=$email&acc=$user");
         }
         echo "check email_acc_set ... OK <br/>";
     		if($ret_email != "false"){
-            //header("?controller=pages&action=register&email=$email");
+            header("?controller=pages&action=register&email=$email");
         //KAJ NAREDI V PRIMERU KO MAIL ŽE OBSTAJA
     		}
         echo "check email_set ... OK <br/>";
     		if($ret_user != "false"){
-            //header("?controller=pages&action=register&acc=$user");
+            header("?controller=pages&action=register&acc=$user");
         //KAJ NAREDI V PRIMERU KO ACC_NAME ŽE OBSTAJA
     		}
         echo "check acc_set ... OK <br/>";
@@ -77,7 +75,7 @@
   			    $user=Users::save($_POST["regEmail"],$_POST["regAccountName"],$_POST["regUsername"],$_POST["regPassword"],$_POST["regBirthDate"],$_POST["regFirstName"],$_POST["regLastName"],$_POST["regCountry"],$_POST["optradio1"],$_POST["optradio2"]);
             echo "adding user ... OK <br/>";
             if($user=="error"){
-                call("pages","error");
+                return call("pages","error");
             }else{
                 $_SESSION["ID"] = $user["ID"];
         				$_SESSION["USERNAME"] = $user["USERNAME"];
