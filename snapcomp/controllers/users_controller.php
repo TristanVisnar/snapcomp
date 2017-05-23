@@ -83,7 +83,8 @@
 		}
 		if($id == "false"){
 			//error napačna prijava -- preusmeri nazaj na
-			header("../index.php?controller=pages&action=login&error=true");
+			$_GET["error"] = "true";
+			require_once("views/users/login.php");
 			return;
 		}else{
 			//nastavimo sessionu id

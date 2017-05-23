@@ -51,7 +51,6 @@
 
   </style>
   <body>
-	<a href="?controller=users&action=redirekt">redirect</a>
 	<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
     <div class="navbar-header">
@@ -69,7 +68,6 @@
         <li><a href="#">Picture of the day</a></li>
 		<li><a href="?controller=pages&action=profile">Profile</a></li>
       </ul>
-	<p>TU JE VREJI 1</p>
 	   <ul class="nav navbar-nav navbar-right">
         <?php
           session_start();
