@@ -10,29 +10,28 @@
   */
 
 
-  class users_controller {
+	class users_controller {
 
- /*   // ob klicu find nam vrne podatke od uporabnika z id-jem
-    	public function getUser() {
-//		echo "   wurk";
-//		$_SESSION['FAIL'] = "1";
-//		echo "OKE RATALO JE NE";
-	    //če uporabnik ne posreduje ID uporabnika, pokličemo akcijo napaka
-	        if (!isset($_GET['id']))
-		      return call('pages', 'error');
-
-     		 $user = User::find($_GET['id']);
-      		if($user == "false"){
-        //ta uporabnik ne obstaja -
-        		return call('pages', 'error'); /// možen klic tudi bolj prilagojene funkcije - uporabnik ne obstaja
-	        }
-		else
-		{
-	    //vključimo view, da prikažemo uporabnika
-      			require_once('views/v1.php'); /////NASTAVI KATERI FILE BO POKAZAL UPORABNIKA
-    		}
+		// ob klicu find nam vrne podatke od uporabnika z id-jem
+    	public function profileUser() {
+			//če uporabnik ne posreduje ID uporabnika, pokličemo akcijo napaka
+			if(!isset($_SESSION["ID"])){
+				require_once("views/users/login.php");
+			}
+			else{
+				$user = User::find($_SESSION["ID"]);
+				if($user == "false"){
+			//ta uporabnik ne obstaja -
+					return call('pages', 'error'); /// možen klic tudi bolj prilagojene funkcije - uporabnik ne obstaja
+				}
+				else
+				{
+				//vključimo view, da prikažemo uporabnika
+					require_once('views/pages/profilePage.php'); /////NASTAVI KATERI FILE BO POKAZAL UPORABNIKA
+				}
+			}
     	}
-*/
+	
 /*	//uporabnik želi dodati oglas, vrnemu mu pogled z uporabniškim vmesnikom (formo) za dodajanje oglasa
 	public function add() {
 		require_once('views/users/'); /////PREUSMERI TE NA STRAN ZA REGISTRACIJO
@@ -77,27 +76,27 @@
 }
 
 
-	public function login(){
-		$id = User::login($_POST["ACCNAME"],$_POST["PASS"]);
-		var_dump($_POST);
-		if($id == "error"){
-			return call('pages','error');
+		public function login(){
+			$id = User::login($_POST["ACCNAME"],$_POST["PASS"]);
+			var_dump($_POST);
+			if($id == "error"){
+				return call('pages','error');
+			}
+			if($id == "false"){
+				//error napačna prijava -- preusmeri nazaj na
+				$_GET["error"] = "true";
+				require_once("views/users/login.php");
+				return;
+			}else{
+				//nastavimo sessionu id
+				$_SESSION["ID"] = $id["ID"];
+				$_SESSION["USERNAME"] = $id["USERNAME"];
+				$_SESSION["ACCNAME"] = $id["ACCNAME"];
+				$_SESSION["USERNAME"] = $id["USERNAME"];
+				$_SESSION["TEST"] = $id["LANG"];
+				return call('pages','home'); // vrne nas na home page;
+			}
 		}
-		if($id == "false"){
-			//error napačna prijava -- preusmeri nazaj na
-			$_GET["error"] = "true";
-			require_once("views/users/login.php");
-			return;
-		}else{
-			//nastavimo sessionu id
-			$_SESSION["ID"] = $id["ID"];
-			$_SESSION["USERNAME"] = $id["USERNAME"];
-			$_SESSION["ACCNAME"] = $id["ACCNAME"];
-			$_SESSION["USERNAME"] = $id["USERNAME"];
-      $_SESSION["TEST"] = $id["LANG"];
-			return call('pages','home'); // vrne nas na home page;
-		}
-	}
 
-}
+	}
 ?>

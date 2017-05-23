@@ -66,14 +66,13 @@
         <li><a href="?controller=pages&action=browse"><span class="glyphicon glyphicon-search"></span> Browse</a></li>
 		<li><a href="#">Highscores</a></li>
         <li><a href="#">Picture of the day</a></li>
-		<li><a href="?controller=pages&action=profile">Profile</a></li>
       </ul>
 	   <ul class="nav navbar-nav navbar-right">
         <?php
           session_start();
 		var_dump($_SESSION);
           if(isset($_SESSION["USERNAME"]))
-          echo "<li><a>Logged in as: ". $_SESSION["ACCNAME"]." (".$_SESSION["USERNAME"].") </a></li>";
+			echo "<li><a href='?controller=users&action=profileUser'>Logged in as: ". $_SESSION["ACCNAME"]." (".$_SESSION["USERNAME"].") </a></li>";
           else
 	  {
 	      echo "<li><a href='?controller=pages&action=login'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";

@@ -136,26 +136,27 @@ echo "Error!  ";
     // in vrne objekt User
     public function find($id){
       //preverimo, da je id v številski obliki
-      $id = intval($id);
+		$id = intval($id);
 
   	  //izvedemo poizvedbo
-      $db = Db::getInstance();
+		$db = Db::getInstance();
 
 
-//      if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK where ID=?;")) {
+		if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK where ID=?;")) {
 
-//       mysqli_stmt_bind_param($stmt, "i",$id);
-
-       //izvedemo poizvedbo
-//       $result = mysqli_stmt_execute($stmt);
-//       if($result){
-//    	  $row = mysqli_fetch_assoc($result);
-
-
-	$res = mysqli_query($db,"select * from UPORABNIK;");
-	$row = mysqli_fetch_assoc($res);
-    	  //ker pričakujemo samo en rezultat, vrnemo en objekt razreda Oglas
-        return new User($row['ID'], $row['ACCNAME'], $row['USERNAME'],$row['PASS'],$row['FIRSTNAME'], $row['SURNAME'],$row['COUNTRY'],$row['LANG'], $row['DATEOFBIRTH'],$row['NUMOFPOSTS'],$row['NUMOFWINS'],$row['ROLE'],$row['EMAIL'],$row['GENDER']);
+			mysqli_stmt_bind_param($stmt, "i",$id);
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+		//izvedemo poizvedbo
+			$row = mysqli_fetch_assoc($result);
+			if($row){ 
+				return new User($row['ID'], $row['ACCNAME'], $row['USERNAME'],$row['PASS'],$row['FIRSTNAME'], $row['SURNAME'],$row['COUNTRY'],$row['LANG'], $row['DATEOFBIRTH'],$row['NUMOFPOSTS'],$row['NUMOFWINS'],$row['ROLE'],$row['EMAIL'],$row['GENDER']);
+			}
+			else
+				return "false";
+		}
+		return "error";
+    	  //ker pričakujemo samo en rezultat, vrnemo en objekt razreda Ogla
       //}
     //}
     return "error";

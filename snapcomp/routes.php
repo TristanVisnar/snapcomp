@@ -22,7 +22,7 @@
   //vsi dovoljeni kontrolerji, v našem primeru 2
   //tukaj lahko dodamo tudi avtentikacijo (preverjamo, če je uporabnik v seji in ali ima pravice izvesti določeno akcijo)
    $controllers = array('pages' => ['home', 'error', 'browse', 'login', 'register', 'NSFW', 'profile'],
-                        'users' => ['getUser', 'add','register','login', 'redirect'],
+                        'users' => ['profileUser', 'add','register','login', 'redirect'],
 			'images' => ['browse', 'user','like','dislike']
 	       	       );
   if (array_key_exists($controller, $controllers)) {

@@ -40,9 +40,5 @@
 		}
 		require_once("views/pages/browse.php");
 	}
-	public function profile()
-    {
-      require_once("views/pages/profilePage.php");
-    }
   }
 ?>
