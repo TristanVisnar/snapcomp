@@ -111,16 +111,16 @@
           <div class="form-group">
             <label class="control-label col-sm-2" for="regLanguage">Language:</label>
             <div class="col-sm-10">
-              <label class="radio-inline"><input type="radio" name="optradio">English</label>
-              <label class="radio-inline"><input type="radio" name="optradio">Slovenski</label>
+              <label class="radio-inline"><input type="radio" name="optradio1">English</label>
+              <label class="radio-inline"><input type="radio" name="optradio1">Slovenski</label>
             </div>
           </div>
 
           <div class="form-group">
             <label class="control-label col-sm-2" for="regGender">Gender:</label>
             <div class="col-sm-10">
-              <label class="radio-inline"><input type="radio" name="optradio">Male</label>
-              <label class="radio-inline"><input type="radio" name="optradio">Female</label>
+              <label class="radio-inline"><input type="radio" name="optradio2">Male</label>
+              <label class="radio-inline"><input type="radio" name="optradio2">Female</label>
             </div>
           </div>
 

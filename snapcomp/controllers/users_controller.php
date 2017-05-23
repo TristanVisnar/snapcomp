@@ -73,7 +73,7 @@
   			$user=Users::save($_POST["regEmail"],$_POST["regAccountName"],$_POST["regUsername"],$_POST["regPassword"],$_POST["regBirthDate"],$_POST["regFirstName"],$_POST["regLastName"],$_POST["regCountry"],$_POST[""],$_POST[""]);
   			//naložimo pogled, ki potrjuje uspešnost dodajanja
   		require_once('views/users/');
-*/    	}
+*/    	//}
 }
 
 
