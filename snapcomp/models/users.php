@@ -52,26 +52,23 @@
     // funkcija za preverjanje prijave
     // vrne id uporabnika ali false, ob napaki pa "error"
     public function login($ACC_NAME,$PASS){
-
-      $db = Db::getInstance();
-
-      if ($stmt = mysqli_prepare($db,"SELECT * FROM UPORABNIK where ACCNAME=? and PASS=?;")) {
-
-      // mysqli_stmt_bind_param($stmt,"ss",$ACC_NAME,$PASS);
-       $result = NULL;
-      // mysqli_stmt_execute($stmt);
-      // $result = mysqli_stmt_get_result($stmt);
-	var_dump($result);
-      // mysqli_stmt_close($stmt);
-     if($result){ 
-       $row = $mysqli_fetch_assoc($result);
-       return $row;
-     else
-        return "false";
-     }
-    )
-     return "error";
-    }
+        $db = Db::getInstance();
+        if ($stmt = mysqli_prepare($db,"SELECT * FROM UPORABNIK where ACCNAME=? and PASS=?;")) {
+			mysqli_stmt_bind_param($stmt,"ss",$ACC_NAME,$PASS);
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+			var_dump($_POST);
+			var_dump($result);
+			//mysqli_stmt_close($stmt);
+			if($result){ 
+				$row = $mysqli_fetch_assoc($result);
+				return $row;
+			else
+				return "false";
+			}
+			return "error";
+	    }
+	}
 
 
 
