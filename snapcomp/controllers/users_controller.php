@@ -39,12 +39,14 @@
 	}
 */
 
-/*	// register se kliče, ko izpolnimo formo
+	// register se kliče, ko izpolnimo formo
 	public function register() {
 
     //NASTAVI NASLOVE ZA POST in PREVERJAJ PRAVILNOST PODATKOV -- PREVERI EMAIL in če ACC_NAME obstaja
 
-	    	$email = $_POST[];
+    var_dump($_SESSION);
+    /*
+	    	$email = $_POST["regEmail"];
 
     //preveri email z RESTfull api-jem
 
@@ -68,12 +70,12 @@
     		}
     		if($ret_email == "false" && $ret_user == "false"){
       //SE ZGODI OB USPEŠNI PREVERITVI PODATKOV
-  			$user=Users::save($_POST[],$_POST[],$_POST[],$_POST[],$_POST[],$_POST[],$_POST[],$_POST[],$_POST[]);
+  			$user=Users::save($_POST["regEmail"],$_POST["regAccountName"],$_POST["regUsername"],$_POST["regPassword"],$_POST["regBirthDate"],$_POST["regFirstName"],$_POST["regLastName"],$_POST["regCountry"],$_POST[""],$_POST[""]);
   			//naložimo pogled, ki potrjuje uspešnost dodajanja
   		require_once('views/users/');
-    	}
+*/    	}
 }
-*/
+
 
 	public function login(){
 		$id = User::login($_POST["ACCNAME"],$_POST["PASS"]);

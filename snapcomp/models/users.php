@@ -29,7 +29,7 @@
 
 
     //konstrutkor, ki nam ustvari novi primerek razreda
-    public function __construct($ID,$ACCNAME,$USERNAME,$PASS,$FIRSTNAME,$SURNAME,$COUNTRY,$LANG,$DATEOFBIRTH,$NUMOFPOSTS,$NUMOFWINS,$ROLE,											$EMAIL,$GENDER) {
+    public function __construct($ID,$ACCNAME,$USERNAME,$PASS,$FIRSTNAME,$SURNAME,$COUNTRY,$LANG,$DATEOFBIRTH,$NUMOFPOSTS,$NUMOFWINS,$ROLE,$EMAIL,$GENDER) {
 		$this->ID       = $ID;
 		$this->EMAIL    = $EMAIL;
 		$this->ACCNAME = $ACCNAME;
@@ -59,14 +59,14 @@
 			$result = mysqli_stmt_get_result($stmt);
 			mysqli_stmt_close($stmt);
 			$row = mysqli_fetch_assoc($result);
-			if($row){ 
+			if($row){
 				return $row;
 			}
 			else
 				return "false";
 		}
 		return "error";
-	    
+
 	}
 	/*
 	if($stmt = mysqli_prepare($db,"Select * from UPORABNIK where ACCNAME=? and PASS=?;")){
@@ -188,8 +188,6 @@ echo "Error!  ";
 
 			   //izvedemo poizvedbo
 			   mysqli_stmt_execute($stmt);
-
-
 
 	     mysqli_stmt_close($stmt);
  	    }
