@@ -82,6 +82,7 @@
 */
 
 	public function login(){
+		$_SESSION["LOGIN"] = "FAILJU";
 		$id = User::login($_POST["ACCNAME"],$_POST["PASS"]);
 		var_dump($_POST);
 		if($id == "error"){
