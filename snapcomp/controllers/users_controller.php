@@ -16,7 +16,8 @@
     	public function profileUser() {
 			//če uporabnik ne posreduje ID uporabnika, pokličemo akcijo napaka
 			if(!isset($_SESSION["ID"])){
-				require_once("views/users/login.php");
+        return call("pages","login");
+				//require_once("views/users/login.php");
 			}
 			else{
 				$user = User::find($_SESSION["ID"]);
@@ -31,12 +32,6 @@
 				}
 			}
     	}
-	
-/*	//uporabnik želi dodati oglas, vrnemu mu pogled z uporabniškim vmesnikom (formo) za dodajanje oglasa
-	public function add() {
-		require_once('views/users/'); /////PREUSMERI TE NA STRAN ZA REGISTRACIJO
-	}
-*/
 
 	// register se kliče, ko izpolnimo formo
 	public function register() {
@@ -44,7 +39,7 @@
     //NASTAVI NASLOVE ZA POST in PREVERJAJ PRAVILNOST PODATKOV -- PREVERI EMAIL in če ACC_NAME obstaja
 
     var_dump($_POST);
-    /*
+
 	    	$email = $_POST["regEmail"];
 
     //preveri email z RESTfull api-jem
@@ -57,23 +52,37 @@
 
 
     		$ret_email = Users::check_EMAIL($email);      /// preveri EMAIL
-    		$user = $_POST[];
+    		$user = $_POST["regAccountName"];
     		$ret_user = Users::check_ACC_NAME($user);     /// preveri ACC_NAME
     		if($ret_email == "error" || $ret_user == "error")
       			return call('pages', 'error');
+        if($ret_email != "false" && $ret_user!="false"){
+            header("?controller=pages&action=register&email=$email&acc=$user");
+        }
     		if($ret_email != "false"){
-      //KAJ NAREDI V PRIMERU KO MAIL ŽE OBSTAJA
+            header("?controller=pages&action=register&email=$email");
+        //KAJ NAREDI V PRIMERU KO MAIL ŽE OBSTAJA
     		}
-    		if($ret_email != "false"){
-      //KAJ NAREDI V PRIMERU KO ACC_NAME ŽE OBSTAJA
+    		if($ret_user != "false"){
+            header("?controller=pages&action=register&acc=$user");
+        //KAJ NAREDI V PRIMERU KO ACC_NAME ŽE OBSTAJA
     		}
     		if($ret_email == "false" && $ret_user == "false"){
-      //SE ZGODI OB USPEŠNI PREVERITVI PODATKOV
-  			$user=Users::save($_POST["regEmail"],$_POST["regAccountName"],$_POST["regUsername"],$_POST["regPassword"],$_POST["regBirthDate"],$_POST["regFirstName"],$_POST["regLastName"],$_POST["regCountry"],$_POST[""],$_POST[""]);
+        //SE ZGODI OB USPEŠNI PREVERITVI PODATKOV
+  			    $user=Users::save($_POST["regEmail"],$_POST["regAccountName"],$_POST["regUsername"],$_POST["regPassword"],$_POST["regBirthDate"],$_POST["regFirstName"],$_POST["regLastName"],$_POST["regCountry"],$_POST["optradio1"],$_POST["optradio2"]);
+            if($user=="error"){
+                call("pages","error");
+            }else{
+                $_SESSION["ID"] = $user["ID"];
+        				$_SESSION["USERNAME"] = $user["USERNAME"];
+        				$_SESSION["ACCNAME"] = $user["ACCNAME"];
+        				$_SESSION["USERNAME"] = $user["USERNAME"];
+        				$_SESSION["TEST"] = $user["LANG"];
   			//naložimo pogled, ki potrjuje uspešnost dodajanja
-  		require_once('views/users/');
-*/    	//}
-}
+  		          call("pages","home");
+            }
+   	    }
+    }
 
 
 		public function login(){

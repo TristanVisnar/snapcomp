@@ -53,20 +53,19 @@
     // vrne id uporabnika ali false, ob napaki pa "error"
     public function login($ACC_NAME,$PASS){
         $db = Db::getInstance();
-		if($stmt = mysqli_prepare($db,"Select * from UPORABNIK where ACCNAME=? and PASS=?;")){
-			mysqli_stmt_bind_param($stmt,"ss",$ACC_NAME,$PASS);
-			mysqli_stmt_execute($stmt);
-			$result = mysqli_stmt_get_result($stmt);
-			mysqli_stmt_close($stmt);
-			$row = mysqli_fetch_assoc($result);
-			if($row){
-				return $row;
-			}
-			else
-				return "false";
-		}
-		return "error";
-
+    		if($stmt = mysqli_prepare($db,"Select * from UPORABNIK where ACCNAME=? and PASS=?;")){
+      			mysqli_stmt_bind_param($stmt,"ss",$ACC_NAME,$PASS);
+      			mysqli_stmt_execute($stmt);
+      			$result = mysqli_stmt_get_result($stmt);
+      			mysqli_stmt_close($stmt);
+      			$row = mysqli_fetch_assoc($result);
+      			if($row){
+      				  return $row;
+      			}
+      			else
+      				  return "false";
+    		}
+    		return "error";
 	}
 	/*
 	if($stmt = mysqli_prepare($db,"Select * from UPORABNIK where ACCNAME=? and PASS=?;")){
@@ -85,21 +84,20 @@ echo "Error!  ";
     // preveri email, ki ga dobi na vhodu, če obstaja v bazi
     // vrne index uporabnika s tem emailom drugače "false", ob napaki pa "error"
     public function check_EMAIL($EMAIL){
-
-		$db = Db::getInstance();
-
-		if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK where EMAIL=?;")) {
-			mysqli_stmt_bind_param($stmt, "s",$EMAIL);
-			//izvedemo poizvedbo
-			mysqli_stmt_execute($stmt);
-			$result = mysqli_stmt_get_result($stmt);
-		if($result)
-			return $result['ID'];
-		else
-			return "false";
-		}
-
-		return "error";
+    		$db = Db::getInstance();
+    		if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK where EMAIL=?;")) {
+    			  mysqli_stmt_bind_param($stmt, "s",$EMAIL);
+    			  //izvedemo poizvedbo
+    			  mysqli_stmt_execute($stmt);
+    			  $result = mysqli_stmt_get_result($stmt);
+    		    //izvedemo poizvedbo
+    		    $row = mysqli_fetch_assoc($result);
+    		    if($row)
+    			     return $row['ID'];
+    		    else
+    			     return "false";
+    		}
+    		return "error";
     }
 
 
@@ -107,25 +105,21 @@ echo "Error!  ";
     // preveri account name, ki ga dobi na vhodu, če obstaja v bazi
     // vrne index uporabnika s tem ACC_NAME drugače "false", ob napaki pa "error"
     public function check_ACC_NAME($ACC_NAME){
-
-		$db = Db::getInstance();
-
-		if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK where ACCNAME=?;")) {
-
-			mysqli_stmt_bind_param($stmt, "s",$ACC_NAME);
-
-		//izvedemo poizvedbo
-		$result = mysqli_stmt_execute($stmt);
-
-		if($result){
-			$list = ["ID"=>$result["ID"],"USERNAME"=>$result["USERNAME"],"ACCNAME"=>$result["ACCNAME"]];
-			return $list;
-		}
-		else
-			return "false";
-		}
-		return "error";
-
+    		$db = Db::getInstance();
+    		if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK where ACCNAME=?;")) {
+        		mysqli_stmt_bind_param($stmt, "s",$ACC_NAME);
+        		//izvedemo poizvedbo
+        		mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            //izvedemo poizvedbo
+            $row = mysqli_fetch_assoc($result);
+        		if($row){
+        		    return $row;
+        		}
+        		else
+        		    return "false";
+    		}
+    		return "error";
   }
 
 
@@ -137,11 +131,8 @@ echo "Error!  ";
     public function find($id){
       //preverimo, da je id v številski obliki
 		$id = intval($id);
-
   	  //izvedemo poizvedbo
 		$db = Db::getInstance();
-
-
 		if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK where ID=?;")) {
 
 			mysqli_stmt_bind_param($stmt, "i",$id);
@@ -149,7 +140,7 @@ echo "Error!  ";
 			$result = mysqli_stmt_get_result($stmt);
 		//izvedemo poizvedbo
 			$row = mysqli_fetch_assoc($result);
-			if($row){ 
+			if($row){
 				return new User($row['ID'], $row['ACCNAME'], $row['USERNAME'],$row['PASS'],$row['FIRSTNAME'], $row['SURNAME'],$row['COUNTRY'],$row['LANG'], $row['DATEOFBIRTH'],$row['NUMOFPOSTS'],$row['NUMOFWINS'],$row['ROLE'],$row['EMAIL'],$row['GENDER']);
 			}
 			else
@@ -185,16 +176,16 @@ echo "Error!  ";
 
       if ($stmt = mysqli_prepare($db, "Insert into UPORABNIK (EMAIL,ACC_NAME,USERNAME,PASS,DATEOFBIRTH,FIRSTNAME,SURNAME,COUNTRY,LANG,GENDER,NUMBEROFPOSTS,NUMOFWINS) Values (?,?,?,?,?,?,?,?,?,?,0,0)")) {
 
-			   mysqli_stmt_bind_param($stmt, "sssssssss",$EMAIL,$ACC_NAME,$USERNAME,$PASS,$DATEOFBIRTH,$FIRSTNAME,$SURNAME,$COUNTRY,$LANG,$GENDER);
+			    mysqli_stmt_bind_param($stmt, "sssssssss",$EMAIL,$ACC_NAME,$USERNAME,$PASS,$DATEOFBIRTH,$FIRSTNAME,$SURNAME,$COUNTRY,$LANG,$GENDER);
 
 			   //izvedemo poizvedbo
-			   mysqli_stmt_execute($stmt);
+			    mysqli_stmt_execute($stmt);
 
-	     mysqli_stmt_close($stmt);
- 	    }
-
-      return User::login($ACC_NAME,$PASS);
-
+	        mysqli_stmt_close($stmt);
+          return User::login($ACC_NAME,$PASS);
+ 	    }else{
+          return "error";
+      }
     }
   }
 
