@@ -66,8 +66,9 @@
             <input id="LoginPassword" type="password" required="true" class="form-control" name="PASS" placeholder="Password">
           </div>
           <br>
-		  <?php if(isset($_GET["error"]) 
-				echo '<p><font color="red" size="2px">Error logging in. Please, try again </font></p>';
+		  <?php 
+				if(isset($_GET["error"]))
+					echo "<p><font color='red' size='2px'>Error logging in. Please, try again </font></p>";
 		  ?>
           <div style="width:250px; margin:auto">
             <input id="LoginButton" type="submit" class="btn btn-primary btn-block" action="?controller=users&action=login" name="LoginButton" value="Log In">
