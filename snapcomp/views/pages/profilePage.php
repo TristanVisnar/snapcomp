@@ -35,7 +35,17 @@
             <div style="padding-top:2px; padding-bottom:2px;" class="panel-body"><a href="#" data-toggle="tooltip" data-placement="right" title="Click to edit"><?php echo $user->LANG; ?></a></div>
 			
 			<div class="panel-heading">Gender:</div>
-            <div style="padding-top:2px; padding-bottom:2px;" class="panel-body"><a href="#" data-toggle="tooltip" data-placement="right" title="Click to edit"><?php echo $user->GENDER; ?></a></div>
+            <div style="padding-top:2px; padding-bottom:2px;" class="panel-body"><a href="#" data-toggle="tooltip" data-placement="right" title="Click to edit">
+			<?php
+				if($user->GENDER == 1)
+					echo "Male"; 
+				else if($user->Gender == 2){
+					echo "Female";
+				}
+				else 
+					echo "Error while reading from database, please try to reload page, or contact the page administrator.";
+			?>
+			</a></div>
 			
 			<div class="panel-heading">Number of wins:</div>
             <div style="padding-top:2px; padding-bottom:2px;" class="panel-body"><a href="#" data-toggle="tooltip" data-placement="right" title="Click to edit"><?php echo $user->NUMOFWINS; ?></a></div>
