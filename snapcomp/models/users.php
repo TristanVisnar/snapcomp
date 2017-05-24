@@ -79,6 +79,16 @@
 echo "Error!  ";
 	*/
 
+	public function logout(){
+		if(isset($_SESSION["ID"]) && isset($_SESSION["USERNAME"]) && isset($_SESSION["ACCNAME"])){
+			unset($_SESSION["ID"]);
+			unset($_SESSION["USERNAME"]);
+			unset($_SESSION["ACCNAME"]);
+			return "true";
+		}
+		else
+			return "false";
+	}
 
 
     // preveri email, ki ga dobi na vhodu, če obstaja v bazi

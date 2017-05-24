@@ -33,8 +33,7 @@
 			}
     	}
 		public function logout(){
-			if(isset($_SESSION["ID"])){
-				unset($_SESSION);
+			if($logoutReturn = User::logout()){
 				header("Location: ?controller=pages&action=home");
 			}
 			else{
@@ -107,8 +106,6 @@
 				$_SESSION["ID"] = $id["ID"];
 				$_SESSION["USERNAME"] = $id["USERNAME"];
 				$_SESSION["ACCNAME"] = $id["ACCNAME"];
-				$_SESSION["USERNAME"] = $id["USERNAME"];
-				$_SESSION["TEST"] = $id["LANG"];
 				header("Location: ?controller=pages&action=home"); // vrne nas na home page;
 			}
 		}
