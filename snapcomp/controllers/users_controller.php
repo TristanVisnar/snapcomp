@@ -53,9 +53,9 @@
     		$ret_user = User::check_ACC_NAME($user);     /// preveri ACC_NAME
     		if($ret_email == "error" || $ret_user == "error")
       			header("?controller=pages&action=error");
-        if($ret_email != "false" && $ret_user!="false"){
-            header("?controller=pages&action=register&email=$email&acc=$user");
-        }
+			if($ret_email != "false" && $ret_user!="false"){
+				header("?controller=pages&action=register&email=$email&acc=$user");
+			}	
     		if($ret_email != "false"){
             header("?controller=pages&action=register&email=$email");
         //KAJ NAREDI V PRIMERU KO MAIL ŽE OBSTAJA
@@ -85,7 +85,7 @@
 
 		public function login(){
 			$id = User::login($_POST["ACCNAME"],$_POST["PASS"]);
-			var_dump($_POST);
+			//var_dump($_POST);
 			if($id == "error"){
 				header("?controller=pages&action=error");
 			}

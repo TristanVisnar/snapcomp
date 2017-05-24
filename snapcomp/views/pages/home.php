@@ -1,2 +1,2 @@
 <!--Enostaven pogled, ki prikazuje, kako lahko uporabimo vrednosti spremenljivk, ki smo jih določili v kontrolerju -->
-<p>Pozdrav <?php echo $first_name . ' ' . $last_name; ?>!<p>
+<p>Hello<?php if(isset($_SESSION["USERNAME"])) echo " ".$_SESSION["USERNAME"]." "; ?>!<p>

@@ -5,9 +5,7 @@
 
 	 //akcija domov, ki ne potrebuje pravega modela, ampak samo nastavi fiksne vrednosti spremenljivk, ki jih view prikaže
     public function home() {
-      $first_name = 'Super';
-      $last_name  = 'User';
-      require_once('views/pages/home.php');
+		require_once('views/pages/home.php');
     }
 
 	//akcija napaka, ki naloži view z obvestilom o napaki
