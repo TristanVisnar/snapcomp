@@ -72,7 +72,7 @@
           session_start();
 		var_dump($_SESSION);
           if(isset($_SESSION["USERNAME"]))
-			echo "<li><a href='?controller=users&action=profileUser'>Logged in as: ". $_SESSION["ACCNAME"]." (".$_SESSION["USERNAME"].") </a></li>";
+			echo "<li><a href='?controller=users&action=profileUser'>". $_SESSION["ACCNAME"]." (".$_SESSION["USERNAME"].") </a><a href='?controller=users&action=logout'>(Logout)</a></li>";
           else
 	  {
 	      echo "<li><a href='?controller=pages&action=login'><span class='glyphicon glyphicon-log-in'></span> Login</a></li>";

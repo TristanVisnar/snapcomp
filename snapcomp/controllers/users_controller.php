@@ -32,7 +32,15 @@
 				}
 			}
     	}
-
+		public function logout(){
+			if(!isset($_SESSION["ID"])){
+				unset($_SESSION);
+				header("Location: ?controller=pages&action=home");
+			}
+			else{
+				header("Location: ?controller=pages&action=error");
+			}
+		}
 	// register se kliče, ko izpolnimo formo
 	public function register() {
 
