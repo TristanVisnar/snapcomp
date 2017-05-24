@@ -33,7 +33,7 @@
 			}
     	}
 		public function logout(){
-			if(!isset($_SESSION["ID"])){
+			if(isset($_SESSION["ID"])){
 				unset($_SESSION);
 				header("Location: ?controller=pages&action=home");
 			}
