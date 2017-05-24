@@ -57,11 +57,11 @@
 				header("?controller=pages&action=register&email=$email&acc=$user");
 			}	
     		if($ret_email != "false"){
-            header("?controller=pages&action=register&email=$email");
+				header("?controller=pages&action=register&email=$email");
         //KAJ NAREDI V PRIMERU KO MAIL ŽE OBSTAJA
     		}
     		if($ret_user != "false"){
-            header("?controller=pages&action=register&acc=$user");
+				header("?controller=pages&action=register&acc=$user");
         //KAJ NAREDI V PRIMERU KO ACC_NAME ŽE OBSTAJA
     		}
     		if($ret_email == "false" && $ret_user == "false"){
@@ -71,12 +71,12 @@
                 header("?controller=pages&action=error");
             }else{
                 $_SESSION["ID"] = $user["ID"];
-        				$_SESSION["USERNAME"] = $user["USERNAME"];
-        				$_SESSION["ACCNAME"] = $user["ACCNAME"];
-        				$_SESSION["USERNAME"] = $user["USERNAME"];
-        				$_SESSION["TEST"] = $user["LANG"];
+        		$_SESSION["USERNAME"] = $user["USERNAME"];
+        		$_SESSION["ACCNAME"] = $user["ACCNAME"];
+        		$_SESSION["USERNAME"] = $user["USERNAME"];
+        		$_SESSION["TEST"] = $user["LANG"];
   			//naložimo pogled, ki potrjuje uspešnost dodajanja
-  		          header("?controller=pages&action=home");
+  		        header("?controller=pages&action=home");
             }
    	    }
         header("?controller=pages&action=error");
@@ -101,7 +101,7 @@
 				$_SESSION["ACCNAME"] = $id["ACCNAME"];
 				$_SESSION["USERNAME"] = $id["USERNAME"];
 				$_SESSION["TEST"] = $id["LANG"];
-				header("?controller=pages&action=home"); // vrne nas na home page;
+				header("Location: ?controller=pages&action=home"); // vrne nas na home page;
 			}
 		}
 
