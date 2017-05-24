@@ -1,6 +1,6 @@
 <?php 
 	echo "PraviPHp";
-	if(function_exists(file_get_html)){
+	if(function_exists("file_get_html")){
 		echo "true";
 	}
 	else echo "Ne obstaja";
