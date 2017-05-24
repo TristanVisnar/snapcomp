@@ -23,7 +23,7 @@
 				$user = User::find($_SESSION["ID"]);
 				if($user == "false"){
 			//ta uporabnik ne obstaja -
-					header("?controller=pages&action=error"); /// možen klic tudi bolj prilagojene funkcije - uporabnik ne obstaja
+					header("Location: ?controller=pages&action=error"); /// možen klic tudi bolj prilagojene funkcije - uporabnik ne obstaja
 				}
 				else
 				{
@@ -59,23 +59,23 @@
     		$user = $_POST["regAccountName"];
     		$ret_user = User::check_ACC_NAME($user);     /// preveri ACC_NAME
     		if($ret_email == "error" || $ret_user == "error")
-      			header("?controller=pages&action=error");
+      			header("Location: ?controller=pages&action=error");
 			if($ret_email != "false" && $ret_user!="false"){
-				header("?controller=pages&action=register&email=$email&acc=$user");
-			}	
+				header("Location: ?controller=pages&action=register&email=$email&acc=$user");
+			}
     		if($ret_email != "false"){
-				header("?controller=pages&action=register&email=$email");
+				header("Location: ?controller=pages&action=register&email=$email");
         //KAJ NAREDI V PRIMERU KO MAIL ŽE OBSTAJA
     		}
     		if($ret_user != "false"){
-				header("?controller=pages&action=register&acc=$user");
+				header("Location: ?controller=pages&action=register&acc=$user");
         //KAJ NAREDI V PRIMERU KO ACC_NAME ŽE OBSTAJA
     		}
     		if($ret_email == "false" && $ret_user == "false"){
         //SE ZGODI OB USPEŠNI PREVERITVI PODATKOV
   			    $user=User::save($_POST["regEmail"],$_POST["regAccountName"],$_POST["regUsername"],$_POST["regPassword"],$_POST["regBirthDate"],$_POST["regFirstName"],$_POST["regLastName"],$_POST["regCountry"],$_POST["optradio1"],$_POST["optradio2"]);
             if($user=="error"){
-                header("?controller=pages&action=error");
+                header("Location: ?controller=pages&action=error");
             }else{
                 $_SESSION["ID"] = $user["ID"];
         		$_SESSION["USERNAME"] = $user["USERNAME"];
@@ -83,10 +83,10 @@
         		$_SESSION["USERNAME"] = $user["USERNAME"];
         		$_SESSION["TEST"] = $user["LANG"];
   			//naložimo pogled, ki potrjuje uspešnost dodajanja
-  		        header("?controller=pages&action=home");
+  		        header("Location: ?controller=pages&action=home");
             }
    	    }
-        header("?controller=pages&action=error");
+        header("Location: ?controller=pages&action=error");
     }
 
 
@@ -94,7 +94,7 @@
 			$id = User::login($_POST["ACCNAME"],$_POST["PASS"]);
 			//var_dump($_POST);
 			if($id == "error"){
-				header("?controller=pages&action=error");
+				header("Location: ?controller=pages&action=error");
 			}
 			if($id == "false"){
 				//error napačna prijava -- preusmeri nazaj na
