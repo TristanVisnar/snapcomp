@@ -54,7 +54,10 @@
     //če bo ključ prekoračil 1000 zahtev na mesec, si na strani ustvarite svoj ključ
     //na strani je tudi opisan format odgovora, nas bo zanimala predvsem mx_found lastnost
 
-
+			if($_POST["regPassword"] != $_POST["regConfirmPassword"]){
+				header("Location: ?controller=pages&action=register&passcheckerror=true");
+				exit();
+			}
     		$ret_email = User::check_EMAIL($email);      /// preveri EMAIL
     		$user = $_POST["regAccountName"];
     		$ret_user = User::check_ACC_NAME($user);     /// preveri ACC_NAME
