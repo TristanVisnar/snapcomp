@@ -4,7 +4,7 @@
 	
 	//https://www.reddit.com/r/random
 //https://www.reddit.com/r/wholesomeoverwatch/
-	for ($x = 0; $x <= 1; $x++) {
+	for ($x = 0; $x <= 20; $x++) {
 		$html = Pharse::file_get_dom('https://www.reddit.com/r/random');
 		foreach($html('title') as $element) {
 			echo "Title [".$x."]:  ". $element->getPlainText(), "<br>\n"; 
