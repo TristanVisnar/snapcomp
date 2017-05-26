@@ -12,7 +12,8 @@
 		//echo "_________________________________________________________________________________________\n<br>";
 		foreach($html('title') as $element) {
 			echo "Title [".$x."]:  ". $element->getPlainText(), "<br>\n";
-			//file_put_contents($, $person, FILE_APPEND | LOCK_EX);			
+			$Tstring = "Title [".$x."]:  ". $element->getPlainText(), "<br>\n";
+			file_put_contents($$Tstring, "Titles.txt", FILE_APPEND | LOCK_EX);			
 		}
 		if(isset($html)){
 			unset($html);
