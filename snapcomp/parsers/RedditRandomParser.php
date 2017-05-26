@@ -35,9 +35,8 @@
 			}
 			
 		}
-		echo "Reddit//random parser finished!";
+		echo "Reddit//random parser finished!<br>";
 		//The sun Parser
-		$x = 1;
 		$html = Pharse::file_get_dom('https://www.thesun.co.uk/');
 		foreach($html('h2[class="teaser__headline theme__copy-color"]') as $element) 
 		{
@@ -53,7 +52,7 @@
 			//}
 			//$x++;
 		}
-		echo "thesun.co.uk parser finished!";
+		echo "thesun.co.uk parser finished!<br>";
 		//The guardian parser
 		//$x = 1;
 		$html = Pharse::file_get_dom('https://www.theguardian.com/international');
@@ -71,7 +70,7 @@
 			//}		
 			//$x++;
 		}
-		echo "theguardian.com parser finished!";
+		echo "theguardian.com parser finished!<br>";
 		mysqli_stmt_close($stmt);
 	}
 	else
