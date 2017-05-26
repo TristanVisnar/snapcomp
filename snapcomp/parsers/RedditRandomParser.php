@@ -7,7 +7,7 @@
 	$password = "joomladb";
 	$dbname = "snapcomp";
 	$conn = new mysqli($servername, $username, $password, $dbname);
-	$conn->query("TRUNCATE TABLE DAILY_SUGGESTION;")
+	$conn->query("TRUNCATE TABLE DAILY_SUGGESTION;");
 	if ($conn->connect_error)
 	{
 		die("Connection failed: " . $conn->connect_error);
