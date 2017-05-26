@@ -4,9 +4,11 @@
 	
 	//https://www.reddit.com/r/random
 //https://www.reddit.com/r/wholesomeoverwatch/
-	for ($x = 0; $x <= 100; $x++) {
+	for ($x = 0; $x <= 1; $x++) {
 		//$html = file_get_contents('https://www.reddit.com/r/random');
-		$html = Pharse::file_get_dom('https://www.reddit.com/r/random');
+		//$context = stream_context_create(array('http' => array('header'=>'Connection: close\r\n')));
+		//file_get_contents("http://www.something.com/somepage.html",false,$context);
+		$html = file_get_contents("https://www.reddit.com/r/random");
 		//echo $x;
 		//echo "<!--" .$html. "-->";
 		//echo "_________________________________________________________________________________________\n<br>";
