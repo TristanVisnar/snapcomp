@@ -12,6 +12,18 @@ Funkcije:
 class images_controller{
 
 
+  public function prikaziSliko(){
+    if(isset($_GET["ID"])){
+      $slike = Image::getByID($_GET["ID"]);
+      require_once("views/images/browse_start.php");
+      foreach ($slike as $slika) {
+        require("views/images/index.php");
+      }
+      require_once("views/images/browse_end.php");
+
+    }
+  }
+
   // prikaze slike iz domace strani
   // vhod $_
   public function browse(){
@@ -96,7 +108,7 @@ class images_controller{
   }
 
   public function dislike(){
-    
+
   }
 
 
