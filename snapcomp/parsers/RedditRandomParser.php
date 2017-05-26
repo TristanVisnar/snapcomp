@@ -5,7 +5,8 @@
 	//https://www.reddit.com/r/random
 //https://www.reddit.com/r/wholesomeoverwatch/
 	for ($x = 0; $x <= 20; $x++) {
-		$html = Pharse::file_get_dom('https://www.reddit.com/r/random');
+		$html = file_get_contents('https://www.reddit.com/r/random');
+		//$html = Pharse::file_get_dom('https://www.reddit.com/r/random');
 		echo $x;
 		//echo "<!--" .$html. "-->";
 		//echo "_________________________________________________________________________________________\n<br>";
