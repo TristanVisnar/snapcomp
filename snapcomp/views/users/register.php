@@ -59,18 +59,24 @@
               <input required="true" type="text" class="form-control" id="regAccountName" name="regAccountName" placeholder="Enter account name" data-toggle="tooltip" data-placement="right" title="This is your login name. It cannot be changed.">
             </div>
           </div>
-
+	
           <div class="form-group">
             <label class="control-label col-sm-2" for="regPassword">*Password:</label>
             <div class="col-sm-10">
               <input required="true" type="password" class="form-control" id="regPassword" name="regPassword" placeholder="Enter password">
             </div>
           </div>
-
+			
+		<div style="width:250px; margin:auto">
+			<?php 
+				if(isset($_GET["passcheckerror"]))
+					echo "<p><font color='red' size='2px'>Register error, passwords did not match, try again!</font></p>";
+			?>
+		</div>
           <div class="form-group">
             <label class="control-label col-sm-2" for="regConfirmPassword">*Confirm:</label>
             <div class="col-sm-10">
-              <input required="true" type="password" class="form-control" id="regConfirmPassword" placeholder="Enter password again">
+              <input required="true" type="password" class="form-control" id="regConfirmPassword" name="regConfirmPassword" placeholder="Enter password again">
             </div>
           </div>
 
