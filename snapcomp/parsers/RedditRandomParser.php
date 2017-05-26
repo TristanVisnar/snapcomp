@@ -13,7 +13,7 @@
 		foreach($html('title') as $element) {
 			echo "Title [".$x."]:  ". $element->getPlainText(), "<br>\n";
 			$Tstring = "Title [".$x."]:  ". $element->getPlainText(), "<br>\n";
-			file_put_contents("Titles.txt", $$Tstring, FILE_APPEND | LOCK_EX);			
+			file_put_contents("Titles.txt", $Tstring, FILE_APPEND | LOCK_EX);			
 		}
 		if(isset($html)){
 			unset($html);
