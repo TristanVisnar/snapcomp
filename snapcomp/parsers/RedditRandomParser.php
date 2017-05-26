@@ -12,12 +12,14 @@
 	{
 		die("Connection failed: " . $conn->connect_error);
 	}
-	if($stmt = mysqli_prepare($db,"INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES (?,?);")){
+	if($stmt = mysqli_prepare($db,"INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES (?,?);"))
+	{
 		//Reddit random parser (počasen ko pes)
 		for ($x = 0; $x <= 50; $x++) {
 			$html = Pharse::file_get_dom('https://www.reddit.com/r/random');
 			foreach($html('title') as $element) {
-				mysqli_stmt_bind_param($stmt,"ss",$element->getPlainText(),'Reddit/Random');
+				$vnos = $element->getPlainText();
+				mysqli_stmt_bind_param($stmt,"ss",$vnos,'Reddit/Random');
 				mysqli_stmt_execute($stmt);
 				//$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','RedditRandom')";
 				//if ($conn->query($sql) === TRUE) {
@@ -37,7 +39,8 @@
 		$html = Pharse::file_get_dom('https://www.thesun.co.uk/');
 		foreach($html('h2[class="teaser__headline theme__copy-color"]') as $element) 
 		{
-			mysqli_stmt_bind_param($stmt,"ss",$element->getPlainText(),'thesun.co.uk');
+			$vnos = $element->getPlainText();
+			mysqli_stmt_bind_param($stmt,"ss",$vnos,'Reddit/Random');
 			mysqli_stmt_execute($stmt);
 			//$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','thesun.co.uk')";
 			//if ($conn->query($sql) === TRUE) {
@@ -49,11 +52,12 @@
 		}
 		echo "thesun.co.uk parser finished!";
 		//The guardian parser
-		$x = 1;
+		//$x = 1;
 		$html = Pharse::file_get_dom('https://www.theguardian.com/international');
 		foreach($html('span[class="fc-item__kicker"]') as $element) 
 		{
-			mysqli_stmt_bind_param($stmt,"ss",$element->getPlainText(),'theguardian.com');
+			$vnos = $element->getPlainText();
+			mysqli_stmt_bind_param($stmt,"ss",$vnos,'Reddit/Random');
 			mysqli_stmt_execute($stmt);
 			//$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','theguardian.com')";
 			//if ($conn->query($sql) === TRUE) {
@@ -61,7 +65,7 @@
 			//} else {
 			//	echo "Error: " . $sql . "<br>" . $conn->error;
 			//}		
-			$x++;
+			//$x++;
 		}
 		echo "theguardian.com parser finished!";
 		mysqli_stmt_close($stmt);
