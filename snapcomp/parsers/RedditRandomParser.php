@@ -12,10 +12,11 @@
 	{
 		die("Connection failed: " . $conn->connect_error);
 	}
-	if($stmt = mysqli_prepare($db,"INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES (?,?);"))
+	if($stmt = mysqli_prepare($conn,"INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES (?,?);"))
 	{
 		//Reddit random parser (počasen ko pes)
-		for ($x = 0; $x <= 50; $x++) {
+		for ($x = 0; $x <= 50; $x++)
+		{
 			$html = Pharse::file_get_dom('https://www.reddit.com/r/random');
 			foreach($html('title') as $element) {
 				$vnos = $element->getPlainText();
@@ -73,6 +74,8 @@
 		echo "theguardian.com parser finished!";
 		mysqli_stmt_close($stmt);
 	}
+	else
+		echo "Error mysqli_prepare ni deloval!";
 	$conn->close();
 	echo "All parsers finished. The database should be updated.";
 ?>
