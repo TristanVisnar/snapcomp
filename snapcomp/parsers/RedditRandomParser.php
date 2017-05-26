@@ -19,7 +19,8 @@
 			$html = Pharse::file_get_dom('https://www.reddit.com/r/random');
 			foreach($html('title') as $element) {
 				$vnos = $element->getPlainText();
-				mysqli_stmt_bind_param($stmt,"ss",$vnos,'Reddit/Random');
+				$source = "Reddit/Random";
+				mysqli_stmt_bind_param($stmt,"ss",$vnos,$source);
 				mysqli_stmt_execute($stmt);
 				//$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','RedditRandom')";
 				//if ($conn->query($sql) === TRUE) {
@@ -40,7 +41,8 @@
 		foreach($html('h2[class="teaser__headline theme__copy-color"]') as $element) 
 		{
 			$vnos = $element->getPlainText();
-			mysqli_stmt_bind_param($stmt,"ss",$vnos,'Reddit/Random');
+			$source = "thesun.co.uk";
+			mysqli_stmt_bind_param($stmt,"ss",$vnos,$source);
 			mysqli_stmt_execute($stmt);
 			//$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','thesun.co.uk')";
 			//if ($conn->query($sql) === TRUE) {
@@ -57,7 +59,8 @@
 		foreach($html('span[class="fc-item__kicker"]') as $element) 
 		{
 			$vnos = $element->getPlainText();
-			mysqli_stmt_bind_param($stmt,"ss",$vnos,'Reddit/Random');
+			$source = "theguardian.com";
+			mysqli_stmt_bind_param($stmt,"ss",$vnos,$source);
 			mysqli_stmt_execute($stmt);
 			//$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','theguardian.com')";
 			//if ($conn->query($sql) === TRUE) {
