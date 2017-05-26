@@ -17,7 +17,7 @@
 		//	unset($html);
 		//}
 	}
-
+	echo $html;
 
 	echo "Pharser konec";
 ?>
