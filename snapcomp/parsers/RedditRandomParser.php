@@ -7,8 +7,11 @@
 		echo "Title: ";
 		$html = Pharse::file_get_dom('https://www.reddit.com/r/wholesomeoverwatch/');
 		//echo "<!--".$html."-->";
-		$naslov = $html("title")->getPlainText();
-		echo $naslov . "<br>\n";
+		foreach($html('title') as $element) {
+			echo $element->getPlainText(), "<br>\n"; 
+		}	
+		//$naslov = $html("title")->getPlainText();
+		//echo $naslov . "<br>\n";
 
 	echo "Pharser konec";
 ?>
