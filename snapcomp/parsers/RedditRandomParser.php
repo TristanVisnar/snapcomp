@@ -4,14 +4,12 @@
 	
 	//https://www.reddit.com/r/random
 //https://www.reddit.com/r/wholesomeoverwatch/
-		echo "Title: ";
+	for ($x = 0; $x <= 100; $x++) {
 		$html = Pharse::file_get_dom('https://www.reddit.com/r/wholesomeoverwatch/');
-		//echo "<!--".$html."-->";
 		foreach($html('title') as $element) {
-			echo $element->getPlainText(), "<br>\n"; 
+			echo "Title [".$x."]:  ". $element->getPlainText(), "<br>\n"; 
 		}	
-		//$naslov = $html("title")->getPlainText();
-		//echo $naslov . "<br>\n";
+	}
 
 	echo "Pharser konec";
 ?>
