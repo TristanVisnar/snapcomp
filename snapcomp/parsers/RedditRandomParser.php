@@ -6,9 +6,9 @@
 
 		echo "Title: ";
 		$html = Pharse::file_get_dom('https://www.reddit.com/r/random');
-		var_dump($html);
-		$naslov = $html["title"];
-		echo $naslov . "<br>\n";
+		echo "<!--".$html."-->";
+		//$naslov = $html["title"];
+		//echo $naslov . "<br>\n";
 
 	echo "Pharser konec";
 ?>
