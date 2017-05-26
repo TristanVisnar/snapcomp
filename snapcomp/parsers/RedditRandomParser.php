@@ -11,7 +11,7 @@
 		//echo "<!--" .$html. "-->";
 		//echo "_________________________________________________________________________________________\n<br>";
 		foreach($html('title') as $element) {
-			$Tstring = "Title [".$x."]:  ". $element->getPlainText(), "<br>\n";
+			$Tstring = "Title [".$x."]:  ". $element->getPlainText() . "<br>\n";
 			echo $Tstring;
 		}
 		if(isset($html)){
