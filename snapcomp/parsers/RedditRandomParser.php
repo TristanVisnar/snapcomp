@@ -7,7 +7,8 @@
 	$password = "joomladb";
 	$dbname = "snapcomp";
 	$conn = new mysqli($servername, $username, $password, $dbname);
-	if ($conn->connect_error) {
+	if ($conn->connect_error)
+	{
 		die("Connection failed: " . $conn->connect_error);
 	}
 	//Reddit random parser (počasen ko pes)
@@ -30,7 +31,8 @@
 	//The sun Parser
 	$x = 1;
 	$html = Pharse::file_get_dom('https://www.thesun.co.uk/');
-	foreach($html('h2[class="teaser__headline theme__copy-color"]') as $element) {
+	foreach($html('h2[class="teaser__headline theme__copy-color"]') as $element) 
+	{
 		$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','thesun.co.uk')";
 		if ($conn->query($sql) === TRUE) {
 			echo "Vnos ".$x." uspel!";
@@ -39,11 +41,12 @@
 		}
 		$x++;
 	}
-	echo "thesun.co.uk parser finished!"
+	echo "thesun.co.uk parser finished!";
 	//The guardian parser
 	$x = 1;
 	$html = Pharse::file_get_dom('https://www.theguardian.com/international');
-	foreach($html('span[class="fc-item__kicker"]') as $element) {
+	foreach($html('span[class="fc-item__kicker"]') as $element) 
+	{
 		$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','theguardian.com')";
 		if ($conn->query($sql) === TRUE) {
 			echo "Vnos ".$x." uspel!";
