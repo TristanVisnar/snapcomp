@@ -12,13 +12,13 @@
 		//echo "_________________________________________________________________________________________\n<br>";
 		foreach($html('title') as $element) {
 			$Title  = "Title [".$x."]:  ". $element->getPlainText(), "<br>\n";
-			file_put_contents("Teme.txt", $Title, FILE_APPEND | LOCK_EX);			
+			file_put_contents("Teme.txt", $Title, FILE_APPEND | LOCK_EX);		
+			echo $title . "<br>";
 		}
 		if(isset($html)){
 			unset($html);
 		}
 	}
-	echo $html;
 
 	echo "Pharser konec";
 ?>
