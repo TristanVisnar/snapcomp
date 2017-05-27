@@ -27,7 +27,9 @@ class images_controller{
     require_once("views/pages/browse.php");
     require_once("views/images/browse_start.php");
     foreach ($slike as $slika) {
+      echo "it is in";
       require("views/images/index.php");
+      echo "it is out";
     }
     require_once("views/images/browse_end.php");
   }

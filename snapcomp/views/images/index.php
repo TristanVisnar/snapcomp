@@ -2,7 +2,7 @@
   <div class="col" style="width:500px">
     <ul class="list-group">
       <li style="padding-top:0px; padding-bottom:0px" class="list-group-item">
-        <font size="5px">&nbsp;<?php echp $slika["ID_SUGGESTION"];?> (Theme)</font>
+        <font size="5px">&nbsp;<?php echo $slika["ID_SUGGESTION"];?> (Theme)</font>
       </li>
       test
       <li style="padding:0px;" class="list-group-item">
