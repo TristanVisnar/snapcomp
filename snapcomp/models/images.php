@@ -64,7 +64,7 @@ class Image{
   // getXByDate vrne $x slik od $fromNum-itega elementa, torej:
   //  $x - število slik
   // $fromNum - od katere vrstice v sql tabeli dalje
-  public function getXByDate($x,$fromNum){
+  public function getXByDate($fromNum,$x){
     $x = intval($x);
     $fromNum = intval($fromNum);
 
@@ -108,14 +108,14 @@ class Image{
 
 
   // top
-  public function getXByLikes($x,$fromNum){
+  public function getXByLikes($fromNum,$x){
     $x = intval($x);
     $fromNum = intval($fromNum);
 
     $list = [];
 
     if(isset($_SESSION['NSFW'])){
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=? order by LIKES desc limit ?,?")) {
+      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=? order by LIKES desc limit ?,?;")) {
         mysqli_stmt_bind_param($stmt, "iii",$_SESSION['NSFW'],$fromNum,$x);
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
@@ -130,7 +130,7 @@ class Image{
       return "error";
 
     }else{
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=0 order by LIKES desc limit ?,?")) {
+      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=0 order by LIKES desc limit ?,?;")) {
         mysqli_stmt_bind_param($stmt, "ii",$fromNum,$x);
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
@@ -155,7 +155,7 @@ class Image{
   // getXByDate vrne $x slik od $fromNum-itega elementa, torej:
   //  $x - število slik
   // $fromNum - od katere vrstice v sql tabeli dalje
-  public function getXByDateUser($id,$x,$fromNum){
+  public function getXByDateUser($id,$fromNum,$x){
     $id = intval($id);
     $x = intval($x);
     $fromNum = intval($fromNum);
@@ -200,7 +200,7 @@ class Image{
 
 
   // top
-  public function getXByLikesUser($id,$x,$fromNum){
+  public function getXByLikesUser($id,$fromNum,$x){
     $id = intval($id);
     $x = intval($x);
     $fromNum = intval($fromNum);
