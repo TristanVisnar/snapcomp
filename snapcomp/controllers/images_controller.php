@@ -31,6 +31,7 @@ class images_controller{
       require("views/images/index.php");
       echo "it is out";
     }
+    echo "it is here";
     require_once("views/images/browse_end.php");
   }
 
