@@ -38,8 +38,6 @@ class images_controller{
 
       $steviloDodatnihSlik = 15;
 
-
-
       //če je kategorija označena
       //if(isset($_GET['category'])){}
       if(!isset($_SESSION['ImageIndex'])){
@@ -61,7 +59,13 @@ class images_controller{
         }else{
           $slike = Image::getXByLikes(1,$steviloDodatnihSlik);
           //dodaj en view za prikaz slike
-          show($slike);
+          require_once("views/pages/browse.php");
+          require_once("views/images/browse_start.php");
+          foreach ($slike as $slika) {
+            require("views/images/index.php");
+          }
+          require_once("views/images/browse_end.php");
+          //show($slike);
         }
         $_SESSION['ImageIndex']=1+$steviloDodatnihSlik;
       }
