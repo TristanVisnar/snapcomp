@@ -45,6 +45,8 @@ class Image{
   public function getByID($id){
     $id = intval($id);
 
+    $db = Db::getInstance();
+
     if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where id=?")) {
       mysqli_stmt_bind_param($stmt, "i",$id);
       //izvedemo poizvedbo
@@ -67,6 +69,8 @@ class Image{
   public function getXByDate($fromNum,$x){
     $x = intval($x);
     $fromNum = intval($fromNum);
+
+    $db = Db::getInstance();
 
     $list = [];
 
@@ -111,6 +115,8 @@ class Image{
   public function getXByLikes($fromNum,$x){
     $x = intval($x);
     $fromNum = intval($fromNum);
+
+    $db = Db::getInstance();
 
     $list = [];
 
@@ -160,6 +166,8 @@ class Image{
     $x = intval($x);
     $fromNum = intval($fromNum);
 
+    $db = Db::getInstance();
+
     $list = [];
 
     if(isset($_SESSION['NSFW'])){
@@ -205,6 +213,8 @@ class Image{
     $x = intval($x);
     $fromNum = intval($fromNum);
 
+    $db = Db::getInstance();
+
     $list = [];
 
     if(isset($_SESSION['NSFW'])){
@@ -244,6 +254,8 @@ class Image{
 
     $id = intval($id);
 
+    $db = Db::getInstance();
+
     if ($stmt = mysqli_prepare($db, "UPDATE PICTURE SET LIKES = LIKES + 1  where id=?")) {
       mysqli_stmt_bind_param($stmt, "i",$id);
       //izvedemo poizvedbo
@@ -260,6 +272,8 @@ class Image{
   public function dislike($id){
 
     $id = intval($id);
+
+    $db = Db::getInstance();
 
     if ($stmt = mysqli_prepare($db, "UPDATE PICTURE SET DISLIKES = DISLIKES + 1  where id=?")) {
       mysqli_stmt_bind_param($stmt, "i",$id);
