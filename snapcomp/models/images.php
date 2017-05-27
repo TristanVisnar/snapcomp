@@ -50,9 +50,9 @@ class Image{
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
-      if($row = mysql_fetch_assoc($result))
+      $row = mysql_fetch_assoc($result);
 
-      else
+
      mysqli_stmt_close($stmt);
 
      return new Image($row['ID'],$row['DISCRIPTION'],$row['CONTENT'],$row['DATEOFUPLOAD'],$row['ID_USER'],$row['ID_SUGGESTION'],$row['LIKES'],$row['DISLIKES'],$row['NSFW']);

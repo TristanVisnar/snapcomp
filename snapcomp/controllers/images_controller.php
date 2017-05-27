@@ -11,7 +11,6 @@ Funkcije:
 
 class images_controller{
 
-
   public function prikaziSliko(){
     if(isset($_GET["ID"])){
       $slike = Image::getByID($_GET["ID"]);
@@ -22,6 +21,15 @@ class images_controller{
       require_once("views/images/browse_end.php");
 
     }
+  }
+
+  private function show($slike){
+    require_once("views/pages/browse.php");
+    require_once("views/images/browse_start.php");
+    foreach ($slike as $slika) {
+      require("views/images/index.php");
+    }
+    require_once("views/images/browse_end.php");
   }
 
   // prikaze slike iz domace strani
@@ -35,30 +43,38 @@ class images_controller{
       if(!isset($_SESSION['ImageIndex'])){
         if(isset($_GET['sort'])){
           if($_GET['sort']=="new"){
-              $slike = Image::getXByDate(0,$steviloDodatnihSlik);
+              $slike = Image::getXByDate(1,$steviloDodatnihSlik);
               //dodaj en view za prikaz slike
+              show($slike);
           }else{
-              $slike = Image::getXByDate(0,$steviloDodatnihSlik);
+              $slike = Image::getXByLikes(1,$steviloDodatnihSlik);
               //dodaj en view za prikaz slike
+              show($slike);
             }
         }else{
-          $slike = Image::getXByDate(0,$steviloDodatnihSlik);
+          $slike = Image::getXByLikes(1,$steviloDodatnihSlik);
           //dodaj en view za prikaz slike
+          show($slike);
         }
+        $_SESSION['ImageIndex']=1+$steviloDodatnihSlik;
       }
       else{
         if(isset($_GET['sort'])){
           if($_GET['sort']=="new"){
               $slike = Image::getXByDate($_SESSION['ImageIndex'],$steviloDodatnihSlik);
               //view za slike
+              show($slike);
           }else{
               $slike = Image::getXByLikes($_SESSION['ImageIndex'],$steviloDodatnihSlik);
               //view za slike
+              show($slike);
           }
         }else{
             $slike = Image::getXByLikes($_SESSION['ImageIndex'],$steviloDodatnihSlik);
             //view za slike
+            show($slike);
         }
+        $_SESSION['ImageIndex']=$_SESSION['ImageIndex']+$steviloDodatnihSlik;
       }
   }
 
@@ -73,32 +89,39 @@ class images_controller{
     if(!isset($_SESSION['ImageIndex'])){
       if(isset($_GET['sort'])){
         if($_GET['sort']=="new"){
-            $slike = Image::getXByDateUser(0,$steviloDodatnihSlik);
+            $slike = Image::getXByDateUser(1,$steviloDodatnihSlik);
             //dodaj en view za prikaz slike
+            show($slike);
         }else{
-            $slike = Image::getXByDateUser(0,$steviloDodatnihSlik);
+            $slike = Image::getXByLikesUser(1,$steviloDodatnihSlik);
             //dodaj en view za prikaz slike
+            show($slike);
           }
       }else{
-        $slike = Image::getXByDateUser(0,$steviloDodatnihSlik);
+        $slike = Image::getXByDateUser(1,$steviloDodatnihSlik);
         //dodaj en view za prikaz slike
+        show($slike);
       }
+      $_SESSION['ImageIndex']=1+$steviloDodatnihSlik;
     }
     else{
       if(isset($_GET['sort'])){
         if($_GET['sort']=="new"){
             $slike = Image::getXByDateUser($_SESSION['ImageIndex'],$steviloDodatnihSlik);
             //view za slike
+            show($slike);
         }else{
             $slike = Image::getXByLikesUser($_SESSION['ImageIndex'],$steviloDodatnihSlik);
             //view za slike
+            show($slike);
         }
       }else{
-          $slike = Image::getXByLikesUser($_SESSION['ImageIndex'],$steviloDodatnihSlik);
+          $slike = Image::getXByDateUser($_SESSION['ImageIndex'],$steviloDodatnihSlik);
           //view za slike
+          show($slike);
       }
+      $_SESSION['ImageIndex']=$_SESSION['ImageIndex']+$steviloDodatnihSlik;
     }
-
   }
 
 
