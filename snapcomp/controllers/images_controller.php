@@ -91,7 +91,6 @@ class images_controller{
           }else{
 
               $slike = Image::getXByLikes($_SESSION['ImageIndex'],$steviloDodatnihSlik);
-              var_dump($slike);
               //view za slike
 
               show($slike);
