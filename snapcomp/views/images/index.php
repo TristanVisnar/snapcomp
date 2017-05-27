@@ -6,7 +6,7 @@
       </li>
       test
       <li style="padding:0px;" class="list-group-item">
-        <img src="data:image/png;base64,<?php echo base64_encode( $slika->CONTENT ); ?> )" alt="" width="100%" height="350px"/>
+        <img src="data:image/png;base64,<?php echo base64_encode( $slika->CONTENT );?>" alt="" width="100%" height="350px"/>';
         <!--<img src="http://coolwildlife.com/wp-content/uploads/galleries/post-3004/Fox%20Picture%20003.jpg" alt="" width="100%" height="350px">-->
       </li>
 
