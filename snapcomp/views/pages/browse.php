@@ -1,5 +1,5 @@
-<?php if(!isset($_SESSION['NSFW'])) $_SESSION['NSFW'] = "0"
-if(isset($_SESSION['ImageIndex']) unset($_SESSION['ImageIndex']);)
+<?php if(!isset($_SESSION['NSFW'])) $_SESSION['NSFW'] = "0";
+if(isset($_SESSION['ImageIndex'])) unset($_SESSION['ImageIndex']);
 ?>
 <div class="dropdown">
   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Categories
