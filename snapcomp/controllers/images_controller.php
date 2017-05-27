@@ -38,17 +38,24 @@ class images_controller{
 
       $steviloDodatnihSlik = 15;
 
+      echo "1";
+
       //če je kategorija označena
       //if(isset($_GET['category'])){}
       if(!isset($_SESSION['ImageIndex'])){
+        echo "2.1";
         if(isset($_GET['sort'])){
+          echo "3.1";
           if($_GET['sort']=="new"){
               $slike = Image::getXByDate(1,$steviloDodatnihSlik);
               //dodaj en view za prikaz slike
               show($slike);
           }else{
+            echo "4.1";
               $slike = Image::getXByLikes(1,$steviloDodatnihSlik);
               //dodaj en view za prikaz slike
+              var_dump($slike);
+              echo "5.1";
               show($slike);
             }
         }else{
@@ -59,14 +66,21 @@ class images_controller{
         $_SESSION['ImageIndex']=1+$steviloDodatnihSlik;
       }
       else{
+        echo "2.2";
         if(isset($_GET['sort'])){
+          echo "3.2";
           if($_GET['sort']=="new"){
+
               $slike = Image::getXByDate($_SESSION['ImageIndex'],$steviloDodatnihSlik);
+
               //view za slike
               show($slike);
           }else{
+              echo "4.2";
               $slike = Image::getXByLikes($_SESSION['ImageIndex'],$steviloDodatnihSlik);
+              var_dump($slike);
               //view za slike
+              echo "5.2";
               show($slike);
           }
         }else{
