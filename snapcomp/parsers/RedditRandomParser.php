@@ -21,6 +21,14 @@
 			foreach($html('title') as $element) {
 				$vnos = $element->getPlainText();
 				$source = "Reddit/Random";
+				str_ireplace('/r/', '', $vnos);
+				str_ireplace('r/', '', $vnos);
+				str_ireplace('/r', '', $vnos);
+				str_ireplace('news', '', $vnos);
+				str_ireplace(' news', '', $vnos);
+				str_ireplace(' news ', '', $vnos);
+				$first4words = implode(' ', array_slice(str_word_count($vnos,1), 0, 4));
+				$vnos = $first4words;
 				mysqli_stmt_bind_param($stmt,"ss",$vnos,$source);
 				mysqli_stmt_execute($stmt);
 				//$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','RedditRandom')";
@@ -42,6 +50,10 @@
 		{
 			$vnos = $element->getPlainText();
 			$source = "thesun.co.uk";
+			str_ireplace(' news', '', $vnos);
+			str_ireplace(' news ', '', $vnos);
+			$first4words = implode(' ', array_slice(str_word_count($vnos,1), 0, 4));
+			$vnos = $first4words;
 			mysqli_stmt_bind_param($stmt,"ss",$vnos,$source);
 			mysqli_stmt_execute($stmt);
 			//$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','thesun.co.uk')";
@@ -60,6 +72,10 @@
 		{
 			$vnos = $element->getPlainText();
 			$source = "theguardian.com";
+			str_ireplace(' news', '', $vnos);
+			str_ireplace(' news ', '', $vnos);
+			$first4words = implode(' ', array_slice(str_word_count($vnos,1), 0, 4));
+			$vnos = $first4words;
 			mysqli_stmt_bind_param($stmt,"ss",$vnos,$source);
 			mysqli_stmt_execute($stmt);
 			//$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','theguardian.com')";
