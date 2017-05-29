@@ -146,6 +146,9 @@ class images_controller{
 
   }
 
+  private function changeBrowseRes($slike){
+
+  }
 
   public function browseAPI($request,$input){
 
