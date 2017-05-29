@@ -3,7 +3,6 @@
 //nastavimo ustrezen tip rezultata ter oglas ustrezno zakodiramo
 header('Content-Type: application/json');
 
-echo json_encode($slike,JSON_FORCE_OBJECT);
-
+echo json_encode($slike);
 
 ?>
