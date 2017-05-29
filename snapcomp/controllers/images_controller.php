@@ -147,6 +147,30 @@ class images_controller{
   }
 
 
+  public function browseAPI($request,$input){
+
+      //če je kategorija označena
+      //if(isset($_GET['category'])){}
+
+      if($input->sort=="new"){
+          $slike = Image::getXByDate($input->index,$input->stevilo);
+          //dodaj en view za prikaz slike
+          require_once("views/images/json.php");
+      }else{
+
+          $slike = Image::getXByLikes($input->index,$input->stevilo);
+          //dodaj en view za prikaz slike
+          show($slike);
+          require_once("views/images/json.php");
+      }
+  }
+
+  public function saveAPI($request,$input){
+
+
+  }
+
+
 
 }
 
