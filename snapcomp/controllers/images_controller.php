@@ -173,14 +173,14 @@ class images_controller{
       if($request[1]=="new"){
           $slike = Image::getXByDate($request[2],$request[3]);
           //dodaj en view za prikaz slike
-          $slike = changeToJson($slike);
+          //$slike = changeToJson($slike);
           var_dump($slike);
           require_once("views/images/json.php");
       }else{
           $slike = Image::getXByLikes($request[2],$request[3]);
           //dodaj en view za prikaz slike
 
-          $slike = changeToJson($slike);
+          //$slike = changeToJson($slike);
           var_dump($slike);
           require_once("views/images/json.php");
       }
