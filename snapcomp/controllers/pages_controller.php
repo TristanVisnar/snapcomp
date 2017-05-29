@@ -11,7 +11,6 @@
 	//akcija napaka, ki naloži view z obvestilom o napaki
     public function error() {
 		require_once('views/pages/error.php');
-
     }
 	public function browse(){
 		require_once('views/pages/browse.php');
@@ -38,5 +37,10 @@
 		}
 		require_once("views/pages/browse.php");
 	}
+
+  public function errorAPI() {
+  require_once('views/pages/errorAPI.php');
+  }
+
   }
 ?>
