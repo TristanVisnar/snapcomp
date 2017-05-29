@@ -7,4 +7,4 @@ Test
 </FilesMatch>
 RewriteEngine on
 RewriteCond %{HTTPS} !=on
-RewriteRule (.*) https://localhost/tmp/snapcomp [R]
+RewriteRule https://164.8.230.124/tmp/snapcomp/index.php
