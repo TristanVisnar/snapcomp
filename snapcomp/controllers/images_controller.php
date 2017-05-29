@@ -160,6 +160,7 @@ class images_controller{
       $l["NSFW"]=$slika->NSFW;
       $list[] = $l;
     }
+    return $list;
   }
 
   public function browseAPI($request,$input){
