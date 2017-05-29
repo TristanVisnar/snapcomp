@@ -146,7 +146,7 @@ class images_controller{
 
   }
 
-  private function changeToJson($slike){
+  public function changeToJson($slike){
     $list = [];
 
     foreach ($slike as $slika) {
@@ -174,14 +174,14 @@ class images_controller{
           $slike = Image::getXByDate($request[2],$request[3]);
           //dodaj en view za prikaz slike
           $slike = changeToJson($slike);
-          //var_dump($slike);
+          var_dump($slike);
           require_once("views/images/json.php");
       }else{
           $slike = Image::getXByLikes($request[2],$request[3]);
           //dodaj en view za prikaz slike
 
           $slike = changeToJson($slike);
-          //var_dump($slike);
+          var_dump($slike);
           require_once("views/images/json.php");
       }
   }
