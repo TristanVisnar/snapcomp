@@ -1,5 +1,3 @@
-Test.
-
 # Prevent Apache from serving .htaccess files:
 <FilesMatch "^\.htaccess">
     Order allow,deny
