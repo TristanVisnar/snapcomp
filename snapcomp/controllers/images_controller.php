@@ -151,19 +151,21 @@ class images_controller{
 
       //če je kategorija označena
       //if(isset($_GET['category'])){}
-
+      echo "b1";
       if (!isset($request[1]) || !isset($request[2]) || !isset($request[3]) )
         return call('pages', 'errorAPI');
 
       if($request[1]=="new"){
+        echo "b2";
           $slike = Image::getXByDate($request[2],$request[3]);
+          echo "b3";
           //dodaj en view za prikaz slike
           require_once("views/images/json.php");
       }else{
-
+        echo "b2";
           $slike = Image::getXByLikes($request[2],$request[3]);
           //dodaj en view za prikaz slike
-          show($slike);
+          echo "b3";
           require_once("views/images/json.php");
       }
   }

@@ -7,14 +7,19 @@ require_once('connection.php');
 //drugi je input ki predstavlja objekt, ki je bil apiju posredovan v json obliki
 //noben parameter ni obvezen
 function call($controller, $action,$request="",$input="") {
+  echo "t4";
     require_once('controllers/' . $controller . '_controller.php');
-	require_once('models/' . $controller . '.php');
+    echo "t5";
+  require_once('models/' . $controller . '.php');
+  echo "t6";
     $o=$controller."_controller";
 	$controller=new $o;
+  echo "t7";
 	$controller->{ $action }($request,$input);
-
+  echo "t8";
   }
 
+echo "t1";
  //prebermo metodo zahteve
 $method = $_SERVER['REQUEST_METHOD'];
 //iz zahteve v obliki api.php/a/b/c/d/.. naredimo polje
@@ -29,11 +34,13 @@ $input = json_decode(file_get_contents('php://input'));
 
 $controller=$request[0];
 
+echo "t2";
 //metoda zahteve nam določa katero akcijo bomo izvedli
 //tukaj imamo ekvivalent strani routes.php, ki je precej poenostavljen
 //v bolj zapletenih apijih je potrebno dodati malo več logike, ki kombinira vrsto metode ter podakte poslane v ukazu (pri nas $request), ter ustrezno kliče kontrolerje
 switch ($method) {
 		case 'GET':
+    echo "t3";
 		call($controller,"browseAPI",$request,$input);
 		break;
 		case 'PUT':
