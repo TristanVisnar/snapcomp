@@ -150,7 +150,7 @@ class images_controller{
     $list = [];
 
     foreach ($slike as $slika) {
-      var $l = [];
+      $l = [];
       $l["ID"]=$slika->ID;
       $l["DISCRIPTION"]=$slika->DISCRIPTION;
       $l["CONTENT"]=$slika->CONTENT;
