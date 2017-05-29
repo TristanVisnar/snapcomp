@@ -146,8 +146,20 @@ class images_controller{
 
   }
 
-  private function changeBrowseRes($slike){
+  private function changeToJson($slike){
+    $list = [];
 
+    foreach ($slike as $slika) {
+      var $l = [];
+      $l["ID"]=$slika->ID;
+      $l["DISCRIPTION"]=$slika->DISCRIPTION;
+      $l["CONTENT"]=$slika->CONTENT;
+      $l["DATEOFUPLOAD"]=$slika->DATEOFUPLOAD;
+      $l["ID_USER"]=$slika->ID_USER;
+      $l["ID_SUGGESTION"]=$slika->ID_SUGGESTION;
+      $l["NSFW"]=$slika->NSFW;
+      $list[] = $l;
+    }
   }
 
   public function browseAPI($request,$input){
@@ -160,10 +172,12 @@ class images_controller{
       if($request[1]=="new"){
           $slike = Image::getXByDate($request[2],$request[3]);
           //dodaj en view za prikaz slike
+          $slike = changeToJson($slike);
           require_once("views/images/json.php");
       }else{
           $slike = Image::getXByLikes($request[2],$request[3]);
           //dodaj en view za prikaz slike
+          $slike = changeToJson($slike);
           require_once("views/images/json.php");
       }
   }
