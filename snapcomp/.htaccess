@@ -1,0 +1,3 @@
+RewriteEngine On;
+RewriteCond %{QUERY_STRING} ^title="SnapComp - Login";
+RewriteRule ^(.*)$ https://%{SERVER_NAME}/ [R]
