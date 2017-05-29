@@ -4,7 +4,7 @@
 echo "SEM V DATOTEKI";
 header('Content-Type: application/json');
 foreach ($slike as $slika) {
-  echo json_encode($slike);
+  echo json_encode($slika);
 }
 
 ?>
