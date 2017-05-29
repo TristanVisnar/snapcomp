@@ -6,5 +6,5 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script></head>
 -->
 
-  <div>
-    world
+  <script src="js/browse.js" />
+  <div style="margin:auto;">

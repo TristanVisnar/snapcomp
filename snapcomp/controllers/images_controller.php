@@ -55,26 +55,12 @@ class images_controller{
 
               $slike = Image::getXByLikes(1,$steviloDodatnihSlik);
               //dodaj en view za prikaz slike
-
-              require_once("views/pages/browse.php");
-              require_once("views/images/browse_start.php");
-              foreach ($slike as $slika) {
-                require("views/images/index.php");
-              }
-              require_once("views/images/browse_end.php");
-
-              //show($slike);
+              show($slike);
             }
         }else{
           $slike = Image::getXByLikes(1,$steviloDodatnihSlik);
           //dodaj en view za prikaz slike
-          require_once("views/pages/browse.php");
-          require_once("views/images/browse_start.php");
-          foreach ($slike as $slika) {
-            require("views/images/index.php");
-          }
-          require_once("views/images/browse_end.php");
-          //show($slike);
+          show($slike);
         }
         $_SESSION['ImageIndex']=1+$steviloDodatnihSlik;
       }
