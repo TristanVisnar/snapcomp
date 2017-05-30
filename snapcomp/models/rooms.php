@@ -125,15 +125,15 @@ class Room{
 					while($row2 = mysqli_fetch_assoc($result2)){{
 						$list[] = array("ROOM_NAME" => $row2["ID"]);
 					}
-				mysqli_stmt_close($stmt2);
+					mysqli_stmt_close($stmt2);
+					}
 				}
+				mysqli_stmt_close($stmt);
 			}
-			mysqli_stmt_close($stmt);
 		}
-		
 		return $list;
-	
 	}
+	public function 
 }
 
  ?>
