@@ -47,9 +47,9 @@ class Room{
         while($row = mysqli_fetch_assoc($result)){
            $list[] = array("ID"=>$row["ID"],"NAME"=>$row["NAME"],"PASSWORD"=>$row["PASSWORD"],"PRIVATEROOM"=>$row["PRIVATEROOM"],"NSFW"=>$row["NSFW"],"DATEOFCREATION"=>$row["DATEOFCREATION"],"ID_CREATOR"=>$row["ID_CREATOR"],"ID_SESSION"=>$row["ID_SESSION"]);
         }
-       mysqli_stmt_close($stmt);
-       return $list;
-     }
+			mysqli_stmt_close($stmt);
+			return $list;
+		}
     }
 	//Vračanje podatkov za določeno sobo ( v kater se logina uporabnik)
 	public function sessions($id_session,$id_user){
@@ -60,13 +60,12 @@ class Room{
 		//Selecta vse uporabnike v seji 
 		$list = [];
 		if ($stmt = mysqli_prepare($db, "SELECT ID_USER FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
-        mysqli_stmt_bind_param($stmt, "i",intval($id_session));
-		mysqli_stmt_execute($stmt);
-		$result = mysqli_stmt_get_result($stmt);
-		//Selectane imamo vse userje v nasi seji in gremo skozi njih 
-        while($row = mysqli_fetch_assoc($result)){
-			if($stmt2 = mysqli_prepare($db, "SELECT (USERNAME, ID) FROM UPORABNIK WHERE UPORABNIK.ID = ?")
-			{
+			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+			//Selectane imamo vse userje v nasi seji in gremo skozi njih 
+			while($row = mysqli_fetch_assoc($result)){
+				if($stmt2 = mysqli_prepare($db, "SELECT (USERNAME, ID) FROM UPORABNIK WHERE UPORABNIK.ID = ?")){
 					//Gremo skozi vse userje, ter dobimo njihove podatke
 					mysqli_stmt_bind_param($stmt2, "i",intval($row["ID_USER"]));
 					mysqli_stmt_execute($stmt2);
@@ -122,18 +121,20 @@ class Room{
 					mysqli_stmt_bind_param($stmt2, "i", $row["ID_ROOM"]);
 					mysqli_stmt_execute($stmt2);
 					$result2 = mysqli_stmt_get_result($stmt2);
-					while($row2 = mysqli_fetch_assoc($result2)){{
+					while($row2 = mysqli_fetch_assoc($result2)){
 						$list[] = array("ROOM_NAME" => $row2["ID"]);
 					}
 					mysqli_stmt_close($stmt2);
-					}
+				
 				}
 				mysqli_stmt_close($stmt);
+			
 			}
+			
 		}
 		return $list;
 	}
-	public function 
 }
+
 
  ?>
