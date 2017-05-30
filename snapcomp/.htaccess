@@ -1,4 +1,4 @@
 #RewriteEngine On;
-DirectoryIndex kevintest.php index.php
+#DirectoryIndex kevintest.php index.php
 #RewriteCond %{QUERY_STRING} ^title="SnapComp - Login";
 #RewriteRule ^(.*)$ https://%{SERVER_NAME}/ [R]
