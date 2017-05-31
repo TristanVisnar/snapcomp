@@ -36,7 +36,8 @@ $controller=$request[0];
 //v bolj zapletenih apijih je potrebno dodati malo več logike, ki kombinira vrsto metode ter podakte poslane v ukazu (pri nas $request), ter ustrezno kliče kontrolerje
 switch ($method) {
 		case 'GET':
-		call($controller,"getAPI",$request,$input);
+    echo "pride v case GET";
+		//call($controller,"getAPI",$request,$input);
 		break;
 		case 'PUT':
 		//call($controller,"posodobiAPI",$request,$input);

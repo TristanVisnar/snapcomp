@@ -188,6 +188,7 @@ class images_controller{
 
   public function getAPI($request,$input){
     //browseAPI($request,$input);
+    echo "hello world";
   }
   public function saveAPI($request,$input){
 
