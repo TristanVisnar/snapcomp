@@ -23,7 +23,7 @@ class images_controller{
     }
   }
 
-  private function show($slike){
+  public function show($slike){
     require_once("views/pages/browse.php");
     require_once("views/images/browse_start.php");
     foreach ($slike as $slika) {
@@ -50,17 +50,17 @@ class images_controller{
           if($_GET['sort']=="new"){
               $slike = Image::getXByDate(1,$steviloDodatnihSlik);
               //dodaj en view za prikaz slike
-              show($slike);
+              images_controller::show($slike);
           }else{
 
               $slike = Image::getXByLikes(1,$steviloDodatnihSlik);
               //dodaj en view za prikaz slike
-              show($slike);
+              images_controller::show($slike);
             }
         }else{
           $slike = Image::getXByLikes(1,$steviloDodatnihSlik);
           //dodaj en view za prikaz slike
-          show($slike);
+          images_controller::show($slike);
         }
         $_SESSION['ImageIndex']=1+$steviloDodatnihSlik;
       }
@@ -73,18 +73,18 @@ class images_controller{
               $slike = Image::getXByDate($_SESSION['ImageIndex'],$steviloDodatnihSlik);
 
               //view za slike
-              show($slike);
+              images_controller::show($slike);
           }else{
 
               $slike = Image::getXByLikes($_SESSION['ImageIndex'],$steviloDodatnihSlik);
               //view za slike
 
-              show($slike);
+              images_controller::show($slike);
           }
         }else{
             $slike = Image::getXByLikes($_SESSION['ImageIndex'],$steviloDodatnihSlik);
             //view za slike
-            show($slike);
+            images_controller::show($slike);
         }
         $_SESSION['ImageIndex']=$_SESSION['ImageIndex']+$steviloDodatnihSlik;
       }
@@ -103,16 +103,16 @@ class images_controller{
         if($_GET['sort']=="new"){
             $slike = Image::getXByDateUser(1,$steviloDodatnihSlik);
             //dodaj en view za prikaz slike
-            show($slike);
+            images_controller::show($slike);
         }else{
             $slike = Image::getXByLikesUser(1,$steviloDodatnihSlik);
             //dodaj en view za prikaz slike
-            show($slike);
+            images_controller::show($slike);
           }
       }else{
         $slike = Image::getXByDateUser(1,$steviloDodatnihSlik);
         //dodaj en view za prikaz slike
-        show($slike);
+        images_controller::show($slike);
       }
       $_SESSION['ImageIndex']=1+$steviloDodatnihSlik;
     }
@@ -121,16 +121,16 @@ class images_controller{
         if($_GET['sort']=="new"){
             $slike = Image::getXByDateUser($_SESSION['ImageIndex'],$steviloDodatnihSlik);
             //view za slike
-            show($slike);
+            images_controller::show($slike);
         }else{
             $slike = Image::getXByLikesUser($_SESSION['ImageIndex'],$steviloDodatnihSlik);
             //view za slike
-            show($slike);
+            images_controller::show($slike);
         }
       }else{
           $slike = Image::getXByDateUser($_SESSION['ImageIndex'],$steviloDodatnihSlik);
           //view za slike
-          show($slike);
+          images_controller::show($slike);
       }
       $_SESSION['ImageIndex']=$_SESSION['ImageIndex']+$steviloDodatnihSlik;
     }
@@ -168,30 +168,67 @@ class images_controller{
 
       //če je kategorija označena
       //if(isset($_GET['category'])){}
-      if (!isset($request[1]) || !isset($request[2]) || !isset($request[3]) )
+      if (!isset($request[2]) || !isset($request[3]) || !isset($request[4]) )
         return call('pages', 'errorAPI');
 
-      if($request[1]=="new"){
-          $slike = Image::getXByDate($request[2],$request[3]);
+      if($request[2]=="new"){
+          $slike = Image::getXByDate($request[3],$request[4]);
           //dodaj en view za prikaz slike
           $slike = images_controller::changeToJson($slike);
           require_once("views/images/json.php");
       }else{
-          $slike = Image::getXByLikes($request[2],$request[3]);
+          $slike = Image::getXByLikes($request[3],$request[4]);
           //dodaj en view za prikaz slike
           $slike = images_controller::changeToJson($slike);
           require_once("views/images/json.php");
       }
   }
 
+  // http://164.8.230.124/tmp/snapcomp/api.php/images/1/:ID_SESSION(number)/
+  public function getSelectionStatePictures($request,$input){
+      $slike = Image::getSessionPictures($request[2]);
+      require_once("views/images/json.php");
+  }
+
   public function getAPI($request,$input){
-    images_controller::browseAPI($request,$input);
+    //Podatki za prikaz n slik za browse
+    if($request[1] == "0"){
+        images_controller::browseAPI($request,$input);
+    }
+    //Podatki in slike za stanje izbire
+    elseif($request[1] == "1"){
+        images_controller::getSelectionStatePictures($request,$input);
+    }
+
   }
-  public function saveAPI($request,$input){
 
+  //POTREBNO TESTIRANJA
+  public function savePicture($request,$input){
+      Image::savePicture($input);
+  }
+
+  //NI ŠE NARETO
+  public function saveEndofsessionPicture($request,$input){
 
   }
 
+
+  public function postAPI($request,$input){
+    //Saving picture SESSION
+    if($request[1]=="0"){
+      images_controller::savePicture($request,$input);
+      }
+    //Save picture for ENDOFSESSION
+    elseif($request[1]=="1"){
+      images_controller::saveEndofsessionPicture($request,$input);
+    }
+
+  }
+
+
+  public function deleteAPI($request,$input){
+    //BOMO ŠE VIDLI ČE RABIMO
+  }
 
 
 }

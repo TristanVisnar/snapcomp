@@ -47,7 +47,7 @@ class Image{
 
     $db = Db::getInstance();
 
-    if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where id=?")) {
+    if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where ID=? and ID_SESSION=NULL ")) {
       mysqli_stmt_bind_param($stmt, "i",$id);
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
@@ -75,7 +75,7 @@ class Image{
     $list = [];
 
     if(isset($_SESSION['NSFW'])){
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=? order by DATEOFUPLOAD desc limit ?,?")) {
+      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=? and ID_SESSION=NULL order by DATEOFUPLOAD desc limit ?,?")) {
         mysqli_stmt_bind_param($stmt, "iii",$_SESSION['NSFW'],$fromNum,$x);
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
@@ -91,7 +91,7 @@ class Image{
       return "error";
 
     }else{
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=0 order by DATEOFUPLOAD desc limit ?,?")) {
+      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=0 and ID_SESSION=NULL order by DATEOFUPLOAD desc limit ?,?")) {
         mysqli_stmt_bind_param($stmt, "ii",$fromNum,$x);
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
@@ -121,7 +121,7 @@ class Image{
     $list = [];
 
     if(isset($_SESSION['NSFW'])){
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=? order by LIKES desc limit ?,?;")) {
+      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=? and ID_SESSION=NULL order by LIKES desc limit ?,?;")) {
         mysqli_stmt_bind_param($stmt, "iii",$_SESSION['NSFW'],$fromNum,$x);
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
@@ -136,7 +136,7 @@ class Image{
       return "error";
 
     }else{
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=0 order by LIKES desc limit ?,?;")) {
+      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=0 and ID_SESSION=NULL order by LIKES desc limit ?,?;")) {
         mysqli_stmt_bind_param($stmt, "ii",$fromNum,$x);
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
@@ -171,7 +171,7 @@ class Image{
     $list = [];
 
     if(isset($_SESSION['NSFW'])){
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where ID_USER=? and NSFW=? order by DATEOFUPLOAD desc limit ?,?")) {
+      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where ID_USER=? and NSFW=? and ID_SESSION=NULL order by DATEOFUPLOAD desc limit ?,?")) {
         mysqli_stmt_bind_param($stmt, "iiii",$id,$_SESSION['NSFW'],$fromNum,$x);
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
@@ -186,7 +186,7 @@ class Image{
       return "error";
 
     }else{
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where ID_USER=? and NSFW=0 order by DATEOFUPLOAD desc limit ?,?")) {
+      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where ID_USER=? and ID_SESSION=NULL and NSFW=0 order by DATEOFUPLOAD desc limit ?,?")) {
         mysqli_stmt_bind_param($stmt, "iii",$id,$fromNum,$x);
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
@@ -218,7 +218,7 @@ class Image{
     $list = [];
 
     if(isset($_SESSION['NSFW'])){
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where ID_USER=? and NSFW=? order by LIKES desc limit ?,?")) {
+      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where ID_USER=? and NSFW=? and ID_SESSION=NULL order by LIKES desc limit ?,?")) {
         mysqli_stmt_bind_param($stmt, "iiii",$id,$_SESSION['NSFW'],$fromNum,$x);
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
@@ -233,7 +233,7 @@ class Image{
       return "error";
 
     }else{
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where ID_USER=? and NSFW=0 order by LIKES desc limit ?,?")) {
+      if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where ID_USER=? and NSFW=0 and ID_SESSION=NULL order by LIKES desc limit ?,?")) {
         mysqli_stmt_bind_param($stmt, "iii",$id,$fromNum,$x);
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
@@ -256,7 +256,7 @@ class Image{
 
     $db = Db::getInstance();
 
-    if ($stmt = mysqli_prepare($db, "UPDATE PICTURE SET LIKES = LIKES + 1  where id=?")) {
+    if ($stmt = mysqli_prepare($db, "UPDATE PICTURE SET LIKES = LIKES + 1  where ID=? and ID_SESSION=NULL" )) {
       mysqli_stmt_bind_param($stmt, "i",$id);
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
@@ -275,7 +275,7 @@ class Image{
 
     $db = Db::getInstance();
 
-    if ($stmt = mysqli_prepare($db, "UPDATE PICTURE SET DISLIKES = DISLIKES + 1  where id=?")) {
+    if ($stmt = mysqli_prepare($db, "UPDATE PICTURE SET DISLIKES = DISLIKES + 1  where ID=? and ID_SESSION=NULL")) {
       mysqli_stmt_bind_param($stmt, "i",$id);
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
@@ -287,7 +287,51 @@ class Image{
     return "error";
   }
 
+
+
+  public function savePicture($input){
+    //input ma: sliko(CONTENT), USER_ID(), SESSION_ID()
+    $db = Db::getInstance();
+
+    if ($stmt = mysqli_prepare($db, "INSERT into  PICTURE(ID_USER,ID_SESSION,CONTENT) values(?,?,?);")) {
+      mysqli_stmt_bind_param($stmt, "iib",$input->USER_ID,$input->SESSION_ID,$input->CONTENT);
+      //izvedemo poizvedbo
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+     mysqli_stmt_close($stmt);
+     echo "Slika je bila dodana";
+     return;
+    }
+    echo "Napaka";
+    return;
+  }
+
+
+
+  public function getSessionPictures($session_id){
+
+    $db = Db::getInstance();
+
+    if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where ID_SESSION=? order by DATEOFUPLOAD desc ;")) {
+      mysqli_stmt_bind_param($stmt, "i",$session_id);
+      //izvedemo poizvedbo
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+      $list = [];
+      while($row = mysqli_fetch_assoc($result)){
+         $list[] = array("ID"=>$row["ID"],"CONTENT"=>''.base64_encode($row["CONTENT"]),"ID_USER"=>$row["ID_USER"]);
+      }
+      return $list;
+    }
+    return "error";
+  }
+
+
+
+
 }
+
+
 
 
 

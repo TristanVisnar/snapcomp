@@ -40,10 +40,10 @@ switch ($method) {
 		//call($controller,"posodobiAPI",$request,$input);
 		break;
 		case 'POST':
-		call($controller,"dodajAPI",$request,$input);
+		call($controller,"postAPI",$request,$input);
 		break;
 		case 'DELETE':
-		//call($controller,"odstraniAPI",$request,$input);
+		call($controller,"deleteAPI",$request,$input);
 		break;
 	}
 //primer ne vsebuje implementiranih vseh akcij, temveč samo prikaziAPI in dodajAPI
