@@ -17,7 +17,8 @@ class rooms_controllers{
 			rooms_controllers::sessionData($request,$input);
 		}
 		elseif($request[1]=="1"){
-			rooms_controllers::getAllRooms($request,$input);
+			$rooms = rooms_controllers::getAllRooms($request,$input);
+			require_once("views/rooms/json.php");
 		}
 	}
 
