@@ -120,7 +120,7 @@ class Room{
 				mysqli_stmt_execute($stmt2);
 				$result = mysqli_stmt_get_result($stmt2);
 				$row = mysqli_fetch_assoc($result);
-				$list["USERNAME_SELECTOR"] = $row["USERNAME"]);
+				$list["USERNAME_SELECTOR"] = $row["USERNAME"];
 			}
 			mysqli_stmt_close($stmt);
 		}
