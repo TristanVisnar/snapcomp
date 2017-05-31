@@ -39,13 +39,15 @@ class Room{
       }
       echo " berem private:$private , nsfw:$nsfw , sort:$sort   ";
       $list = [];
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM ROOM where NSFW=? order by DATEOFCREATION desc")) {
-        mysqli_stmt_bind_param($stmt, "ii",intval($private),intval($nsfw));
+      if ($stmt = mysqli_prepare($db, "SELECT * FROM ROOM where NSFWROOM=? order by ? desc")) {
+        mysqli_stmt_bind_param($stmt, "iiS",intval($private),intval($nsfw),$sort);
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
+        var_dump($result);
         echo "po rezult   ";
         while($row = mysqli_fetch_assoc($result)){
+          echo "sem v rowu"
            $list[] = array("ID"=>$row["ID"],"NAME"=>$row["NAME"],"PASSWORD"=>$row["PASSWORD"],"PRIVATEROOM"=>$row["PRIVATEROOM"],"NSFW"=>$row["NSFW"],"DATEOFCREATION"=>$row["DATEOFCREATION"],"ID_CREATOR"=>$row["ID_CREATOR"]);
         }
       echo "koncujem   ";
