@@ -67,6 +67,7 @@ class Room{
 			$result = mysqli_stmt_get_result($stmt);
 			//Selectane imamo vse userje v nasi seji in gremo skozi njih
 			while($row = mysqli_fetch_assoc($result)){
+				echo "SESSION USERS DATA:\n";
 				var_dump($row);
 			}
 				
