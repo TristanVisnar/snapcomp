@@ -150,14 +150,15 @@ class images_controller{
     $list = [];
 
     foreach ($slike as $slika) {
-      $l = [];
-      $l["ID"]=$slika->ID;
-      $l["DISCRIPTION"]=$slika->DISCRIPTION;
-      $l["CONTENT"]=$slika->CONTENT;
-      $l["DATEOFUPLOAD"]=$slika->DATEOFUPLOAD;
-      $l["ID_USER"]=$slika->ID_USER;
-      $l["ID_SUGGESTION"]=$slika->ID_SUGGESTION;
-      $l["NSFW"]=$slika->NSFW;
+      $l = array(
+      "ID"=>$slika->ID,
+      "DISCRIPTION"=>$slika->DISCRIPTION,
+      "CONTENT"=>$slika->CONTENT,
+      "DATEOFUPLOAD"=>$slika->DATEOFUPLOAD,
+      "ID_USER"=>$slika->ID_USER,
+      "ID_SUGGESTION"]=>$slika->ID_SUGGESTION,
+      "NSFW"=>$slika->NSFW
+    );
       $list[] = $l;
     }
     return $list;
@@ -185,6 +186,9 @@ class images_controller{
       }
   }
 
+  public function getAPI($request,$input){
+    browseAPI($request,$input);
+  }
   public function saveAPI($request,$input){
 
 
