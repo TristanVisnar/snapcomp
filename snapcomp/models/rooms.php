@@ -69,7 +69,7 @@ class Room{
 			$result = mysqli_stmt_get_result($stmt);
 			//Selectane imamo vse userje v nasi seji in gremo skozi njih
 			while($row = mysqli_fetch_assoc($result)){
-				if($stmt2 = mysqli_prepare($db, "SELECT (USERNAME, ID) FROM UPORABNIK WHERE UPORABNIK.ID = ?")){
+				if($stmt2 = mysqli_prepare($db, "SELECT (USERNAME, ID) FROM UPORABNIK WHERE ID = ?")){
 					//Gremo skozi vse userje, ter dobimo njihove podatke
 					mysqli_stmt_bind_param($stmt2, "i",intval($row["ID_USER"]));
 					mysqli_stmt_execute($stmt2);
@@ -82,7 +82,24 @@ class Room{
 		}
 		mysqli_stmt_close($stmt);
 		//Prikaz teme
-		if ($stmt = mysqli_prepare($db, "Select (ID, INFO) from SUGGESTION where SUGGESTION.ID = ?")) {
+		
+		
+		if ($stmt = mysqli_prepare($db, "Select ID_SUGGESTION from SESSION where ID = ?")) {
+			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+			while($row = mysqli_fetch_assoc($result)){
+				$list[] = array("ID_THEME" => $row["ID"], "THEME" => $row["INFO"]);
+			}	
+			mysqli_stmt_close($stmt);
+		}
+		
+		
+		
+		
+		
+		
+		if ($stmt = mysqli_prepare($db, "Select (ID, INFO) from SUGGESTION where ID = ?")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
@@ -92,7 +109,7 @@ class Room{
 			mysqli_stmt_close($stmt);
 		}
 		//Trajanje seje
-		if ($stmt = mysqli_prepare($db, "Select SESSION_DURATION from SESSION where SESSION.ID = ?")) {
+		if ($stmt = mysqli_prepare($db, "Select SESSION_DURATION from SESSION where ID = ?")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
