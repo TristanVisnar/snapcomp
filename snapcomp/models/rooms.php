@@ -54,10 +54,7 @@ class Room{
 		echo "prisel v sess";
 		$db = Db::getInstance();
 		//Vpis usera v sejo igre
-		//Vračanje podatkov o seji
-		//Vračanje liste uporabnikov v seji
-		//Selecta vse uporabnike v seji
-		if ($stmt = mysqli_prepare($db, "INSERT INTO SESSION_USER (ID_USER, ID_SESSION) VALUES (?,?)")) {
+		if ($stmt = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
 			mysqli_stmt_bind_param($stmt, "ii",intval($id_user),intval($id_session));
 			mysqli_stmt_execute($stmt);
 			echo "Uporabnika uspesno dodal v session_user\n";
