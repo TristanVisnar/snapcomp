@@ -107,7 +107,7 @@ class Room{
 			}
 			mysqli_stmt_close($stmt);
 		}
-		/*
+
 		//ID SELEKTORJA
 		if ($stmt = mysqli_prepare($db, "Select ID_SELECTOR from SESSION where SESSION.ID = ?")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
@@ -122,7 +122,7 @@ class Room{
 			}
 			mysqli_stmt_close($stmt);
 		}
-		*/
+		
 		//ROOMNAME
 		/*
 		if ($stmt = mysqli_prepare($db, "Select ID_ROOM from SESSION where SESSION.ID = ?")) {
