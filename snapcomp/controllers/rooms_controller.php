@@ -1,6 +1,6 @@
 <?php
 
-class rooms_controllers{
+class rooms_controller{
 
 	public function getAllRooms($request,$input){
 		echo "sem v 2   ";
