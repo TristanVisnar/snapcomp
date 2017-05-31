@@ -156,7 +156,7 @@ class images_controller{
       "CONTENT"=>$slika->CONTENT,
       "DATEOFUPLOAD"=>$slika->DATEOFUPLOAD,
       "ID_USER"=>$slika->ID_USER,
-      "ID_SUGGESTION"]=>$slika->ID_SUGGESTION,
+      "ID_SUGGESTION"=>$slika->ID_SUGGESTION,
       "NSFW"=>$slika->NSFW
     );
       $list[] = $l;
@@ -168,6 +168,7 @@ class images_controller{
 
       //če je kategorija označena
       //if(isset($_GET['category'])){}
+      echo " inBrowse ";
       if (!isset($request[1]) || !isset($request[2]) || !isset($request[3]) )
         return call('pages', 'errorAPI');
 
@@ -187,8 +188,10 @@ class images_controller{
   }
 
   public function getAPI($request,$input){
-    //browseAPI($request,$input);
     echo "hello world";
+    
+    browseAPI($request,$input);
+
   }
   public function saveAPI($request,$input){
 

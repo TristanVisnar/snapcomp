@@ -7,14 +7,14 @@ require_once('connection.php');
 //drugi je input ki predstavlja objekt, ki je bil apiju posredovan v json obliki
 //noben parameter ni obvezen
 function call($controller, $action,$request="",$input="") {
-  echo "dodajanje controllerja";
+  echo "dodajanje controllerja $controller";
     require_once('controllers/' . $controller . '_controller.php');
     echo "dodajanje modula";
-  require_once('models/' . $controller . '.php');
+    require_once('models/' . $controller . '.php');
     $o=$controller."_controller";
 	$controller=new $o;
   echo "Klic funkcije";
-	//$controller->{ $action }($request,$input);
+	$controller->{ $action }($request,$input);
   }
 
  //prebermo metodo zahteve
