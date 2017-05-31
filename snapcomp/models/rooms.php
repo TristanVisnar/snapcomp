@@ -57,7 +57,13 @@ class Room{
 		//Vračanje podatkov o seji
 		//Vračanje liste uporabnikov v seji
 		//Selecta vse uporabnike v seji
-		$list = [];
+		if ($stmt = mysqli_prepare($db, "INSERT INTO SESSION_USER (ID_USER, ID_SESSION) VALUES (?,?)")) {
+			mysqli_stmt_bind_param($stmt, "iI",intval($id_user),intval($id_session));
+			mysqli_stmt_execute($stmt);
+			echo "Uporabnika uspesno dodal v session_user\n";
+		}	
+		mysqli_stmt_close($stmt);
+		/*$list = [];
 		if ($stmt = mysqli_prepare($db, "SELECT ID_USER FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
 			mysqli_stmt_execute($stmt);
@@ -66,7 +72,7 @@ class Room{
 			while($row = mysqli_fetch_assoc($result)){
 				var_dump($row);
 			}
-				
+			*/	
 				/*
 				if($stmt2 = mysqli_prepare($db, "SELECT (USERNAME, ID) FROM UPORABNIK WHERE ID = ?")){
 					//Gremo skozi vse userje, ter dobimo njihove podatke
@@ -155,7 +161,7 @@ class Room{
 			}
 
 		}*/
-		return $list;
+		//return $list;
 	}
 }
 
