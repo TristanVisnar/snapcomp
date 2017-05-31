@@ -51,13 +51,13 @@ class Room{
     }
 	//Vračanje podatkov za določeno sobo ( v kater se logina uporabnik)
 	public function sessions($id_session,$id_user){
-		echo "prisel v sess";
+		//echo "prisel v sess";
 		$db = Db::getInstance();
 		//Vpis usera v sejo igre
 		if ($stmt = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
 			mysqli_stmt_bind_param($stmt, "ii",intval($id_user),intval($id_session));
 			mysqli_stmt_execute($stmt);
-			echo "Uporabnika uspesno dodal v session_user\n";
+			//echo "Uporabnika uspesno dodal v session_user\n";
 		}	
 		mysqli_stmt_close($stmt);
 		$list = [];
@@ -68,7 +68,7 @@ class Room{
 			$result = mysqli_stmt_get_result($stmt);
 			//Selectane imamo vse userje v nasi seji in gremo skozi njih
 			while($row = mysqli_fetch_assoc($result)){
-				echo "<pre>".var_export($row, true)."</pre>";
+				//echo "<pre>".var_export($row, true)."</pre>";
 				if($stmt2 = mysqli_prepare($db, "SELECT USERNAME, ID FROM UPORABNIK WHERE ID = ?")){
 					//Gremo skozi vse userje, ter dobimo njihove podatke
 					mysqli_stmt_bind_param($stmt2, "i",intval($row["ID_USER"]));
