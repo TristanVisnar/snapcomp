@@ -5,6 +5,7 @@ class rooms_controllers{
 	public function getAllRooms($request,$input){
 		$res = Room::all($request[2],$request[3],$request[4]);
 		var_dump($res);
+		return $res;
 	}
 
 	public function sessionData($request,$input){
