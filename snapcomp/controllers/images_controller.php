@@ -190,7 +190,7 @@ class images_controller{
   public function getAPI($request,$input){
     echo "hello world";
 
-    browseAPI($request,$input);
+    this->browseAPI($request,$input);
 
   }
   public function saveAPI($request,$input){
