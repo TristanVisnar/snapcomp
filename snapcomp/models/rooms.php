@@ -113,12 +113,13 @@ class Room{
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
-			while($row = mysqli_fetch_assoc($result)){
-				if ($stmt2 = mysqli_prepare($db, "Select USERNAME from UPORABNIK where ID = ?")) {
-					mysqli_stmt_bind_param($stmt2, "i", $row["ID_SELECTOR"]);
-					mysqli_stmt_execute($stmt2);
-					$list[] = array("USERNAME_SELECTOR" => $row["USERNAME"]);
-				}
+			$row = mysqli_fetch_assoc($result);
+			if ($stmt2 = mysqli_prepare($db, "Select USERNAME from UPORABNIK where ID = ?")) {
+				mysqli_stmt_bind_param($stmt2, "i", $row["ID_SELECTOR"]);
+				mysqli_stmt_execute($stmt2);
+				$result = mysqli_stmt_get_result($stmt);
+				$row = mysqli_fetch_assoc($result);
+				$list[] = array("USERNAME_SELECTOR" => $row["USERNAME"]);
 			}
 			mysqli_stmt_close($stmt);
 		}
