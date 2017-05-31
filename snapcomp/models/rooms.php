@@ -30,23 +30,25 @@ class Room{
 
     public function all($private,$nsfw,$dateorname){
       $db = Db::getInstance();
-
+      echo "sem v modulu   ";
       $sort="";
       if($dateorname==0){
         $sort="DATEOFCREATION";
       }else{
         $sort="NAME";
       }
+      echo " berem private:$private , nsfw:$nsfw , sort:$sort   ";
       $list = [];
       if ($stmt = mysqli_prepare($db, "SELECT * FROM ROOM where NSFW=? order by ? desc")) {
         mysqli_stmt_bind_param($stmt, "iis",intval($private),intval($nsfw),$sort);
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
-
+        echo "po rezult   ";
         while($row = mysqli_fetch_assoc($result)){
            $list[] = array("ID"=>$row["ID"],"NAME"=>$row["NAME"],"PASSWORD"=>$row["PASSWORD"],"PRIVATEROOM"=>$row["PRIVATEROOM"],"NSFW"=>$row["NSFW"],"DATEOFCREATION"=>$row["DATEOFCREATION"],"ID_CREATOR"=>$row["ID_CREATOR"]);
         }
+      echo "koncujem   ";
 			mysqli_stmt_close($stmt);
 			return $list;
 		}
