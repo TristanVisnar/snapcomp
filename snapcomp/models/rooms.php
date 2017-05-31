@@ -92,7 +92,7 @@ class Room{
 				mysqli_stmt_execute($stmt);
 				$result = mysqli_stmt_get_result($stmt);
 				$row = mysqli_fetch_assoc($result);
-				$list["ID_THEME"] = $row["ID"], 
+				$list["ID_THEME"] = $row["ID"];
 				$list["THEME"] = $row["INFO"];
 			}
 			mysqli_stmt_close($stmt);
