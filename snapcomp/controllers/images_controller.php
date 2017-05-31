@@ -175,13 +175,13 @@ class images_controller{
       if($request[1]=="new"){
           $slike = Image::getXByDate($request[2],$request[3]);
           //dodaj en view za prikaz slike
-          $slike = changeToJson($slike);
+          $slike = images_controller::changeToJson($slike);
           var_dump($slike);
           require_once("views/images/json.php");
       }else{
           $slike = Image::getXByLikes($request[2],$request[3]);
           //dodaj en view za prikaz slike
-          $slike = changeToJson($slike);
+          $slike = images_controller::changeToJson($slike);
           var_dump($slike);
           require_once("views/images/json.php");
       }
@@ -190,7 +190,7 @@ class images_controller{
   public function getAPI($request,$input){
     echo "hello world";
 
-    this->browseAPI($request,$input);
+    images_controller::browseAPI($request,$input);
 
   }
   public function saveAPI($request,$input){
