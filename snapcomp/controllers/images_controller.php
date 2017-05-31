@@ -153,7 +153,7 @@ class images_controller{
       $l = array(
       "ID"=>$slika->ID,
       "DISCRIPTION"=>$slika->DISCRIPTION,
-      "CONTENT"=>$slika->CONTENT,
+      "CONTENT"=>'data:image/' . $type . ';base64,'.$slika->CONTENT,
       "DATEOFUPLOAD"=>$slika->DATEOFUPLOAD,
       "ID_USER"=>$slika->ID_USER,
       "ID_SUGGESTION"=>$slika->ID_SUGGESTION,
