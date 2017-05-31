@@ -75,7 +75,7 @@ class Room{
 					mysqli_stmt_execute($stmt2);
 					$result2 = mysqli_stmt_get_result($stmt2);
 					while($row2 = mysqli_fetch_assoc($result2)){
-						$list[] = array("ID_USER" => $row2["ID"], "USERNAME" => $row2["USERNAME"]);
+						$list["USERS"] = array("ID_USER" => $row2["ID"], "USERNAME" => $row2["USERNAME"]);
 					}
 				}
 			}
@@ -92,7 +92,8 @@ class Room{
 				mysqli_stmt_execute($stmt);
 				$result = mysqli_stmt_get_result($stmt);
 				$row = mysqli_fetch_assoc($result);
-				$list[] = array("ID_THEME" => $row["ID"], "THEME" => $row["INFO"]);
+				$list["ID_THEME"] = $row["ID"], 
+				$list["THEME"] = $row["INFO"];
 			}
 			mysqli_stmt_close($stmt);
 		}
@@ -103,7 +104,7 @@ class Room{
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
 			while($row = mysqli_fetch_assoc($result)){
-				$list[] = array("SESSION_DURATION" => $row["SESSION_DURATION"]);
+				$list["SESSION_DURATION"] = $row["SESSION_DURATION"];
 			}
 			mysqli_stmt_close($stmt);
 		}
