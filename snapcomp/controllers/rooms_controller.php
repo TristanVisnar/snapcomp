@@ -9,7 +9,7 @@ class rooms_controller{
 
 	public function sessionData($request,$input){
 		$info = Room::sessions($request[2], $request[3]);
-		var_dump($info);
+		echo "<pre>".var_dump($info)."</pre>";
 	}
 
 	public function getAPI($request,$input){
