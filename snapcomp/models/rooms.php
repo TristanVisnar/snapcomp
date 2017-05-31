@@ -132,8 +132,8 @@ class Room{
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
-			$list["ID_ROOM"] = $row["ID_ROOM"];
 			$row = mysqli_fetch_assoc($result);
+			$list["ID_ROOM"] = $row["ID_ROOM"];
 			if ($stmt2 = mysqli_prepare($db, "Select NAME from ROOM where ID = ?")) {
 				mysqli_stmt_bind_param($stmt2, "i", $row["ID_ROOM"]);
 				mysqli_stmt_execute($stmt2);
