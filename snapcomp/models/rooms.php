@@ -57,6 +57,7 @@ class Room{
     }
 	//Vračanje podatkov za določeno sobo ( v kater se logina uporabnik)
 	public function sessions($id_session,$id_user){
+		echo "prisel v sess";
 		$db = Db::getInstance();
 		//Vpis usera v sejo igre
 		//Vračanje podatkov o seji
