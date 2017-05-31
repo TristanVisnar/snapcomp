@@ -9,7 +9,7 @@ class rooms_controller{
 
 	public function sessionData($request,$input){
 		$info = Room::sessions($request[2], $request[3]);
-		//echo json_encode($info);
+		echo json_encode($info);
 		
 	}
 
