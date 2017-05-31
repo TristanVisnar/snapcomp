@@ -150,7 +150,7 @@ class Room{
 	public function leaveSession($id_session,$id_user){
 		$db = Db::getInstance();
 		//Vpis usera v sejo igre
-		if ($stmt = mysqli_prepare($db, "DELETE * FROM USER_IN_SESSION WHERE ID_USER = ? AND ID_SESSION = ?")) {
+		if ($stmt = mysqli_prepare($db, "DELETE FROM USER_IN_SESSION WHERE ID_USER = ? AND ID_SESSION = ?")) {
 			mysqli_stmt_bind_param($stmt, "ii",intval($id_user),intval($id_session));
 			mysqli_stmt_execute($stmt);
 			//echo "Uporabnika uspesno dodal v session_user\n";
