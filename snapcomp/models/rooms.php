@@ -117,7 +117,7 @@ class Room{
 			$result = mysqli_stmt_get_result($stmt);
 			$row = mysqli_fetch_assoc($result);
 			if ($stmt2 = mysqli_prepare($db, "Select USERNAME from UPORABNIK where ID = ?")) {
-				var_dump($row["ID_SELECTOR"]);
+				//var_dump($row["ID_SELECTOR"]);
 				mysqli_stmt_bind_param($stmt2, "i", $row["ID_SELECTOR"]);
 				mysqli_stmt_execute($stmt2);
 				$result = mysqli_stmt_get_result($stmt2);
