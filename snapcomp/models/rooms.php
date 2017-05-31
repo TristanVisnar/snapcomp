@@ -128,27 +128,23 @@ class Room{
 		}
 		
 		//ROOMNAME
-		/*
-		if ($stmt = mysqli_prepare($db, "Select ID_ROOM from SESSION where SESSION.ID = ?")) {
+		if ($stmt = mysqli_prepare($db, "Select ID_ROOM from SESSION where ID = ?")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
-			while($row = mysqli_fetch_assoc($result)){
-				if ($stmt2 = mysqli_prepare($db, "Select NAME from ROOM where ROOM.ID = ?")) {
-					mysqli_stmt_bind_param($stmt2, "i", $row["ID_ROOM"]);
-					mysqli_stmt_execute($stmt2);
-					$result2 = mysqli_stmt_get_result($stmt2);
-					while($row2 = mysqli_fetch_assoc($result2)){
-						$list[] = array("ROOM_NAME" => $row2["ID"]);
-					}
-					mysqli_stmt_close($stmt2);
-
-				}
-				mysqli_stmt_close($stmt);
+			$list["ID_ROOM"] = $row["ID_ROOM"];
+			$row = mysqli_fetch_assoc($result))
+			if ($stmt2 = mysqli_prepare($db, "Select NAME from ROOM where ID = ?")) {
+				mysqli_stmt_bind_param($stmt2, "i", $row["ID_ROOM"]);
+				mysqli_stmt_execute($stmt2);
+				$result2 = mysqli_stmt_get_result($stmt2);
+				$row2 = mysqli_fetch_assoc($result2);
+				$list["ROOM_NAME"] = $row2["ID"];
+				mysqli_stmt_close($stmt2);
 
 			}
-
-		}*/
+			mysqli_stmt_close($stmt);
+		}
 		return $list;
 	}
 }
