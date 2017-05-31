@@ -154,7 +154,7 @@ class Room{
 			}
 
 		}*/
-		//return $list;
+		return $list;
 	}
 }
 
