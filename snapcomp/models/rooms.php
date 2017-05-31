@@ -50,16 +50,9 @@ class Room{
 		}
     }
 	//Vračanje podatkov za določeno sobo ( v kater se logina uporabnik)
-	public function sessions($id_session,$id_user){
-		//echo "prisel v sess";
+	
+	public function returnSessionData($id_session){
 		$db = Db::getInstance();
-		//Vpis usera v sejo igre
-		if ($stmt = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
-			mysqli_stmt_bind_param($stmt, "ii",intval($id_user),intval($id_session));
-			mysqli_stmt_execute($stmt);
-			//echo "Uporabnika uspesno dodal v session_user\n";
-		}	
-		mysqli_stmt_close($stmt);
 		$list = [];
 		//Izpise usernamein id za vsakega userja v dodani seji
 		if ($stmt = mysqli_prepare($db, "SELECT ID_USER FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
@@ -147,6 +140,24 @@ class Room{
 		}
 		return $list;
 	}
+	
+	public function addUserToSession($id_session,$id_user){
+		//echo "prisel v sess";
+		$db = Db::getInstance();
+		//Vpis usera v sejo igre
+		if ($stmt = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
+			mysqli_stmt_bind_param($stmt, "ii",intval($id_user),intval($id_session));
+			mysqli_stmt_execute($stmt);
+			//echo "Uporabnika uspesno dodal v session_user\n";
+		}	
+		mysqli_stmt_close($stmt);
+		$list = Room::returnSessionData($id_session);
+		return $list;
+		//Izpise usernamein id za vsakega userja v dodani seji
+	}
+	
+	
+	
 	public function leaveSession($id_session,$id_user){
 		$db = Db::getInstance();
 		//Vpis usera v sejo igre
