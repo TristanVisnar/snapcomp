@@ -61,6 +61,7 @@ class Room{
 		}	
 		mysqli_stmt_close($stmt);
 		$list = [];
+		//Izpise usernamein id za vsakega userja v dodani seji
 		if ($stmt = mysqli_prepare($db, "SELECT ID_USER FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
 			mysqli_stmt_execute($stmt);
@@ -79,7 +80,6 @@ class Room{
 				}
 			}
 		}
-		/*
 		mysqli_stmt_close($stmt);
 		//Prikaz teme
 
@@ -88,7 +88,12 @@ class Room{
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
-			while($row = mysqli_fetch_assoc($result)){
+			$row = mysqli_fetch_assoc($result);
+			if($stmt = mysqli_prepare($db, "Select ID, INFO from SUGGESTION where ID = ?")){
+				mysqli_stmt_bind_param($stmt, "i",intval($row["ID_SUGGESTION"]));
+				mysqli_stmt_execute($stmt);
+				$result = mysqli_stmt_get_result($stmt);
+				$row = mysqli_fetch_assoc($result);
 				$list[] = array("ID_THEME" => $row["ID"], "THEME" => $row["INFO"]);
 			}
 			mysqli_stmt_close($stmt);
@@ -96,7 +101,7 @@ class Room{
 
 
 
-
+/*
 
 
 		if ($stmt = mysqli_prepare($db, "Select (ID, INFO) from SUGGESTION where ID = ?")) {
