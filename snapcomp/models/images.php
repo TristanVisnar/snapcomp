@@ -317,6 +317,7 @@ class Image{
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
+      mysqli_stmt_close($stmt);
       $list = [];
       while($row = mysqli_fetch_assoc($result)){
          $list[] = array("ID"=>$row["ID"],"CONTENT"=>''.base64_encode($row["CONTENT"]),"ID_USER"=>$row["ID_USER"]);
@@ -326,6 +327,41 @@ class Image{
     return "error";
   }
 
+  ////WORKING ON IT/////
+  public function saveEndofsessionPicture($session_id,$picture_id){
+
+    $db = Db::getInstance();
+
+    //NASTAVITVE ZA ZMAGOVALNO SLIKO
+    //Bere podatke zmagovalne slike
+    if ($stmt = mysqli_prepare($db, "SELECT ID_USER, FROM PICTURE, where ID_SESSION=? and ID=? ;")) {
+      mysqli_stmt_bind_param($stmt, "ii",$session_id,$picture_id);
+      //izvedemo poizvedbo
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+      mysqli_stmt_close($stmt);
+      $row = mysqli_fetch_assoc($result);
+
+
+      if ($stmt2 = mysqli_prepare($db, "INSERT INTO ENDOFSESSION(ID_WINNER,ID_SELECTOR,ID_WINNING_PIC,ID_ROOM) VALUES ();" )) {
+        mysqli_stmt_bind_param($stmt2, "ii",$session_id,$picture_id);
+        //izvedemo poizvedbo
+        mysqli_stmt_execute($stmt2);
+        $result2 = mysqli_stmt_get_result($stmt2);
+        mysqli_stmt_close($stmt2);
+
+        $row2 = mysqli_fetch_assoc($result2);
+
+
+
+
+      }
+
+    }
+
+
+
+  }
 
 
 

@@ -207,9 +207,10 @@ class images_controller{
       Image::savePicture($input);
   }
 
-  //NI ŠE NARETO
+  //In progress...
+  // input(session_id,picture_id)
   public function saveEndofsessionPicture($request,$input){
-
+      Image::saveEndofsessionPicture($input->ID_SESSION,$input->ID_PICTURE);
   }
 
 
