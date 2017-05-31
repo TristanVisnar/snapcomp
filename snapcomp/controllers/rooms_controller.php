@@ -16,13 +16,18 @@ class rooms_controller{
 
 	public function getAPI($request,$input){
 		//echo "Dostop do apija";
+		//Vnos uporabnika v sejo oz sobo, ter vračanje podatkov o seji
 		if($request[1]=="0"){
 			//echo "prehajam v sessions";
 			rooms_controller::sessionData($request,$input);
 		}
+		//Vračanje vseh tekočih sob
 		elseif($request[1]=="1"){
 			$rooms = rooms_controller::getAllRooms($request,$input);
 			require_once("views/rooms/json.php");
+		}
+		elseif($request[1]=="2"){
+			
 		}
 	}
 
