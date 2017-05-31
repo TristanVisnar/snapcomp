@@ -187,7 +187,7 @@ class images_controller{
   }
 
   public function getAPI($request,$input){
-    browseAPI($request,$input);
+    //browseAPI($request,$input);
   }
   public function saveAPI($request,$input){
 
