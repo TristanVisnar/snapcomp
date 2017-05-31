@@ -75,10 +75,11 @@ class Room{
 					mysqli_stmt_execute($stmt2);
 					$result2 = mysqli_stmt_get_result($stmt2);
 					while($row2 = mysqli_fetch_assoc($result2)){
-						$list["USERS"] = array("ID_USER" => $row2["ID"], "USERNAME" => $row2["USERNAME"]);
+						$users[] = array("ID_USER" => $row2["ID"], "USERNAME" => $row2["USERNAME"]);
 					}
 				}
 			}
+			$list["USERS"] = $users;
 		}
 		mysqli_stmt_close($stmt);
 		//Prikaz teme
