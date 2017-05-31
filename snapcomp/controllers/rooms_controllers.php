@@ -14,10 +14,10 @@ class rooms_controllers{
 
 	public function getAPI($request,$input){
 		if($request[1]=="0"){
-			sessionData($request,$input);
+			rooms_controllers::sessionData($request,$input);
 		}
 		elseif($request[1]=="1"){
-			getAllRooms($request,$input);
+			rooms_controllers::getAllRooms($request,$input);
 		}
 	}
 

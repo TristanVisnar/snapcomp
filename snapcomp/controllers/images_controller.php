@@ -168,7 +168,6 @@ class images_controller{
 
       //če je kategorija označena
       //if(isset($_GET['category'])){}
-      echo " inBrowse ";
       if (!isset($request[1]) || !isset($request[2]) || !isset($request[3]) )
         return call('pages', 'errorAPI');
 
@@ -176,22 +175,17 @@ class images_controller{
           $slike = Image::getXByDate($request[2],$request[3]);
           //dodaj en view za prikaz slike
           $slike = images_controller::changeToJson($slike);
-          var_dump($slike);
           require_once("views/images/json.php");
       }else{
           $slike = Image::getXByLikes($request[2],$request[3]);
           //dodaj en view za prikaz slike
           $slike = images_controller::changeToJson($slike);
-          var_dump($slike);
           require_once("views/images/json.php");
       }
   }
 
   public function getAPI($request,$input){
-    echo "hello world";
-
     images_controller::browseAPI($request,$input);
-
   }
   public function saveAPI($request,$input){
 
