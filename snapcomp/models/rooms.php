@@ -139,7 +139,7 @@ class Room{
 				mysqli_stmt_execute($stmt2);
 				$result2 = mysqli_stmt_get_result($stmt2);
 				$row2 = mysqli_fetch_assoc($result2);
-				$list["ROOM_NAME"] = $row2["ID"];
+				$list["ROOM_NAME"] = $row2["NAME"];
 				mysqli_stmt_close($stmt2);
 
 			}
