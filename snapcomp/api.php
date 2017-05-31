@@ -7,13 +7,14 @@ require_once('connection.php');
 //drugi je input ki predstavlja objekt, ki je bil apiju posredovan v json obliki
 //noben parameter ni obvezen
 function call($controller, $action,$request="",$input="") {
-
+  echo "dodajanje controllerja";
     require_once('controllers/' . $controller . '_controller.php');
+    echo "dodajanje modula";
   require_once('models/' . $controller . '.php');
-
     $o=$controller."_controller";
 	$controller=new $o;
-	$controller->{ $action }($request,$input);
+  echo "Klic funkcije";
+	//$controller->{ $action }($request,$input);
   }
 
  //prebermo metodo zahteve
@@ -36,8 +37,7 @@ $controller=$request[0];
 //v bolj zapletenih apijih je potrebno dodati malo več logike, ki kombinira vrsto metode ter podakte poslane v ukazu (pri nas $request), ter ustrezno kliče kontrolerje
 switch ($method) {
 		case 'GET':
-    echo "pride v case GET";
-		//call($controller,"getAPI",$request,$input);
+		call($controller,"getAPI",$request,$input);
 		break;
 		case 'PUT':
 		//call($controller,"posodobiAPI",$request,$input);
