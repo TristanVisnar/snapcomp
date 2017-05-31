@@ -146,7 +146,7 @@ class images_controller{
 
   }
 
-  public function changeToJson($slike){
+  public static function changeToJson($slike){
     $list = [];
 
     foreach ($slike as $slika) {
@@ -164,7 +164,7 @@ class images_controller{
     return $list;
   }
 
-  public function browseAPI($request,$input){
+  public static function browseAPI($request,$input){
 
       //če je kategorija označena
       //if(isset($_GET['category'])){}
@@ -189,7 +189,7 @@ class images_controller{
 
   public function getAPI($request,$input){
     echo "hello world";
-    
+
     browseAPI($request,$input);
 
   }
