@@ -84,7 +84,7 @@ class Room{
 					}
 				}
 			}*/
-		}
+		//}
 		/*
 		mysqli_stmt_close($stmt);
 		//Prikaz teme
