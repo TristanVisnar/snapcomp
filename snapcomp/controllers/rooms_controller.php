@@ -13,6 +13,12 @@ class rooms_controller{
 		echo json_encode($info);
 		
 	}
+	
+	public function leaveSession($request,$input){
+		//Izpise iz seje z idjem $request[2] uporabnika z idjem $request[3]
+		Room::leaveSession($request[2], $request[3]);
+		echo "True";
+	}
 
 	public function getAPI($request,$input){
 		//echo "Dostop do apija";
@@ -27,7 +33,7 @@ class rooms_controller{
 			require_once("views/rooms/json.php");
 		}
 		elseif($request[1]=="2"){
-			
+			rooms_controller::leaveSession($request,$input);
 		}
 	}
 
