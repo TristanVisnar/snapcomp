@@ -67,14 +67,9 @@ class Room{
 			$result = mysqli_stmt_get_result($stmt);
 			//Selectane imamo vse userje v nasi seji in gremo skozi njih
 			while($row = mysqli_fetch_assoc($result)){
-				echo "SESSION USERS DATA:\n";
-				var_dump($row);
-			}
-				
-				/*
 				if($stmt2 = mysqli_prepare($db, "SELECT (USERNAME, ID) FROM UPORABNIK WHERE ID = ?")){
 					//Gremo skozi vse userje, ter dobimo njihove podatke
-					mysqli_stmt_bind_param($stmt2, "i",intval($row["ID_USER"]));
+					mysqli_stmt_bind_param($stmt2, "i",intval($row));
 					mysqli_stmt_execute($stmt2);
 					$result2 = mysqli_stmt_get_result($stmt2);
 					while($row2 = mysqli_fetch_assoc($result2)){
