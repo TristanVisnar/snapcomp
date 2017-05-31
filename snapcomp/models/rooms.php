@@ -70,7 +70,7 @@ class Room{
 				echo "<pre>".var_export($row, true)."</pre>";
 				if($stmt2 = mysqli_prepare($db, "SELECT USERNAME, ID FROM UPORABNIK WHERE ID = ?")){
 					//Gremo skozi vse userje, ter dobimo njihove podatke
-					mysqli_stmt_bind_param($stmt2, "i",intval($row));
+					mysqli_stmt_bind_param($stmt2, "i",intval($row["ID_USER"]));
 					mysqli_stmt_execute($stmt2);
 					$result2 = mysqli_stmt_get_result($stmt2);
 					while($row2 = mysqli_fetch_assoc($result2)){
