@@ -39,8 +39,8 @@ class Room{
       }
       echo " berem private:$private , nsfw:$nsfw , sort:$sort   ";
       $list = [];
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM ROOM where NSFW=? order by ? desc")) {
-        mysqli_stmt_bind_param($stmt, "iis",intval($private),intval($nsfw),$sort);
+      if ($stmt = mysqli_prepare($db, "SELECT * FROM ROOM where NSFW=? order by DATEOFCREATION desc")) {
+        mysqli_stmt_bind_param($stmt, "ii",intval($private),intval($nsfw));
         //izvedemo poizvedbo
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
