@@ -29,6 +29,7 @@ class Room{
     }
 	
 	public function numOfUsersInSession($id_session){
+		echo "PRISEL V NUMOFUSER";
 		$db = Db::getInstance();
 		$list = [];
 		//Izpise usernamein id za vsakega userja v dodani seji
@@ -66,10 +67,12 @@ class Room{
 					mysqli_stmt_execute($stmt2);
 					$result2 = mysqli_stmt_get_result($stmt);
 					$row2 = mysqli_fetch_assoc($result2);
+					echo "ZAGNAL USERS";
 					$numOfPlayers = Room::numOfUsersInSession($row2["ID"]);
 					$list[] = array("ID"=>$row["ID"],"NAME"=>$row["NAME"],"PASSWORD"=>$row["PASSWORD"],"PRIVATEROOM"=>$row["PRIVATEROOM"],"NSFW"=>$row["NSFW"],"DATEOFCREATION"=>$row["DATEOFCREATION"],"ID_CREATOR"=>$row["ID_CREATOR"], "NumOfPlayers" => $numOfPlayers);
 				}
 			}
+			echo "SADSD";
 			mysqli_stmt_close($stmt);
 			//var_dump($list);
 			return $list;
