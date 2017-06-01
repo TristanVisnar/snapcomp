@@ -8,6 +8,10 @@ class suggestions_controller{
 		header('Content-Type: application/json');
 		echo json_encode($out);
 	}	
+	public function insertIntoPermaSuggestion($request,$input){
+		$out = Suggestion::insertPermaSuggestion($request[2],$request[3],$request[4]);
+		echo $out;
+	}
 
 
 
@@ -17,7 +21,7 @@ class suggestions_controller{
 			suggestions_controller::getDailySuggestions();
 		}
 		elseif($request[1]=="insertSuggestion"){
-			
+			suggestions_controller::insertIntoPermaSuggestion($request,$input);
 		}
     }
 }

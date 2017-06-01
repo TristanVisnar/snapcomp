@@ -17,7 +17,9 @@ class Suggestion{
 	
 	public function insertPermaSuggestion($info,$userOrSuggestion,$id_uploader){
 		//je user
-		$db = Db::getInstance();
+		$db = Db::getInstance();	
+		$addedInfo = [];
+		
 		if($userOrSuggestion == "0"){
 			if ($stmt = mysqli_prepare($db, "Select USERNAME from USER where ID = ?")) {
 				mysqli_stmt_bind_param($stmt, "i",intval($id_uploader));
@@ -25,6 +27,7 @@ class Suggestion{
 				$result = mysqli_stmt_get_result($stmt);
 				$row = mysqli_fetch_assoc($result);
 				$uploader = $row["USERNAME"];
+				
 			}
 			mysqli_stmt_close($stmt);
 		}
@@ -39,14 +42,15 @@ class Suggestion{
 			mysqli_stmt_close($stmt);
 		}
 		else $uploader = "NULL";
-		
-		if ($stmt = mysqli_prepare($db, "INSERT INTO SUGGESTION (INFO, SOURCE) VALUES (?,?)")) {
+		$addedInfo["UPLOADER"] = $uploader;
+		$addedInfo["INFO"] = $info;
+ 		if ($stmt = mysqli_prepare($db, "INSERT INTO SUGGESTION (INFO, SOURCE) VALUES (?,?)")) {
 				mysqli_stmt_bind_param($stmt, "ss",$info,$uploader);
 				mysqli_stmt_execute($stmt);
-				$result = mysqli_stmt_get_result($stmt);
-				$row = mysqli_fetch_assoc($result);
-				$uploader = $row["SOURCE"];
 		}
+		mysqli_stmt_close($stmt);
+		
+		return $addedInfo;
 
 	}
 
