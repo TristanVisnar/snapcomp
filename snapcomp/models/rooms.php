@@ -44,6 +44,7 @@ class Room{
 	
 	//private = 0/1 nswf = 0/1 full = 0/1 (vrne sobe z manj kot 10, ali sobe tut z 10) sortbydate = 0, else sort by name
     public function all($private,$nsfw,$dateorname){
+		echo "V allu";
 		$db = Db::getInstance();
 		$sort="";
 		if($dateorname==0){
