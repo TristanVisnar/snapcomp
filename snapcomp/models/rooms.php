@@ -27,27 +27,47 @@ class Room{
       $this->ID_CREATOR =$ID_CREATOR;
       $this->ID_SESSION = $ID_SESSION;
     }
-
-    public function all($private,$nsfw,$dateorname){
-      $db = Db::getInstance();
-      $sort="";
-      if($dateorname==0){
-        $sort="DATEOFCREATION";
-      }else{
-        $sort="NAME";
-      }
-      $list = [];
-      if ($stmt = mysqli_prepare($db, "SELECT * FROM ROOM where PRIVATEROOM=? and NSFWROOM=? order by ? desc")) {
-        mysqli_stmt_bind_param($stmt, "iis",intval($private),intval($nsfw),$sort);
-        //izvedemo poizvedbo
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
-        while($row = mysqli_fetch_assoc($result)){
-           $list[] = array("ID"=>$row["ID"],"NAME"=>$row["NAME"],"PASSWORD"=>$row["PASSWORD"],"PRIVATEROOM"=>$row["PRIVATEROOM"],"NSFW"=>$row["NSFW"],"DATEOFCREATION"=>$row["DATEOFCREATION"],"ID_CREATOR"=>$row["ID_CREATOR"]);
-        }
+	
+	public function numOfUsersInSession($id_session){
+		$db = Db::getInstance();
+		$list = [];
+		//Izpise usernamein id za vsakega userja v dodani seji
+		if ($stmt = mysqli_prepare($db, "SELECT COUNT(*) FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
+			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+			//Selectane imamo vse userje v nasi seji in gremo skozi njih
+			$row = mysqli_fetch_assoc($result);
+			return $row;
+		}
+	}
+	
+	//private = 0/1 nswf = 0/1 full = 0/1 (vrne sobe z manj kot 10, ali sobe tut z 10) sortbydate = 0, else sort by name
+    public function all($private,$nsfw,$full,$dateorname){
+		$db = Db::getInstance();
+		$sort="";
+		if($dateorname==0){
+			$sort="DATEOFCREATION";
+		}else{
+			$sort="NAME";
+		}
+		if($full == 1){
+			$lessPlayersThan = 11;
+		}
+		else 
+			$lessPlayersThan = 10;
+		$list = [];
+		if ($stmt = mysqli_prepare($db, "SELECT * FROM ROOM where PRIVATEROOM=? and NSFWROOM=? and (SELECT COUNT(*) FROM USER_IN_SESSION WHERE ID_SESSION = ROOM.ID) < ? order by ? desc")) {
+			mysqli_stmt_bind_param($stmt, "iis",intval($private),intval($nsfw),intval($lessPlayersThan),$sort);
+			//izvedemo poizvedbo
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+			while($row = mysqli_fetch_assoc($result)){
+			   $list[] = array("ID"=>$row["ID"],"NAME"=>$row["NAME"],"PASSWORD"=>$row["PASSWORD"],"PRIVATEROOM"=>$row["PRIVATEROOM"],"NSFW"=>$row["NSFW"],"DATEOFCREATION"=>$row["DATEOFCREATION"],"ID_CREATOR"=>$row["ID_CREATOR"]);
+			}
 			mysqli_stmt_close($stmt);
 			return $list;
-		}
+		}	
     }
 	//Vračanje podatkov za določeno sobo ( v kater se logina uporabnik)
 	
@@ -135,6 +155,7 @@ class Room{
 			}
 			mysqli_stmt_close($stmt);
 		}
+		$list["NumOfPlayers"] = Room::numOfUsersInSession($id_session);
 		return $list;
 	}
 	
