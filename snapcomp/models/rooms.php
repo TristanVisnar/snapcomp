@@ -76,6 +76,16 @@ class Room{
     }
 	//Vračanje podatkov za določeno sobo ( v kater se logina uporabnik)
 	
+	public function updateSessionTheme($id_session, $suggestion_info){
+		$db = Db::getInstance();
+		if ($stmt = mysqli_prepare($db, "UPDATE SESSION SET ID_SUGGESTION = (SELECT ID FROM SUGGESTION WHERE INFO = ?) WHERE ID = ?")) {
+			mysqli_stmt_bind_param($stmt, "Si",$suggestion_info,intval($id_session));
+			mysqli_stmt_execute($stmt);
+			mysqli_stmt_close($stmt);
+		}
+		return "Update finished!";
+	}
+	
 	public function returnSessionData($id_session){
 		$db = Db::getInstance();
 		$list = [];

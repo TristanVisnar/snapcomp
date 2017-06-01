@@ -25,6 +25,10 @@ class rooms_controller{
 		//info so informacije o seji, v katero vstavimo uporabnika
 		echo $info;
 	}
+	public function updateSessionTheme($request, $input){
+		$info = Room::updateSessionTheme($request[2],$request[3]);
+		echo "Updatal";
+	}
 
 	public function getAPI($request,$input){
 		//echo "Dostop do apija";
@@ -43,6 +47,9 @@ class rooms_controller{
 		}
 		elseif($request[1]=="leaveSession"){
 			rooms_controller::leaveSession($request,$input);
+		}
+		elseif($request[1]=="sessionTheme"){
+			rooms_controller::updateSessionTheme($request,$input);
 		}
 		
 		
