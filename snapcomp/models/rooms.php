@@ -43,7 +43,7 @@ class Room{
 	}
 	
 	//private = 0/1 nswf = 0/1 full = 0/1 (vrne sobe z manj kot 10, ali sobe tut z 10) sortbydate = 0, else sort by name
-    public function all($private,$nsfw,$full,$dateorname){
+    public function all($private,$nsfw,$dateorname){
 		$db = Db::getInstance();
 		$sort="";
 		if($dateorname==0){
@@ -51,19 +51,22 @@ class Room{
 		}else{
 			$sort="NAME";
 		}
-		if($full == 1){
-			$lessPlayersThan = 11;
-		}
-		else 
-			$lessPlayersThan = 10;
 		$list = [];
-		if ($stmt = mysqli_prepare($db, "SELECT * FROM ROOM where PRIVATEROOM=? and NSFWROOM=? and (SELECT COUNT(*) FROM USER_IN_SESSION WHERE ID_SESSION = ROOM.ID) < ? order by ? desc")) {
+		if ($stmt = mysqli_prepare($db, "SELECT * FROM ROOM where PRIVATEROOM=? and NSFWROOM=? order by ? desc")) {
 			mysqli_stmt_bind_param($stmt, "iis",intval($private),intval($nsfw),intval($lessPlayersThan),$sort);
 			//izvedemo poizvedbo
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
 			while($row = mysqli_fetch_assoc($result)){
-			   $list[] = array("ID"=>$row["ID"],"NAME"=>$row["NAME"],"PASSWORD"=>$row["PASSWORD"],"PRIVATEROOM"=>$row["PRIVATEROOM"],"NSFW"=>$row["NSFW"],"DATEOFCREATION"=>$row["DATEOFCREATION"],"ID_CREATOR"=>$row["ID_CREATOR"]);
+				if ($stmt2 = mysqli_prepare($db, "SELECT ID FROM SESSION where ID_ROOM = ?")){
+					mysqli_stmt_bind_param($stmt2, "i",$row["ID"]);
+					//izvedemo poizvedbo
+					mysqli_stmt_execute($stmt2);
+					$result2 = mysqli_stmt_get_result($stmt);
+					$row2 = mysqli_fetch_assoc($result2);
+					$numOfPlayers = Room::numOfUsersInSession($row2["ID"]);
+					$list[] = array("ID"=>$row["ID"],"NAME"=>$row["NAME"],"PASSWORD"=>$row["PASSWORD"],"PRIVATEROOM"=>$row["PRIVATEROOM"],"NSFW"=>$row["NSFW"],"DATEOFCREATION"=>$row["DATEOFCREATION"],"ID_CREATOR"=>$row["ID_CREATOR"], "NumOfPlayers" => $numOfPlayers);
+				}
 			}
 			mysqli_stmt_close($stmt);
 			return $list;

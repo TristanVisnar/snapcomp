@@ -1,7 +1,7 @@
 <?php
 
 class rooms_controller{
-
+	//TE FUNCIJE SE KLICEJO
 	//http://164.8.230.124/tmp/snapcomp/api.php/rooms/1/:private(0/1)/:nsfw(0/1)/sortDateOrName(0/1)/
 	public function getAllRooms($request,$input){
 		$res = Room::all($request[2],$request[3],$request[4]);
@@ -29,7 +29,7 @@ class rooms_controller{
 	public function getAPI($request,$input){
 		//echo "Dostop do apija";
 		//Vnos uporabnika v sejo oz sobo, ter vračanje podatkov o seji
-		if($request[1]=="sessiondData"){
+		if($request[1]=="sessionData"){
 			//echo "prehajam v sessions";
 			rooms_controller::sessionData($request,$input);
 		}
