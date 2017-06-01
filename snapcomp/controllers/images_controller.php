@@ -181,6 +181,7 @@ class images_controller{
           require_once("views/images/json.php");
       }else{
           $slike = Image::getXByLikes($request[3],$request[4]);
+          var_dump($slike);
           //dodaj en view za prikaz slike
           $slike = images_controller::changeToJson($slike);
           require_once("views/images/json.php");
