@@ -29,18 +29,22 @@ class rooms_controller{
 	public function getAPI($request,$input){
 		//echo "Dostop do apija";
 		//Vnos uporabnika v sejo oz sobo, ter vračanje podatkov o seji
-		if($request[1]=="0"){
+		if($request[1]=="sessiondData"){
 			//echo "prehajam v sessions";
 			rooms_controller::sessionData($request,$input);
 		}
 		//Vračanje vseh tekočih sob
-		elseif($request[1]=="1"){
+		elseif($request[1]=="roomsData"){
 			$rooms = rooms_controller::getAllRooms($request,$input);
 			require_once("views/rooms/json.php");
 		}
-		elseif($request[1]=="2"){
+		elseif($request[1]=="enterSession"){
+			rooms_controller::enterSession($request, $input);
+		}
+		elseif($request[1]=="leaveSession"){
 			rooms_controller::leaveSession($request,$input);
 		}
+		
 		
 	}
 

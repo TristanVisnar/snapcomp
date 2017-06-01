@@ -92,7 +92,6 @@ class Room{
 			mysqli_stmt_close($stmt);
 		}
 		//Trajanje seje
-		
 		if ($stmt = mysqli_prepare($db, "Select SESSION_DURATION from SESSION where ID = ?")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
 			mysqli_stmt_execute($stmt);
@@ -102,7 +101,6 @@ class Room{
 			}
 			mysqli_stmt_close($stmt);
 		}
-
 		//ID SELEKTORJA
 		if ($stmt = mysqli_prepare($db, "Select ID_SELECTOR from SESSION where SESSION.ID = ?")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
@@ -119,7 +117,6 @@ class Room{
 			}
 			mysqli_stmt_close($stmt);
 		}
-		
 		//ROOMNAME
 		if ($stmt = mysqli_prepare($db, "Select ID_ROOM from SESSION where ID = ?")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
@@ -155,8 +152,6 @@ class Room{
 		return $list;
 		//Izpise usernamein id za vsakega userja v dodani seji
 	}
-	
-	
 	
 	public function leaveSession($id_session,$id_user){
 		$db = Db::getInstance();
