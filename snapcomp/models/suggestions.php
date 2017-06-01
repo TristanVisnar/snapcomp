@@ -21,7 +21,7 @@ class Suggestion{
 		$addedInfo = [];
 		
 		if($userOrSuggestion == "0"){
-			if ($stmt = mysqli_prepare($db, "Select USERNAME from USER where ID = ?")) {
+			if ($stmt = mysqli_prepare($db, "Select USERNAME from UPORABNIK where ID = ?")) {
 				mysqli_stmt_bind_param($stmt, "i",intval($id_uploader));
 				mysqli_stmt_execute($stmt);
 				$result = mysqli_stmt_get_result($stmt);
