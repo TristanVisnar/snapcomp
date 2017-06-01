@@ -27,7 +27,7 @@ class rooms_controller{
 	}
 	public function updateSessionTheme($request, $input){
 		$info = Room::updateSessionTheme($request[2],$request[3]);
-		echo "Updatal";
+		echo $info;
 	}
 
 	public function getAPI($request,$input){

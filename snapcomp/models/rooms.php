@@ -78,13 +78,13 @@ class Room{
 	
 	public function updateSessionTheme($id_session, $suggestion_info){
 		$db = Db::getInstance();
-		echo "SUGGESTION INFO: ". $suggestion_info;
+		//echo "SUGGESTION INFO: ". $suggestion_info;
 		if ($stmt = mysqli_prepare($db, "UPDATE SESSION SET ID_SUGGESTION = (SELECT ID FROM SUGGESTION WHERE INFO = ?) WHERE ID = ?")) {
-			mysqli_stmt_bind_param($stmt, "Si",$suggestion_info,intval($id_session));
+			mysqli_stmt_bind_param($stmt, "si",$suggestion_info,intval($id_session));
 			mysqli_stmt_execute($stmt);
 			mysqli_stmt_close($stmt);
 		}
-		return "Update finished!";
+		return "Updated row with id ".$id_session." in SESSION with entry ".$suggestion_info.;
 	}
 	
 	public function returnSessionData($id_session){
