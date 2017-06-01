@@ -164,6 +164,8 @@ class images_controller{
     return $list;
   }
 
+
+  //http://164.8.230.124/tmp/snapcomp/api.php/images/0/("new"/"top")/("odId")/("štSlik")/
   public static function browseAPI($request,$input){
 
       //če je kategorija označena
@@ -174,6 +176,7 @@ class images_controller{
       if($request[2]=="new"){
           $slike = Image::getXByDate($request[3],$request[4]);
           //dodaj en view za prikaz slike
+          var_dump($slike);
           $slike = images_controller::changeToJson($slike);
           require_once("views/images/json.php");
       }else{
@@ -207,10 +210,11 @@ class images_controller{
       Image::savePicture($input);
   }
 
-  //In progress...
+  //POTREBNO TESTIRANJA
   // input(session_id,picture_id)
   public function saveEndofsessionPicture($request,$input){
-      Image::saveEndofsessionPicture($input->ID_SESSION,$input->ID_PICTURE);
+      $slike = Image::saveEndofsessionPicture($input->ID_SESSION,$input->ID_PICTURE);
+      require_once("views/images/json.php");
   }
 
 
