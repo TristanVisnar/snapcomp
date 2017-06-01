@@ -14,8 +14,6 @@ class suggestions_controller{
 	}
 
 
-
-
     public function getAPI($request,$input){
 		if($request[1]=="dailySuggestions"){
 			suggestions_controller::getDailySuggestions();

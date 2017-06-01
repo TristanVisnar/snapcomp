@@ -60,7 +60,7 @@
       			mysqli_stmt_close($stmt);
       			$row = mysqli_fetch_assoc($result);
       			if($row){
-      				  return $row;
+      				  return array('ID' => $row["ID"] , 'USERNAME'=>$row['USERNAME'], 'ACCNAME' => $row['ACCNAME'] );
       			}
       			else
       				  return "false";

@@ -106,12 +106,24 @@
 				return;
 			}else{
 				//nastavimo sessionu id
-				$_SESSION["ID"] = $id["ID"];
-				$_SESSION["USERNAME"] = $id["USERNAME"];
-				$_SESSION["ACCNAME"] = $id["ACCNAME"];
+				$_SESSION["ID"] = $id->ID;
+				$_SESSION["USERNAME"] = $id->USERNAME;
+				$_SESSION["ACCNAME"] = $id->ACCNAME;
 				header("Location: ?controller=pages&action=home"); // vrne nas na home page;
 			}
 		}
+
+
+    public function loginAPI($request,$input){
+      $id = User::login($input->ACCNAME,$input->PASS);
+      header('Content-Type: application/json');
+      echo json_encode($id);
+    }
+
+    public function postAPI($request,$input){
+        users_controller::loginAPI($request,$input);
+
+    }
 
 	}
 ?>
