@@ -33,14 +33,14 @@ class Room{
 		$db = Db::getInstance();
 		$list = [];
 		//Izpise usernamein id za vsakega userja v dodani seji
-		if ($stmt = mysqli_prepare($db, "SELECT COUNT(*) FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
+		if ($stmt = mysqli_prepare($db, "SELECT COUNT(*) as numOfUsers FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
 			//Selectane imamo vse userje v nasi seji in gremo skozi njih
 			$row = mysqli_fetch_assoc($result);
-			var_dump($row);
-			return $row;
+			var_dump($row["numOfUsers"]);
+			return $row["numOfUsers"];
 		}
 	}
 	
