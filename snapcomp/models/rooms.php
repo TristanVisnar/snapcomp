@@ -31,6 +31,7 @@ class Room{
 	public function numOfUsersInSession($id_session){
 		echo "PRISEL V NUMOFUSER";
 		$db = Db::getInstance();
+		echo "PRISEL ZA DB\n";
 		//Izpise usernamein id za vsakega userja v dodani seji
 		if ($stmt = mysqli_prepare($db, "SELECT COUNT(*) as numOfUsers FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
 			echo "PRISEL v IF \n";
