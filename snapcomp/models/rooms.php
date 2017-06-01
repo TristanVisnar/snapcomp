@@ -70,6 +70,7 @@ class Room{
 				}
 			}
 			mysqli_stmt_close($stmt);
+			echo $list;
 			return $list;
 		}	
     }
