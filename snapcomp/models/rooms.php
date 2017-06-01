@@ -31,10 +31,11 @@ class Room{
 	public function numOfUsersInSession($id_session){
 		echo "PRISEL V NUMOFUSER";
 		$db = Db::getInstance();
-		$list = [];
 		//Izpise usernamein id za vsakega userja v dodani seji
 		if ($stmt = mysqli_prepare($db, "SELECT COUNT(*) as numOfUsers FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
+			echo "PRISEL v IF \n";
 			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
+			
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
 			//Selectane imamo vse userje v nasi seji in gremo skozi njih
@@ -55,6 +56,7 @@ class Room{
 			$sort="NAME";
 		}
 		$list = [];
+		//SELECT * FROM ROOM as r, SESSION as s where PRIVATEROOM=? and NSFWROOM=? and r.ID = s.ID_SESSION order by ? desc
 		if ($stmt = mysqli_prepare($db, "SELECT * FROM ROOM where PRIVATEROOM=? and NSFWROOM=? order by ? desc")) {
 			mysqli_stmt_bind_param($stmt, "iis",intval($private),intval($nsfw),$sort);
 			//izvedemo poizvedbo
