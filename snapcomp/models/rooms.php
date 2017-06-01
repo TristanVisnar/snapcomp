@@ -30,7 +30,6 @@ class Room{
 	
 	public function numOfUsersInSession($id_session){
 		$db = Db::getInstance();
-		var_dump($id_session);
 		//Izpise usernamein id za vsakega userja v dodani seji
 		if ($stmt3 = mysqli_prepare($db, "SELECT COUNT(*) as numOfUsers FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
 			mysqli_stmt_bind_param($stmt3, "i",intval($id_session));
