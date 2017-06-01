@@ -33,16 +33,16 @@ class Room{
 		$db = Db::getInstance();
 		echo "PRISEL ZA DB\n";
 		//Izpise usernamein id za vsakega userja v dodani seji
-		if ($stmt = mysqli_prepare($db, "SELECT COUNT(*) as numOfUsers FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
+		if ($stmt3 = mysqli_prepare($db, "SELECT COUNT(*) as numOfUsers FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
 			echo "PRISEL v IF \n";
-			mysqli_stmt_bind_param($stmt, "i",intval($id_session));
+			mysqli_stmt_bind_param($stmt3, "i",intval($id_session));
 			
-			mysqli_stmt_execute($stmt);
-			$result = mysqli_stmt_get_result($stmt);
+			mysqli_stmt_execute($stmt3);
+			$result3 = mysqli_stmt_get_result($stmt3);
 			//Selectane imamo vse userje v nasi seji in gremo skozi njih
-			$row = mysqli_fetch_assoc($result);
-			var_dump($row["numOfUsers"]);
-			return $row["numOfUsers"];
+			$row3 = mysqli_fetch_assoc($result3);
+			var_dump($row3["numOfUsers"]);
+			return $row3["numOfUsers"];
 		}
 	}
 	
