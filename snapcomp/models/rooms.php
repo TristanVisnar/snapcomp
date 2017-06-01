@@ -55,7 +55,7 @@ class Room{
 		}
 		$list = [];
 		if ($stmt = mysqli_prepare($db, "SELECT * FROM ROOM where PRIVATEROOM=? and NSFWROOM=? order by ? desc")) {
-			mysqli_stmt_bind_param($stmt, "iis",intval($private),intval($nsfw),intval($lessPlayersThan),$sort);
+			mysqli_stmt_bind_param($stmt, "iis",intval($private),intval($nsfw),$sort);
 			//izvedemo poizvedbo
 			mysqli_stmt_execute($stmt);
 			$result = mysqli_stmt_get_result($stmt);
