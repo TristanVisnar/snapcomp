@@ -30,18 +30,14 @@ class Room{
 	
 	public function numOfUsersInSession($id_session){
 		$db = Db::getInstance();
-		echo "PRISEL ZA DB    \n";
 		var_dump($id_session);
 		//Izpise usernamein id za vsakega userja v dodani seji
 		if ($stmt3 = mysqli_prepare($db, "SELECT COUNT(*) as numOfUsers FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
-			echo "PRISEL v IF     \n";
 			mysqli_stmt_bind_param($stmt3, "i",intval($id_session));
-			
 			mysqli_stmt_execute($stmt3);
 			$result3 = mysqli_stmt_get_result($stmt3);
 			//Selectane imamo vse userje v nasi seji in gremo skozi njih
 			$row3 = mysqli_fetch_assoc($result3);
-			var_dump($row3["numOfUsers"]);
 			return $row3["numOfUsers"];
 		}
 	}
@@ -74,7 +70,6 @@ class Room{
 					$list[] = array("ID"=>$row["ID"],"NAME"=>$row["NAME"],"PASSWORD"=>$row["PASSWORD"],"PRIVATEROOM"=>$row["PRIVATEROOM"],"NSFW"=>$row["NSFW"],"DATEOFCREATION"=>$row["DATEOFCREATION"],"ID_CREATOR"=>$row["ID_CREATOR"], "NumOfPlayers" => $numOfPlayers);
 				}
 			}
-			echo "SADSD";
 			mysqli_stmt_close($stmt);
 			//var_dump($list);
 			return $list;

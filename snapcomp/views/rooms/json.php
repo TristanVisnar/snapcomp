@@ -3,6 +3,6 @@
 //nastavimo ustrezen tip rezultata ter oglas ustrezno zakodiramo
 header('Content-Type: application/json');
 
-echo json_encode($rooms);
+echo json_encode($res);
 
 ?>
