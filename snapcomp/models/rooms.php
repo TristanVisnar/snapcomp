@@ -38,7 +38,7 @@ class Room{
 			$result = mysqli_stmt_get_result($stmt);
 			//Selectane imamo vse userje v nasi seji in gremo skozi njih
 			$row = mysqli_fetch_assoc($result);
-			echo var_dump($row);
+			var_dump($row);
 			return $row;
 		}
 	}
