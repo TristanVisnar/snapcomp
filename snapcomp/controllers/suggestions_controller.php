@@ -10,10 +10,7 @@ class suggestions_controller{
     }
 
 
-
-
     public function getAPI($request,$input){
-      echo "sem v apiju";
       suggestions_controller::getDalySuggestions();
     }
 
