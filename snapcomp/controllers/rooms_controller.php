@@ -36,7 +36,8 @@ class rooms_controller{
 		//Vračanje vseh tekočih sob
 		elseif($request[1]=="roomsData"){
 			$rooms = rooms_controller::getAllRooms($request,$input);
-			require_once("views/rooms/json.php");
+			var_dump($rooms);
+			//require_once("views/rooms/json.php");
 		}
 		elseif($request[1]=="enterSession"){
 			rooms_controller::enterSession($request, $input);
