@@ -66,7 +66,7 @@ class Room{
 					$result2 = mysqli_stmt_get_result($stmt2);
 					$row2 = mysqli_fetch_assoc($result2);
 					$numOfPlayers = Room::numOfUsersInSession($row2["ID"]);
-					$list[] = array("ID"=>$row["ID"],"NAME"=>$row["NAME"],"PASSWORD"=>$row["PASSWORD"],"PRIVATEROOM"=>$row["PRIVATEROOM"],"NSFW"=>$row["NSFW"],"DATEOFCREATION"=>$row["DATEOFCREATION"],"ID_CREATOR"=>$row["ID_CREATOR"], "NumOfPlayers" => $numOfPlayers);
+					$list[] = array("ID"=>$row["ID"],"NAME"=>$row["NAME"],"PASSWORD"=>$row["PASSWORD"],"PRIVATEROOM"=>$row["PRIVATEROOM"],"NSFW"=>$row["NSFWROOM"],"DATEOFCREATION"=>$row["DATEOFCREATION"],"ID_CREATOR"=>$row["ID_CREATOR"], "NumOfPlayers" => $numOfPlayers);
 				}
 			}
 			mysqli_stmt_close($stmt);
