@@ -32,6 +32,7 @@ class Room{
 		echo "PRISEL V NUMOFUSER";
 		$db = Db::getInstance();
 		echo "PRISEL ZA DB\n";
+		echo $id_session;
 		//Izpise usernamein id za vsakega userja v dodani seji
 		if ($stmt3 = mysqli_prepare($db, "SELECT COUNT(*) as numOfUsers FROM USER_IN_SESSION WHERE ID_SESSION = ?")) {
 			echo "PRISEL v IF \n";
@@ -72,6 +73,7 @@ class Room{
 					$row2 = mysqli_fetch_assoc($result2);
 					echo "ZAGNAL USERS";
 					$numOfPlayers = Room::numOfUsersInSession($row2["ID"]);
+					
 					$list[] = array("ID"=>$row["ID"],"NAME"=>$row["NAME"],"PASSWORD"=>$row["PASSWORD"],"PRIVATEROOM"=>$row["PRIVATEROOM"],"NSFW"=>$row["NSFW"],"DATEOFCREATION"=>$row["DATEOFCREATION"],"ID_CREATOR"=>$row["ID_CREATOR"], "NumOfPlayers" => $numOfPlayers);
 				}
 			}
