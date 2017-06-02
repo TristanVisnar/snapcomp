@@ -30,7 +30,7 @@ class rooms_controller{
 		echo $info;
 	}
 	public function createRoom($request, $input){
-		return "VMODOLU";
+		
 		$ret= Room::createRoom($input->NAME,$input->ID_CREATOR,$input->PRIVATEROOM,$input->NSFWROOM,$input->PASSWORD);
 	}
 
