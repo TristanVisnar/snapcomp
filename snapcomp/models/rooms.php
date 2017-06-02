@@ -208,6 +208,7 @@ class Room{
 			mysqli_stmt_bind_param($stmt, "siiis",$name, intval($id_creator),intval($privateRoom),intval($nsfwRoom),$password);
 			mysqli_stmt_execute($stmt);
 			//echo "Uporabnika uspesno dodal v session_user\n";
+			echo "finished";
 		}	
 		mysqli_stmt_close($stmt);
 		echo "Error";
