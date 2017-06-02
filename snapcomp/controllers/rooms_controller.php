@@ -4,7 +4,6 @@ class rooms_controller{
 	//TE FUNCIJE SE KLICEJO
 	//http://164.8.230.124/tmp/snapcomp/api.php/rooms/1/:private(0/1)/:nsfw(0/1)/sortDateOrName(0/1)/
 	public function getAllRooms($request,$input){
-		echo "True";
 		$res = Room::all($request[2],$request[3],$request[4]);
 		return $res;
 	}
