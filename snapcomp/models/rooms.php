@@ -207,6 +207,7 @@ class Room{
 		if ($stmt = mysqli_prepare($db, "INSERT INTO ROOM (NAME, ID_CREATOR, PRIVATEROOM, NSFWROOM, PASSWORD) VALUES (?,?,?,?,?)")) {
 			mysqli_stmt_bind_param($stmt, "siiis",$name, intval($id_creator),intval($privateRoom),intval($nsfwRoom),$password);
 			mysqli_stmt_execute($stmt);
+			echo "TEST";
 			return "RoomCreated";
 			//echo "Uporabnika uspesno dodal v session_user\n";
 		}	
