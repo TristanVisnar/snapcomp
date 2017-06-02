@@ -115,7 +115,7 @@
 
 
     public function loginAPI($request,$input){
-      $id = User::login($input->ACCNAME,$input->PASS);
+      $id = User::login($input->accname,$input->pass);
       header('Content-Type: application/json');
       echo json_encode($id);
     }
