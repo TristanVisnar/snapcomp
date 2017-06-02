@@ -60,10 +60,10 @@
       			mysqli_stmt_close($stmt);
       			$row = mysqli_fetch_assoc($result);
       			if($row){
-      				  return array('ID' => $row["ID"] , 'USERNAME'=>$row['USERNAME'], 'ACCNAME' => $row['ACCNAME'] );
+      				  return array('ID' => $row["ID"] , 'USERNAME'=>$row['USERNAME'], 'ACCNAME' => $row['ACCNAME'] ,'NUMOFWINS' => $row['NUMOFWINS'], 'NUMOFPOSTS' => $row['NUMOFPOSTS'], 'ROLE' => $row['ROLE']);
       			}
       			else
-      				  return "false: Uporabnika ni v bazi!";
+      				  return "false";
     		}
     		return "error";
 	}
