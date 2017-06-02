@@ -63,7 +63,7 @@
       				  return array('ID' => $row["ID"] , 'USERNAME'=>$row['USERNAME'], 'ACCNAME' => $row['ACCNAME'] );
       			}
       			else
-      				  return "false";
+      				  return "falsetest";
     		}
     		return "error";
 	}
