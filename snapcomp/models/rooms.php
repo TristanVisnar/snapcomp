@@ -201,6 +201,18 @@ class Room{
 		mysqli_stmt_close($stmt);
 		echo "Uporabnik je zapustil sobo!";
 	}
+	public function createRoom($name, $id_creator,$privateRoom,$nsfwRoom,$password){
+		$db = Db::getInstance();
+		//Vpis usera v sejo igre
+		if ($stmt = mysqli_prepare($db, "INSERT INTO ROOM (NAME, ID_CREATOR, PRIVATEROOM, NSFWROOM, PASSWORD) VALUES (?,?,?,?,?)")) {
+			mysqli_stmt_bind_param($stmt, "siiis",$name, intval($id_creator),intval($privateRoom),intval($nsfwRoom),$password);
+			mysqli_stmt_execute($stmt);
+			return "RoomCreated";
+			//echo "Uporabnika uspesno dodal v session_user\n";
+		}	
+		mysqli_stmt_close($stmt);
+		echo "Error";
+	}
 }
 
 

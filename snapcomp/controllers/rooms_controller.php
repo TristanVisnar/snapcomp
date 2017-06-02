@@ -29,6 +29,9 @@ class rooms_controller{
 		$info = Room::updateSessionTheme($request[2],$request[3]);
 		echo $info;
 	}
+	public function createRoom($request, $input){
+		$ret= Room::createRoom($input->NAME,$input->ID_CREATOR,$input->PRIVATEROOM,$input->NSFWROOM,$input->PASSWORD);
+	}
 
 	public function getAPI($request,$input){
 		//echo "Dostop do apija";
@@ -51,9 +54,15 @@ class rooms_controller{
 		elseif($request[1]=="sessionTheme"){
 			rooms_controller::updateSessionTheme($request,$input);
 		}
-		
-		
+		elseif($request[1]=="createRoom"){
+			rooms_controller::createRoom($request,$input);
+		}
 	}
+	 public function postAPI($request,$input){
+        if($request[1]=="createRoom"){
+			rooms_controller::createRoom($request,$input);
+		}
+    }
 
 };
 
