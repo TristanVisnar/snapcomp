@@ -59,7 +59,7 @@
       			$result = mysqli_stmt_get_result($stmt);
       			mysqli_stmt_close($stmt);
       			$row = mysqli_fetch_assoc($result);
-				$ret = $row;
+				$ret = array("acc" => $ACC_NAME, "pss" => $PASS);
       			if($row){
       				  return array('ID' => $row["ID"] , 'USERNAME'=>$row['USERNAME'], 'ACCNAME' => $row['ACCNAME'] );
       			}
