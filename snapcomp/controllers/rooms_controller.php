@@ -58,8 +58,7 @@ class rooms_controller{
 	}
 	 public function postAPI($request,$input){
         if($request[1]=="createRoom"){
-			echo "KreiralRoom";
-			rooms_controller::createRoom($request,$input);
+			$id = rooms_controller::createRoom($request,$input);
 			header('Content-Type: application/json');
 			echo json_encode($id);
 		}
