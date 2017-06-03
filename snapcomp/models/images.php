@@ -341,17 +341,17 @@ class Image{
     if($input->longitude != ""){
       $long = floatval($input->longitude);
     }
-    echo $input->longitude;
 
     if($input->latitude != ""){
       $lat = floatval($input->latitude);
     }
 
-    if ($stmt = mysqli_prepare($db, "INSERT into  PICTURE(ID_USER,ID_SESSION,CONTENT,ID_SUGGESTION,LATITUDE,LONGITUDE) values (?,?,?,?,?,?);")) {
+    if ($stmt = mysqli_prepare($db, "INSERT into PICTURE(ID_USER,ID_SESSION,CONTENT,ID_SUGGESTION,LATITUDE,LONGITUDE) Values (?,?,?,?,?,?);")) {
       mysqli_stmt_bind_param($stmt, "iibidd",$input->ID_USER,$input->ID_SESSION,$input->CONTENT,$input->ID_SUGGESTION,$lat,$long);
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
+      var_dump($result);
        mysqli_stmt_close($stmt);
        echo "Slika je bila dodana";
        return;
