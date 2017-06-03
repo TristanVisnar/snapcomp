@@ -123,6 +123,8 @@ class Image{
       $nsfw = "";
     }
 
+    echo "sort: $sort\n";
+
     if($sort=="top"){
       $sort = "LIKES";
     }else{
