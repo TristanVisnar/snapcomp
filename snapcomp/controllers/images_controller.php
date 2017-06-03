@@ -172,7 +172,7 @@ class images_controller{
       if (!isset($request[2]) || !isset($request[3]) || !isset($request[4]) || !isset($request[5]) )
         return call('pages', 'errorAPI');
 
-      $slike = Image::getXImages($request[4],$request[5],$requst[2],$request[3]);
+      $slike = Image::getXImages($request[4],$request[5],$request[2],$request[3]);
       //dodaj en view za prikaz slike
       //$slike = images_controller::changeToJson($slike);
       echo json_encode($slike);
