@@ -142,7 +142,7 @@ class Image{
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
       while($row = mysqli_fetch_assoc($result)){
-         $list[] = array("ID"=>$row['ID'],"DESCRIPTION" =>$row['DISCRIPTION'],"CONTENT"=>$row['CONTENT'],"ID_USER"=>$row['ID_USER'],"INFO" => $row['INFO'],"LIKES"=>$row['LIKES'],"DISLIKES" => $row['DISLIKES'],'USERNAME'=>$row["USERNAME"]);
+         $list[] = array("ID"=>$row['ID'],"DESCRIPTION" =>$row['DISCRIPTION'],"CONTENT"=>''.base64_encode($row['CONTENT']),"ID_USER"=>$row['ID_USER'],"INFO" => $row['INFO'],"LIKES"=>$row['LIKES'],"DISLIKES" => $row['DISLIKES'],'USERNAME'=>$row["USERNAME"]);
       }
      mysqli_stmt_close($stmt);
 
