@@ -178,7 +178,6 @@ class Room{
 	public function createSession($sessionDuration, $id_selectorja, $id_room, $id_suggestion){
 		$db = Db::getInstance();
 		//Vpis usera v sejo igre
-		$last_id;
 		if ($stmt = mysqli_prepare($db, "INSERT INTO SESSION (SESSION_DURATION, ID_SELECTOR, ID_ROOM, ID_SUGGESTION) VALUES (?,?,?,?)")) {
 			mysqli_stmt_bind_param($stmt, "iiii",intval($sessionDuration),intval($id_selectorja),intval($id_room),intval($id_suggestion));
 			mysqli_stmt_execute($stmt);
@@ -188,8 +187,8 @@ class Room{
 		}	
 		mysqli_stmt_close($stmt);
 		$list = Room::returnSessionData($last_id);
-		//echo "konec!";
-		//var_dump($list);
+		echo "konec!";
+		var_dump($list);
 		echo $list;
 	}
 	
