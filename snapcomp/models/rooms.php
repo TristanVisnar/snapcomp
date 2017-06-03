@@ -204,7 +204,7 @@ class Room{
 			//echo "Uporabnika uspesno dodal v session_user\n";
 		}	
 		mysqli_stmt_close($stmt);
-		$list[] = Room::returnSessionData($id_session);
+		$list["ROOMINFO"] = Room::returnSessionData($id_session);
 		return $list;
 		//Izpise usernamein id za vsakega userja v dodani seji
 	}
