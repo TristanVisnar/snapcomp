@@ -23,7 +23,7 @@ class rooms_controller{
 		//Vpise v sejo idjem $request[2] uporabnika z idjem $request[3]
 		$info = Room::addUserToSession($request[2],$request[3]);
 		//info so informacije o seji, v katero vstavimo uporabnika
-		echo $info;
+		return $info;
 	}
 	public function updateSessionTheme($request, $input){
 		$info = Room::updateSessionTheme($request[2],$request[3]);
@@ -56,6 +56,7 @@ class rooms_controller{
 		}
 		elseif($request[1]=="enterSession"){
 			$ret = rooms_controller::enterSession($request, $input);
+			header('Content-Type: application/json');
 			echo json_encode($ret);
 		}
 		elseif($request[1]=="leaveSession"){
