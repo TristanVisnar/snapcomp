@@ -33,6 +33,7 @@ class rooms_controller{
 	//	echo "lista podatkov:";
 		//var_dump($input);
 		$ret= Room::createRoom($input->NAME,$input->ID_CREATOR,$input->PRIVATEROOM,$input->NSFWROOM,$input->PASSWORD);
+		return $ret;
 	}
 
 	public function getAPI($request,$input){
