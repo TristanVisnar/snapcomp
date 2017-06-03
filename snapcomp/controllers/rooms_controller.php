@@ -35,6 +35,11 @@ class rooms_controller{
 		$ret= Room::createRoom($input->NAME,$input->ID_CREATOR,$input->PRIVATEROOM,$input->NSFWROOM,$input->PASSWORD);
 		return $ret;
 	}
+	//$sessionDuration, $id_selectorja, $id_room, $id_suggestion
+	public function createSession($request, $input){
+		$ret = Room::createSession($input->SESSION_DURATION, $input->ID_SELECTOR, $input->ID_ROOM, $input->ID_SUGGESTION);
+		echo $ret;
+	}
 
 	public function getAPI($request,$input){
 		//echo "Dostop do apija";
@@ -61,6 +66,12 @@ class rooms_controller{
 	 public function postAPI($request,$input){
         if($request[1]=="createRoom"){
 			$id = rooms_controller::createRoom($request,$input);
+			header('Content-Type: application/json');
+			echo $id;
+			//echo json_encode($id);
+		}
+		if($request[1]=="createRoom"){
+			$id = rooms_controller::createSession($request,$input);
 			header('Content-Type: application/json');
 			echo $id;
 			//echo json_encode($id);
