@@ -9,7 +9,7 @@ class suggestions_controller{
 		echo json_encode($out);
 	}	
 	public function insertIntoPermaSuggestion($request,$input){
-		$out = Suggestion::insertPermaSuggestion($input->INFO,$input->userOrSugg,$uploaderID);
+		$out = Suggestion::insertPermaSuggestion($input->INFO,$input->userOrSugg,$ID_POSTER);
 		//echo $out;
 	}
 
