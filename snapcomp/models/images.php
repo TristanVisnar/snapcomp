@@ -346,8 +346,10 @@ class Image{
       $lat = floatval($input->latitude);
     }
 
+    $null = NULL;
     if ($stmt = mysqli_prepare($db, "INSERT into PICTURE(ID_USER,ID_SESSION,CONTENT,ID_SUGGESTION,LATITUDE,LONGITUDE) Values (?,?,?,?,?,?);")) {
-      mysqli_stmt_bind_param($stmt, "iibidd",$input->ID_USER,$input->ID_SESSION,$input->CONTENT,$input->ID_SUGGESTION,$lat,$long);
+      mysqli_stmt_bind_param($stmt, "iibidd",$input->ID_USER,$input->ID_SESSION,$null,$input->ID_SUGGESTION,$lat,$long);
+      $stmt->send_long_data(2,$input->CONTENT);
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
       //printf("Error: %s.\n", mysqli_stmt_error($stmt));
