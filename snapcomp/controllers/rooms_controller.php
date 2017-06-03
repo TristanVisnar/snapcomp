@@ -55,7 +55,8 @@ class rooms_controller{
 			require_once("views/rooms/json.php");
 		}
 		elseif($request[1]=="enterSession"){
-			rooms_controller::enterSession($request, $input);
+			$ret = rooms_controller::enterSession($request, $input);
+			echo json_encode($ret);
 		}
 		elseif($request[1]=="leaveSession"){
 			rooms_controller::leaveSession($request,$input);
