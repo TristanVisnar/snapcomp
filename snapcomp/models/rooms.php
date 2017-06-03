@@ -187,6 +187,8 @@ class Room{
 		}	
 		mysqli_stmt_close($stmt);
 		$list = Room::returnSessionData($id_session);
+		echo "konec!";
+		var_dump($list);
 		return $list;
 	}
 	

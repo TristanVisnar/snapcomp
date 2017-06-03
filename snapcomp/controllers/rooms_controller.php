@@ -38,7 +38,6 @@ class rooms_controller{
 	//$sessionDuration, $id_selectorja, $id_room, $id_suggestion
 	public function createSession($request, $input){
 		echo "v controler funkciji";
-		var_dump($input);
 		$ret = Room::createSession($input->SESSION_DURATION, $input->ID_SELECTOR, $input->ID_ROOM, $input->ID_SUGGESTION);
 		echo $ret;
 	}
