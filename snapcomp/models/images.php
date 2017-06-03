@@ -423,12 +423,13 @@ class Image{
       }
     }
     echo "5";
+    /*
     //ODSTRANI SLIKE IZ SESSIONA
     if($stmt = mysqli_prepare($db,"UPDATE PICTURE SET ID_SESSION = NULL WHERE ID_SESSION=?;")){
       mysqli_stmt_bind_param($stmt,"i",$session_id);
       mysqli_stmt_execute($stmt);
       mysqli_stmt_close($stmt);
-    }
+    }*/
 
 
     //VRNE PODATKE ZMAGOVALNE SLIKE
