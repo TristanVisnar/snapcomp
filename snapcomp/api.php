@@ -27,8 +27,8 @@ $input = json_decode(file_get_contents('php://input'));
 ///controler je prvi argument v ukazu -> api.php/controller/x/y/z
 
 $controller=$request[0];
-
-
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *'); 
 //metoda zahteve nam določa katero akcijo bomo izvedli
 //tukaj imamo ekvivalent strani routes.php, ki je precej poenostavljen
 //v bolj zapletenih apijih je potrebno dodati malo več logike, ki kombinira vrsto metode ter podakte poslane v ukazu (pri nas $request), ter ustrezno kliče kontrolerje
