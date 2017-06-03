@@ -185,6 +185,7 @@ class Room{
 			echo "v iffu";
 			$last_id = mysqli_insert_id($db);
 			$list['SESSION_ID'] = $last_id; 
+			echo $last_id;
 		}	
 		mysqli_stmt_close($stmt);
 		$list = Room::returnSessionData($last_id);
