@@ -113,17 +113,54 @@ class Image{
 
 
 
-
-  // top
-  public function getXByLikes($fromNum,$x){
+  public function getXImages($fromNum,$x,$sort="top",$nsfw=0){
     $x = intval($x);
     $fromNum = intval($fromNum);
+    $nsfw = intval($nsfw);
+    if($nsfw != 1){
+      $nsfw = "NSFW=$nsfw and ";
+    }else{
+      $nsfw = "";
+    }
 
+    if($sort=="top"){
+      $sort = "LIKES";
+    }else{
+      $sort = "DATEOFUPLOAD";
+    }
+
+    echo "in get x by $sort from: $fromNum for $x; nsfw: $nsfw\n";
     $db = Db::getInstance();
 
     $list = [];
 
-    if(isset($_SESSION['NSFW'])){
+    if ($stmt = mysqli_prepare($db, "SELECT p.ID, p.DESCRIPTION,p.CONTENT, p.LIKES, p.DISLIKES, p.ID_USER, sug.INFO,u.USERNAME FROM PICTURE as p, ENDOFSESSION as eos, SUGGESTION as sug, UPORABNIK as u where ? p.ID_SESSION IS NULL and eos.ID_WINNING_PIC = p.ID and u.ID=p.ID_USER and sug.ID=p.ID_SUGGESTION order by p.? desc limit ?,?;")) {
+      mysqli_stmt_bind_param($stmt, "ssii",$nsfw,$sort,$fromNum,$x);
+      //izvedemo poizvedbo
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+      while($row = mysqli_fetch_assoc($result)){
+         $list[] = array("ID"=>$row['ID'],"DESCRIPTION" =>$row['DISCRIPTION'],"CONTENT"=>$row['CONTENT'],"ID_USER"=>$row['ID_USER'],"INFO" => $row['INFO'],"LIKES"=>$row['LIKES'],"DISLIKES" => $row['DISLIKES'],"USERNAME"=>$row["USERNAME"]);
+      }
+     mysqli_stmt_close($stmt);
+
+     return $list;
+    }
+    return "error";
+  }
+
+
+
+  // top
+  public function getXByLikes($fromNum,$x,$nsfw=NULL){
+    $x = intval($x);
+    $fromNum = intval($fromNum);
+    echo "in get x by likes from: $fromNum for $x \n";
+    $db = Db::getInstance();
+
+    $list = [];
+
+    if($nsfw == NULL){
       if ($stmt = mysqli_prepare($db, "SELECT * FROM PICTURE where NSFW=? and ID_SESSION=NULL order by LIKES desc limit ?,?;")) {
         mysqli_stmt_bind_param($stmt, "iii",$_SESSION['NSFW'],$fromNum,$x);
         //izvedemo poizvedbo

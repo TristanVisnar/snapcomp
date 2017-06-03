@@ -116,6 +116,13 @@
 
     public function loginAPI($request,$input){
       $id = User::login($input->accname,$input->pass);
+      if($id=="error"){
+        $id = array("error"=>"Napaka pri posiljanju podatkov na streznik");
+      }
+      if($id=="false"){
+        $id = array("error"=>"Napaka pri vpisu");
+      }
+
       header('Content-Type: application/json');
       echo json_encode($id);
     }
