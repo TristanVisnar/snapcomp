@@ -206,7 +206,9 @@ class Room{
 		//echo "v creatu";
 		//Vpis usera v sejo igre
 		if ($stmt = mysqli_prepare($db, "INSERT INTO ROOM (NAME, ID_CREATOR, PRIVATEROOM, NSFWROOM, PASSWORD) VALUES (?,?,?,?,?)")) {
+			echo "v statementu!";
 			mysqli_stmt_bind_param($stmt, "siiis",$name, intval($id_creator),intval($privateRoom),intval($nsfwRoom),$password);
+			echo "executam statement";
 			mysqli_stmt_execute($stmt);
 			echo "Vstavil: INSERT INTO ROOM (NAME, ID_CREATOR, PRIVATEROOM, NSFWROOM, PASSWORD) VALUES (".$name.",".intval($id_creator).",".intval($privateRoom).",".intval($nsfwRoom).",".$password.")";
 			//echo "finished";
