@@ -333,7 +333,7 @@ class Image{
   public function savePicture($input){
     //input ma: sliko(CONTENT), USER ID(), SESSION ID(), SUGGESTION ID, (Optional:) longitude, latitude
     $db = Db::getInstance();
-    //var_dump($input);
+    var_dump($input);
     echo "\n";
     $long = NULL;
     $lat = NULL;
@@ -349,7 +349,7 @@ class Image{
     $null = NULL;
     if ($stmt = mysqli_prepare($db, "INSERT into PICTURE(ID_USER,ID_SESSION,CONTENT,ID_SUGGESTION,LATITUDE,LONGITUDE) Values (?,?,?,?,?,?);")) {
       mysqli_stmt_bind_param($stmt, "iibidd",$input->ID_USER,$input->ID_SESSION,$null,$input->ID_SUGGESTION,$lat,$long);
-      $stmt->send_long_data(2,$input->CONTENT);
+      $stmt->send_long_data(2, base64_decode($input->CONTENT));
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
       //printf("Error: %s.\n", mysqli_stmt_error($stmt));
