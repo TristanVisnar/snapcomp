@@ -30,7 +30,8 @@ class rooms_controller{
 		echo $info;
 	}
 	public function createRoom($request, $input){
-		
+		echo "lista podatkov:";
+		echo var_dump($input);
 		$ret= Room::createRoom($input->NAME,$input->ID_CREATOR,$input->PRIVATEROOM,$input->NSFWROOM,$input->PASSWORD);
 	}
 

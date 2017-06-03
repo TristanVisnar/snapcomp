@@ -201,9 +201,9 @@ class Room{
 		mysqli_stmt_close($stmt);
 		echo "Uporabnik je zapustil sobo!";
 	}
-	public function createRoom($name, $id_creator,$privateRoom,$nsfwRoom,$password){
+	public function createRoom($name,$id_creator,$privateRoom,$nsfwRoom,$password){
 		$db = Db::getInstance();
-		//echo "v creatu";
+		echo "v creatu";
 		//Vpis usera v sejo igre
 		if ($stmt = mysqli_prepare($db, "INSERT INTO ROOM (NAME, ID_CREATOR, PRIVATEROOM, NSFWROOM, PASSWORD) VALUES (?,?,?,?,?)")) {
 			echo "v statementu!";
