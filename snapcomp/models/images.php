@@ -333,7 +333,7 @@ class Image{
   public function savePicture($input){
     //input ma: sliko(CONTENT), USER ID(), SESSION ID(), SUGGESTION ID, (Optional:) longitude, latitude
     $db = Db::getInstance();
-    var_dump($input);
+    //var_dump($input);
     echo "\n";
     $long = NULL;
     $lat = NULL;
@@ -350,7 +350,7 @@ class Image{
       mysqli_stmt_bind_param($stmt, "iibidd",$input->ID_USER,$input->ID_SESSION,$input->CONTENT,$input->ID_SUGGESTION,$lat,$long);
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
-      printf("Error: %s.\n", mysqli_stmt_error($stmt));
+      //printf("Error: %s.\n", mysqli_stmt_error($stmt));
        mysqli_stmt_close($stmt);
        echo "Slika je bila dodana";
        return;
