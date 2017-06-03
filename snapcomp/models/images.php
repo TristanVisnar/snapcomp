@@ -414,10 +414,9 @@ class Image{
             //izvedemo poizvedbo
             echo "4";
             mysqli_stmt_execute($stmt2);
+            printf("Error: %s.\n", mysqli_stmt_error($stmt2));
             $result2 = mysqli_stmt_get_result($stmt2);
-            if($result2){
               $id_novega_endofsessiona = mysqli_stmt_insert_id($stmt2); //nevem če funkcija dela
-            }
             mysqli_stmt_close($stmt2);
         }
       }
