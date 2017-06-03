@@ -188,7 +188,7 @@ class Room{
 			//echo $last_id;
 		}	
 		mysqli_stmt_close($stmt);
-		$list[] = Room::returnSessionData($last_id);
+		$list["ROOMINFO"] = Room::returnSessionData($last_id);
 		//echo "konec!";
 		//var_dump($list);
 		return $list;
