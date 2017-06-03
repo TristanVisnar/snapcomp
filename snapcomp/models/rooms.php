@@ -211,6 +211,7 @@ class Room{
 			//echo "finished";
 			$last_id = mysqli_insert_id($db);
 			return "{ 'ID' : ".$last_id."}";
+		}
 		else {
 			echo "Error MYSQL!";
 		}
