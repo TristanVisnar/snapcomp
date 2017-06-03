@@ -42,6 +42,7 @@ class Suggestion{
 			mysqli_stmt_close($stmt);
 		}
 		else $uploader = "NULL";
+		
 		$addedInfo["UPLOADER"] = $uploader;
 		$addedInfo["INFO"] = $info;
  		if ($stmt = mysqli_prepare($db, "INSERT INTO SUGGESTION (INFO, SOURCE) VALUES (?,?)")) {
@@ -49,9 +50,7 @@ class Suggestion{
 				mysqli_stmt_execute($stmt);
 		}
 		mysqli_stmt_close($stmt);
-		
-		echo $addedInfo;
-
+		echo json_encode($addedInfo);
 	}
 
 }
