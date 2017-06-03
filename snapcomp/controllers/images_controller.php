@@ -167,18 +167,16 @@ class images_controller{
 
   //164.8.230.124/tmp/snapcomp/api.php/images/0/("new"/"top")/nsfw(0/1)/("odId")/("štSlik")/
   public static function browseAPI($request,$input){
-      echo "in browseAPI \n";
       //če je kategorija označena
       //if(isset($_GET['category'])){}
       if (!isset($request[2]) || !isset($request[3]) || !isset($request[4]) || !isset($request[5]) )
         return call('pages', 'errorAPI');
 
-      echo "in new \n";
       $slike = Image::getXImages($request[4],$request[5],$requst[2],$request[3]);
       //dodaj en view za prikaz slike
-      var_dump($slike);
       //$slike = images_controller::changeToJson($slike);
-      require_once("views/images/json.php");
+      echo json_encode($slike);
+      //require_once("views/images/json.php");
   }
 
   // http://164.8.230.124/tmp/snapcomp/api.php/images/1/:ID_SESSION(number)/
