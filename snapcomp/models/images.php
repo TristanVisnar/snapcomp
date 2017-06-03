@@ -113,7 +113,7 @@ class Image{
 
 
 
-  public function getXImages($fromNum,$x,$sort="top",$nsfw=0){
+  public function getXImages($fromNum,$x,$sort,$nsfw){
     $x = intval($x);
     $fromNum = intval($fromNum);
     $nsfw = intval($nsfw);
@@ -392,27 +392,26 @@ class Image{
     $db = Db::getInstance();
 
     $output = array("error"=>"True");
-    echo "1";
+
     //NASTAVITVE ZA ZMAGOVALNO SLIKO
     //Bere podatke zmagovalne slike
     $id_novega_endofsessiona = 0;
     if ($stmt = mysqli_prepare($db, "SELECT p.ID_USER as ID_WINNER,s.ID_SELECTOR,p.ID as ID_PICTURE,s.ID_ROOM,s.DATEOFSTART FROM PICTURE as p, SESSION as s where p.ID_SESSION = s.ID and p.ID_SESSION=? and p.ID=? ;")) {
       mysqli_stmt_bind_param($stmt, "ii",$session_id,$picture_id);
-      //izvedemo poizvedbo
-      echo "2";
+      //izvedemo poizvedb
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
       mysqli_stmt_close($stmt);
       $row = mysqli_fetch_assoc($result);
 
       if(!is_null($row)){
-        echo "3";
-        var_dump($row);
+
+        //var_dump($row);
         //VSTAVI nov ENDOFSESSION
         if ($stmt2 = mysqli_prepare($db, "INSERT INTO ENDOFSESSION(ID_WINNER,ID_SELECTOR,ID_WINNING_PIC,ID_ROOM,DATEOFSTART,SESSIONDURATION) VALUES (?,?,?,?,?,90);" )) {
             mysqli_stmt_bind_param($stmt2, "iiiis",intval($row["ID_WINNER"]),intval($row["ID_SELECTOR"]),intval($row["ID_PICTURE"]),intval($row["ID_ROOM"]),$row["DATEOFSTART"]);
             //izvedemo poizvedbo
-            echo "4";
+
             mysqli_stmt_execute($stmt2);
             printf("Error: %s.\n", mysqli_stmt_error($stmt2));
             $result2 = mysqli_stmt_get_result($stmt2);
@@ -424,19 +423,19 @@ class Image{
         return $output;
       }
     }
-    echo "5";
-    /*
+
+
     //ODSTRANI SLIKE IZ SESSIONA
     if($stmt = mysqli_prepare($db,"UPDATE PICTURE SET ID_SESSION = NULL WHERE ID_SESSION=?;")){
       mysqli_stmt_bind_param($stmt,"i",$session_id);
       mysqli_stmt_execute($stmt);
       mysqli_stmt_close($stmt);
-    }*/
+    }
 
 
     //VRNE PODATKE ZMAGOVALNE SLIKE
     if($id_novega_endofsessiona != 0 && $id_novega_endofsessiona != NULL){
-      echo "6";
+
       if($stmt = mysqli_prepare($db,"SELECT w.USERNAME as WINNER, s.USERNAME as SELECTOR, sug.INFO, p.CONTENT FROM PICTURE as p,ENDOFSESSION as e,UPORABNIK as w,UPORABNIK as s,SUGGESTION as sug WHERE e.ID=? and p.ID=e.ID_WINNING_PIC and e.ID_WINNER = w.ID and e.ID_SELECTOR=s.ID and p.ID_SUGGESTION = sug.ID;")){
         mysqli_stmt_bind_param($stmt,"i",$session_id);
         mysqli_stmt_execute($stmt);
@@ -444,7 +443,6 @@ class Image{
         mysqli_stmt_close($stmt);
 
         $row = mysqli_fetch_assoc($result);
-        echo "7";
         $output = array("WINNER"=>$row["WINNER"],"SELECTOR"=>$row["SELECTOR"],"INFO"=>$row["INFO"],"CONTENT"=>''.base64_encode($row["CONTENT"]));
       }
     }
