@@ -48,7 +48,9 @@ class Suggestion{
  		if ($stmt = mysqli_prepare($db, "INSERT INTO SUGGESTION (INFO, SOURCE) VALUES (?,?)")) {
 				mysqli_stmt_bind_param($stmt, "ss",$info,$uploader);
 				mysqli_stmt_execute($stmt);
+				$last_id = mysqli_insert_id($db);
 		}
+		$addedInfo["ID"] = $last_id;
 		mysqli_stmt_close($stmt);
 		echo json_encode($addedInfo);
 	}
