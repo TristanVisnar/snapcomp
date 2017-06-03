@@ -229,7 +229,7 @@ class Room{
 			//echo "Vstavil: INSERT INTO ROOM (NAME, ID_CREATOR, PRIVATEROOM, NSFWROOM, PASSWORD) VALUES (".$name.",".intval($id_creator).",".intval($privateRoom).",".intval($nsfwRoom).",".$password.")";
 			//echo "finished";
 			$last_id = mysqli_insert_id($db);
-			return '{ "ID" : ".$last_id." }';
+			return '{ "ID" : '.$last_id.' }';
 		}
 		else {
 			echo "Error MYSQL!";
