@@ -188,7 +188,7 @@ class images_controller{
   }
 
   public function getAPI($request,$input){
-    echo "controller check \n"
+    echo "controller check \n";
     //Podatki za prikaz n slik za browse
     if($request[1] == "0"){
         echo "in api req[1] \n";
