@@ -40,6 +40,7 @@ switch ($method) {
 		//call($controller,"posodobiAPI",$request,$input);
 		break;
 		case 'POST':
+		var_dump($input);
 		call($controller,"postAPI",$request,$input);
 		break;
 		case 'DELETE':
