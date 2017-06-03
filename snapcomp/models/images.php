@@ -333,7 +333,7 @@ class Image{
   public function savePicture($input){
     //input ma: sliko(CONTENT), USER ID(), SESSION ID(), SUGGESTION ID, (Optional:) longitude, latitude
     $db = Db::getInstance();
-    var_dump($input);
+    //var_dump($input);
     echo "\n";
     $long = NULL;
     $lat = NULL;
