@@ -133,7 +133,7 @@ class Image{
 
     $list = [];
 
-    //PREPARE stmt1 FROM "SELECT p.ID, p.DESCRIPTION,p.CONTENT, p.LIKES, p.DISLIKES, p.ID_USER, sug.INFO,u.USERNAME FROM PICTURE as p, ENDOFSESSION as eos, SUGGESTION as sug, UPORABNIK as u where ? p.ID_SESSION IS NULL and eos.ID_WINNING_PIC = p.ID and u.ID=p.ID_USER and sug.ID=p.ID_SUGGESTION order by p. desc limit ?,?;"
+    //PREPARE stmt1 FROM SELECT p.ID, p.DESCRIPTION,p.CONTENT, p.LIKES, p.DISLIKES, p.ID_USER, sug.INFO,u.USERNAME FROM PICTURE as p, ENDOFSESSION as eos, SUGGESTION as sug, UPORABNIK as u where ? p.ID_SESSION IS NULL and eos.ID_WINNING_PIC = p.ID and u.ID=p.ID_USER and sug.ID=p.ID_SUGGESTION order by p. desc limit ?,?;
     $query = "SELECT p.ID, p.DESCRIPTION,p.CONTENT, p.LIKES, p.DISLIKES, p.ID_USER, sug.INFO,u.USERNAME FROM PICTURE as p, ENDOFSESSION as eos, SUGGESTION as sug, UPORABNIK as u where $nsfw p.ID_SESSION IS NULL and eos.ID_WINNING_PIC = p.ID and u.ID=p.ID_USER and sug.ID=p.ID_SUGGESTION order by p.$sort desc limit ?,?;";
     if ($stmt = mysqli_prepare($db, $query)) {
       mysqli_stmt_bind_param($stmt, "ii",$fromNum,$x);
@@ -341,12 +341,13 @@ class Image{
     if($input->longitude != ""){
       $long = floatval($input->longitude);
     }
+    echo $input->longitude;
 
     if($input->latitude != ""){
       $lat = floatval($input->latitude);
     }
 
-    if ($stmt = mysqli_prepare($db, "INSERT into  PICTURE(ID_USER,ID_SESSION,CONTENT,ID_SUGGESTION,LATITUDE,LONGITUDE) values(?,?,?,?,?,?);")) {
+    if ($stmt = mysqli_prepare($db, "INSERT into  PICTURE(ID_USER,ID_SESSION,CONTENT,ID_SUGGESTION,LATITUDE,LONGITUDE) values (?,?,?,?,?,?);")) {
       mysqli_stmt_bind_param($stmt, "iibidd",$input->ID_USER,$input->ID_SESSION,$input->CONTENT,$input->ID_SUGGESTION,$lat,$long);
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
