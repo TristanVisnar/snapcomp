@@ -203,16 +203,19 @@ class Room{
 	}
 	public function createRoom($name, $id_creator,$privateRoom,$nsfwRoom,$password){
 		$db = Db::getInstance();
-		echo "v creatu";
+		//echo "v creatu";
 		//Vpis usera v sejo igre
 		if ($stmt = mysqli_prepare($db, "INSERT INTO ROOM (NAME, ID_CREATOR, PRIVATEROOM, NSFWROOM, PASSWORD) VALUES (?,?,?,?,?)")) {
 			mysqli_stmt_bind_param($stmt, "siiis",$name, intval($id_creator),intval($privateRoom),intval($nsfwRoom),$password);
 			mysqli_stmt_execute($stmt);
-			//echo "Uporabnika uspesno dodal v session_user\n";
-			echo "finished";
-		}	
+			echo "Vstavil: INSERT INTO ROOM (NAME, ID_CREATOR, PRIVATEROOM, NSFWROOM, PASSWORD) VALUES (".$name.",".intval($id_creator).",".intval($privateRoom).",".intval($nsfwRoom).",".$password.")";
+			//echo "finished";
+		}
+		else {
+			echo "Error MYSQL!";
+		}
 		mysqli_stmt_close($stmt);
-		echo "Error";
+		//echo "Error";
 	}
 }
 
