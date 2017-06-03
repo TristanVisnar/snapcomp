@@ -407,14 +407,17 @@ class Image{
 
       if(!is_null($row)){
         echo "3";
+        var_dump($row);
         //VSTAVI nov ENDOFSESSION
-        if ($stmt2 = mysqli_prepare($db, "INSERT INTO ENDOFSESSION(ID_WINNER,ID_SELECTOR,ID_WINNING_PIC,ID_ROOM,DATEOFSTART) VALUES (?,?,?,?,?);" )) {
+        if ($stmt2 = mysqli_prepare($db, "INSERT INTO ENDOFSESSION(ID_WINNER,ID_SELECTOR,ID_WINNING_PIC,ID_ROOM,DATEOFSTART,SESSIONDURATION) VALUES (?,?,?,?,?,90);" )) {
             mysqli_stmt_bind_param($stmt2, "iiiis",intval($row["ID_WINNER"]),intval($row["ID_SELECTOR"]),intval($row["ID_PICTURE"]),intval($row["ID_ROOM"]),$row["DATEOFSTART"]);
             //izvedemo poizvedbo
             echo "4";
             mysqli_stmt_execute($stmt2);
             $result2 = mysqli_stmt_get_result($stmt2);
-            $id_novega_endofsessiona = mysqli_stmt_insert_id($stmt2); //nevem če funkcija dela
+            if($result2){
+              $id_novega_endofsessiona = mysqli_stmt_insert_id($stmt2); //nevem če funkcija dela
+            }
             mysqli_stmt_close($stmt2);
         }
       }
