@@ -135,7 +135,7 @@ class Image{
     $list = [];
 
     //PREPARE stmt1 FROM "SELECT p.ID, p.DESCRIPTION,p.CONTENT, p.LIKES, p.DISLIKES, p.ID_USER, sug.INFO,u.USERNAME FROM PICTURE as p, ENDOFSESSION as eos, SUGGESTION as sug, UPORABNIK as u where ? p.ID_SESSION IS NULL and eos.ID_WINNING_PIC = p.ID and u.ID=p.ID_USER and sug.ID=p.ID_SUGGESTION order by p. desc limit ?,?;"
-    $query = 'SELECT p.ID, p.DESCRIPTION,p.CONTENT, p.LIKES, p.DISLIKES, p.ID_USER, sug.INFO,u.USERNAME FROM PICTURE as p, ENDOFSESSION as eos, SUGGESTION as sug, UPORABNIK as u where $nsfw p.ID_SESSION IS NULL and eos.ID_WINNING_PIC = p.ID and u.ID=p.ID_USER and sug.ID=p.ID_SUGGESTION order by p.$sort desc limit ?,?';
+    $query = "SELECT p.ID, p.DESCRIPTION,p.CONTENT, p.LIKES, p.DISLIKES, p.ID_USER, sug.INFO,u.USERNAME FROM PICTURE as p, ENDOFSESSION as eos, SUGGESTION as sug, UPORABNIK as u where $nsfw p.ID_SESSION IS NULL and eos.ID_WINNING_PIC = p.ID and u.ID=p.ID_USER and sug.ID=p.ID_SUGGESTION order by p.$sort desc limit ?,?;";
     if ($stmt = mysqli_prepare($db, $query)) {
       mysqli_stmt_bind_param($stmt, "ii",$fromNum,$x);
       //izvedemo poizvedbo
