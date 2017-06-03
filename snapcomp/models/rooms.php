@@ -182,10 +182,10 @@ class Room{
 		if ($stmt = mysqli_prepare($db, "INSERT INTO SESSION (SESSION_DURATION, ID_SELECTOR, ID_ROOM, ID_SUGGESTION) VALUES (?,?,?,?)")) {
 			mysqli_stmt_bind_param($stmt, "iiii",intval($sessionDuration),intval($id_selectorja),intval($id_room),intval($id_suggestion));
 			mysqli_stmt_execute($stmt);
-			echo "v iffu";
+			//echo "v iffu";
 			$last_id = mysqli_insert_id($db);
 			$list['SESSION_ID'] = $last_id; 
-			echo $last_id;
+			//echo $last_id;
 		}	
 		mysqli_stmt_close($stmt);
 		$list = Room::returnSessionData($last_id);

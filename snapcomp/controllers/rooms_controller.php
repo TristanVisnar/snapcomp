@@ -74,8 +74,8 @@ class rooms_controller{
 		if($request[1]=="createSession"){
 			$id = rooms_controller::createSession($request,$input);
 			header('Content-Type: application/json');
-			echo $id;
-			//echo json_encode($id);
+			//echo $id;
+			echo json_encode($id);
 		}
     }
 
