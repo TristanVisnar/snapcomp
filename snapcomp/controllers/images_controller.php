@@ -165,7 +165,7 @@ class images_controller{
   }
 
 
-  //http://164.8.230.124/tmp/snapcomp/api.php/images/0/("new"/"top")/nsfw(0/1)/("odId")/("štSlik")/
+  //164.8.230.124/tmp/snapcomp/api.php/images/0/("new"/"top")/nsfw(0/1)/("odId")/("štSlik")/
   public static function browseAPI($request,$input){
       echo "in browseAPI \n";
       //če je kategorija označena
