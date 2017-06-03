@@ -50,7 +50,7 @@ class Suggestion{
 		}
 		mysqli_stmt_close($stmt);
 		
-		return $addedInfo;
+		echo $addedInfo;
 
 	}
 

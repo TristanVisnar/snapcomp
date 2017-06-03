@@ -10,7 +10,7 @@ class suggestions_controller{
 	}	
 	public function insertIntoPermaSuggestion($request,$input){
 		$out = Suggestion::insertPermaSuggestion($request[2],$request[3],$request[4]);
-		echo $out;
+		//echo $out;
 	}
 
 
