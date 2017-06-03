@@ -129,7 +129,6 @@ class Image{
       $sort = "DATEOFUPLOAD";
     }
 
-    echo "in get x by $sort from: $fromNum for $x; nsfw: $nsfw\n";
     $db = Db::getInstance();
 
     $list = [];

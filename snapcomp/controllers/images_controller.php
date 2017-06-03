@@ -175,7 +175,6 @@ class images_controller{
       $slike = Image::getXImages($request[4],$request[5],$requst[2],$request[3]);
       //dodaj en view za prikaz slike
       //$slike = images_controller::changeToJson($slike);
-      var_dump($slike);
       echo json_encode($slike);
 
       //require_once("views/images/json.php");
