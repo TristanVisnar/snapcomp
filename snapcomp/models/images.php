@@ -350,8 +350,7 @@ class Image{
       mysqli_stmt_bind_param($stmt, "iibidd",$input->ID_USER,$input->ID_SESSION,$input->CONTENT,$input->ID_SUGGESTION,$lat,$long);
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
-      $result = mysqli_stmt_get_result($stmt);
-      var_dump($result);
+      printf("Error: %s.\n", mysqli_stmt_error($stmt));
        mysqli_stmt_close($stmt);
        echo "Slika je bila dodana";
        return;
