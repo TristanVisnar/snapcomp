@@ -222,7 +222,7 @@ class Room{
 	}
 	
 	public function SessionViaRoomID($ID_ROOM){
-		echo "V SESS MODEL";
+		//echo "V SESS MODEL";
 		$db = Db::getInstance();
 		$list = [];
 		//Vpis usera v sejo igre
@@ -232,18 +232,18 @@ class Room{
 			//echo "Uporabnika uspesno dodal v session_user\n";
 			$result = mysqli_stmt_get_result($stmt);
 			$row = mysqli_fetch_assoc($result);
-			var_dump($row);
+			//var_dump($row);
 			//SESSION DATA
 			
 			$list["sessionInfo"] = array("ID" => $row["ID"],"SESSION_DURATION" => $row["SESSION_DURATION"],"DATEOFSTART" => $row["DATEOFSTART"],"ID_SELECTOR" => $row["ID_SELECTOR"],"ID_ROOM" => $row["ID_ROOM"],"ID_SUGGESTION" => $row["ID_SUGGESTION"]);
-			var_dump($list);
+			//var_dump($list);
 		}
-		/*
+		
 		//ARRAY OF USERS
 		//VSI ID_JI OD USERJEV V SEJI
 		$list["ROOMINFO"] = Room::returnSessionData($list["SessionINFO"]->ID);
 		mysqli_stmt_close($stmt);
-		return $list;*/
+		return $list;
 	}
 
 	public function createRoom($name,$id_creator,$privateRoom,$nsfwRoom,$password){

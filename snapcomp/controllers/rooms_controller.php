@@ -42,7 +42,7 @@ class rooms_controller{
 		return $ret;
 	}
 	public function getSessionViaRoomID($request, $input){
-		echo "V KONT FUNK";
+		//echo "V KONT FUNK";
 		Room::SessionViaRoomID($request[2]);
 		header('Content-Type: application/json');
 		echo json_encode($ret);
