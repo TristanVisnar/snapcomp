@@ -198,7 +198,7 @@ class Room{
 		//echo "prisel v sess";
 		$db = Db::getInstance();
 		//echo "ADDER: ".$id_session;
-		//echo "ADDER: ".$id_user;
+		//echo "ADDER: ".$id_user;ASDA
 		//Vpis usera v sejo igre
 		if ($stmt = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
 			mysqli_stmt_bind_param($stmt, "ii",intval($id_user),intval($id_session));
