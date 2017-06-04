@@ -23,7 +23,7 @@ function HaversineFormula()
 		}
 	}
 	
-	print_r($groups);
+	var_dump($groups);
 }
 
 function bestSource(){
