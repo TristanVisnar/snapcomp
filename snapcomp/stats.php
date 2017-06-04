@@ -5,7 +5,7 @@ require_once("./connection.php");
 function HaversineFormula()
 {
 	$db = Db::getInstance();
-	if ($stmt = mysqli_prepare($db, "SELECT COUNT(ID) as CNT FROM (SELECT ID, ( 3959 * acos( cos( radians(?) ) * cos( radians( LATITUDE ) ) * cos( radians( LONGITUDE ) - radians(?) ) + sin( radians(?) ) * sin( radians( LATITUDE ) ) ) ) AS distance FROM PICTURE HAVING distance < 1005) as res order by cnt;"))
+	if ($stmt = mysqli_prepare($db, "SELECT COUNT(ID) as CNT FROM (SELECT ID, ( 3959 * acos( cos( radians(?) ) * cos( radians( LATITUDE ) ) * cos( radians( LONGITUDE ) - radians(?) ) + sin( radians(?) ) * sin( radians( LATITUDE ) ) ) ) AS distance FROM PICTURE HAVING distance < 1005, LIMIT 0 , 20) as res order by cnt;"))
 	{
 		for($latitude = -90; $latitude < 90; $latitude++)
 		{
