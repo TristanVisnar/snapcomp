@@ -244,7 +244,8 @@ class Room{
 		//var_dump($list["sessionInfo"]["ID"]);
 		//echo $list["sessionInfo"]["ID"];
 		$list["ROOMINFO"] = Room::returnSessionData($list["sessionInfo"]["ID"]);
-		Room::addUserToSession($list["sessionInfo"]["ID"],$ID_USER);
+		$ret = Room::addUserToSession($list["sessionInfo"]["ID"],$ID_USER);
+		echo $ret;
 		mysqli_stmt_close($stmt);
 		return $list;
 	}
