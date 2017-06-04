@@ -13,7 +13,7 @@ function HaversineFormula()
 			{
 			
 			//echo "SUGGESTION INFO: ". $suggestion_info;
-				mysqli_stmt_bind_param($stmt, "iii",$latitude, $longitude, $latitude);
+				mysqli_stmt_bind_param($stmt, "ddd",$latitude, $longitude, $latitude);
 				mysqli_stmt_execute($stmt);
 				$result = mysqli_stmt_get_result($stmt);
 				while($row = mysqli_fetch_assoc($result)){
