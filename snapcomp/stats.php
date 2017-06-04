@@ -5,11 +5,11 @@ require_once("./connection.php");
 function HaversineFormula()
 {
 	$db = Db::getInstance();
-	if ($stmt = mysqli_prepare($db, "SELECT COUNT(ID) as CNT FROM (SELECT ID, ( 3959 * acos( cos( radians(?) ) * cos( radians( LATITUDE ) ) * cos( radians( LONGITUDE ) - radians(?) ) + sin( radians(?) ) * sin( radians( LATITUDE ) ) ) ) AS distance FROM PICTURE HAVING distance < 25 ORDER BY distance);"))
+	if ($stmt = mysqli_prepare($db, "SELECT COUNT(ID) as CNT FROM (SELECT ID, ( 3959 * acos( cos( radians(?) ) * cos( radians( LATITUDE ) ) * cos( radians( LONGITUDE ) - radians(?) ) + sin( radians(?) ) * sin( radians( LATITUDE ) ) ) ) AS distance FROM PICTURE HAVING distance < 1005 ORDER BY distance) as res;"))
 	{
-		for($latitude = 0; $latitude < 90; $latitude + 0.4)
+		for($latitude = 0; $latitude < 90; $latitude++)
 		{
-			for($longitude = -180; $longitude < 180; $longitude+ 0.4)
+			for($longitude = -180; $longitude < 180; $longitude++)
 			{
 			
 			//echo "SUGGESTION INFO: ". $suggestion_info;
