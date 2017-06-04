@@ -404,11 +404,9 @@ class Image{
       mysqli_stmt_close($stmt);
       $row = mysqli_fetch_assoc($result);
 
-      echo " 1 \n";
 
       if(!is_null($row)){
 
-        echo " 2 \n";
         //var_dump($row);
         //VSTAVI nov ENDOFSESSION
         if ($stmt2 = mysqli_prepare($db, "INSERT INTO ENDOFSESSION(ID_WINNER,ID_SELECTOR,ID_WINNING_PIC,ID_ROOM,DATEOFSTART,SESSIONDURATION) VALUES (?,?,?,?,?,90);" )) {
@@ -418,7 +416,6 @@ class Image{
             mysqli_stmt_execute($stmt2);
             $result2 = mysqli_stmt_get_result($stmt2);
             $id_novega_endofsessiona = mysqli_insert_id($db);
-            echo " 3: $id_novega_endofsessiona \n";
             mysqli_stmt_close($stmt2);
         }
       }
@@ -427,7 +424,6 @@ class Image{
       }
     }
 
-    echo " 4 \n";
     //ODSTRANI SLIKE IZ SESSIONA
     if($stmt = mysqli_prepare($db,"UPDATE PICTURE SET ID_SESSION = NULL WHERE ID_SESSION=?;")){
       mysqli_stmt_bind_param($stmt,"i",$session_id);
@@ -438,13 +434,11 @@ class Image{
 
     //VRNE PODATKE ZMAGOVALNE SLIKE
     if($id_novega_endofsessiona != 0 && $id_novega_endofsessiona != NULL){
-      echo " 5 \n";
       if($stmt = mysqli_prepare($db,"SELECT w.USERNAME as WINNER, s.USERNAME as SELECTOR, sug.INFO, p.CONTENT FROM PICTURE as p,ENDOFSESSION as e,UPORABNIK as w,UPORABNIK as s,SUGGESTION as sug WHERE e.ID=? and p.ID=e.ID_WINNING_PIC and e.ID_WINNER = w.ID and e.ID_SELECTOR=s.ID and p.ID_SUGGESTION = sug.ID;")){
         mysqli_stmt_bind_param($stmt,"i",$id_novega_endofsessiona);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         mysqli_stmt_close($stmt);
-        echo " 6 \n";
         $row = mysqli_fetch_assoc($result);
         $output = array("WINNER"=>$row["WINNER"],"SELECTOR"=>$row["SELECTOR"],"INFO"=>$row["INFO"],"CONTENT"=>''.base64_encode($row["CONTENT"]));
       }
