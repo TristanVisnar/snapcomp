@@ -223,7 +223,7 @@ class Room{
 	
 	public function SessionViaRoomID($ID_ROOM){
 		echo "V SESS MODEL";
-		/*$db = Db::getInstance();
+		$db = Db::getInstance();
 		//Vpis usera v sejo igre
 		if ($stmt = mysqli_prepare($db, "SELECT * FROM SESSION WHERE ID = (SELECT MAX(ID) FROM SESSION WHERE ID_ROOM = ?)")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($ID_ROOM));
@@ -232,8 +232,14 @@ class Room{
 			$result = mysqli_stmt_get_result($stmt);
 			$row = mysqli_fetch_assoc($result);
 			//SESSION DATA
-			$list["SessionINFO"] = array("ID" => row["ID"],"SESSION_DURATION" =>row["SESSION_DURATION"],"DATEOFSTART" => row["DATEOFSTART"],"ID_SELECTOR" =>row["ID_SELECTOR"],"ID_ROOM" => row["ID_ROOM"],"ID_SUGGESTION" =>row["ID_SUGGESTION"]);
+			$list["SessionINFO"] = array("ID" => row["ID"],
+										"SESSION_DURATION" =>row["SESSION_DURATION"],
+										"DATEOFSTART" => row["DATEOFSTART"],
+										"ID_SELECTOR" =>row["ID_SELECTOR"],
+										"ID_ROOM" => row["ID_ROOM"],
+										"ID_SUGGESTION" => row["ID_SUGGESTION"]);
 		}
+		/*
 		//ARRAY OF USERS
 		//VSI ID_JI OD USERJEV V SEJI
 		$list["ROOMINFO"] = Room::returnSessionData($list["SessionINFO"]->ID);
