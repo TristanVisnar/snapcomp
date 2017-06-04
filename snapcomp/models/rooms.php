@@ -195,8 +195,10 @@ class Room{
 	}
 	
 	public function addUserToSession($id_session,$id_user){
-		//echo "prisel v sess";
+		echo "prisel v sess";
 		$db = Db::getInstance();
+		echo "ADDER: ".$id_session;
+		echo "ADDER: ".$id_user;
 		//Vpis usera v sejo igre
 		if ($stmt = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
 			mysqli_stmt_bind_param($stmt, "ii",intval($id_user),intval($id_session));
@@ -245,6 +247,7 @@ class Room{
 		echo $list["sessionInfo"]["ID"];
 		$list["ROOMINFO"] = Room::returnSessionData($list["sessionInfo"]["ID"]);
 		$ret = Room::addUserToSession($list["sessionInfo"]["ID"],intval($ID_USER));
+		
 		//echo $list["sessionInfo"]["ID"],$ID_USER;
 		mysqli_stmt_close($stmt);
 		return $list;
