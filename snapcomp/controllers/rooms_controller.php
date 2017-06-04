@@ -71,7 +71,7 @@ class rooms_controller{
 			rooms_controller::updateSessionTheme($request,$input);
 		}
 		elseif($request[1]=="sessionViaRoomID"){
-			rooms_controller::updateSessionTheme($request,$input);
+			rooms_controller::getSessionViaRoomID($request,$input);
 		}
 	}
 	 public function postAPI($request,$input){
