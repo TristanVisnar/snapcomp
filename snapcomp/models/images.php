@@ -415,7 +415,9 @@ class Image{
             mysqli_stmt_execute($stmt2);
             $result2 = mysqli_stmt_get_result($stmt2);
             $query = "SELECT ID FROM ENDOFSESSION where ID_WINNING_PIC=".$row['ID_WINNING_PIC'];
-            $id_novega_endofsessiona = mysqli_query($db,$query);
+            $res= mysqli_query($db,$query);
+            $id_novega_endofsessiona = $res["ID"];
+
             mysqli_stmt_close($stmt2);
         }
       }
@@ -437,7 +439,7 @@ class Image{
     if($id_novega_endofsessiona != 0 && $id_novega_endofsessiona != NULL){
 
       if($stmt = mysqli_prepare($db,"SELECT w.USERNAME as WINNER, s.USERNAME as SELECTOR, sug.INFO, p.CONTENT FROM PICTURE as p,ENDOFSESSION as e,UPORABNIK as w,UPORABNIK as s,SUGGESTION as sug WHERE e.ID=? and p.ID=e.ID_WINNING_PIC and e.ID_WINNER = w.ID and e.ID_SELECTOR=s.ID and p.ID_SUGGESTION = sug.ID;")){
-        mysqli_stmt_bind_param($stmt,"i",$session_id);
+        mysqli_stmt_bind_param($stmt,"i",$id_novega_endofsessiona);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         mysqli_stmt_close($stmt);
