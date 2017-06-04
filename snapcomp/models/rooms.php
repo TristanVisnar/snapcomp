@@ -241,7 +241,8 @@ class Room{
 		
 		//ARRAY OF USERS
 		//VSI ID_JI OD USERJEV V SEJI
-		$list["ROOMINFO"] = Room::returnSessionData($list["SessionINFO"]->ID);
+		echo $list["sessionInfo"]->ID;
+		$list["ROOMINFO"] = Room::returnSessionData($list["sessionInfo"]->ID);
 		mysqli_stmt_close($stmt);
 		return $list;
 	}
