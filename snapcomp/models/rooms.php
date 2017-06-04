@@ -222,14 +222,14 @@ class Room{
 	}
 	
 	public function SessionViaRoomID($ID_ROOM, $ID_USER){
-		//echo "V SESS MODEL";
+		echo "V SESS MODEL";
 		$db = Db::getInstance();
 		$list = [];
 		//Vpis usera v sejo igre
 		if ($stmt = mysqli_prepare($db, "SELECT * FROM SESSION WHERE ID = (SELECT MAX(ID) FROM SESSION WHERE ID_ROOM = ?)")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($ID_ROOM));
 			mysqli_stmt_execute($stmt);
-			//echo "Uporabnika uspesno dodal v session_user\n";
+			echo "Uporabnika uspesno dodal v session_user\n";
 			$result = mysqli_stmt_get_result($stmt);
 			$row = mysqli_fetch_assoc($result);
 			//var_dump($row);
@@ -242,7 +242,7 @@ class Room{
 		//ARRAY OF USERS
 		//VSI ID_JI OD USERJEV V SEJI
 		//var_dump($list["sessionInfo"]["ID"]);
-		//echo $list["sessionInfo"]["ID"];
+		echo $list["sessionInfo"]["ID"];
 		$list["ROOMINFO"] = Room::returnSessionData($list["sessionInfo"]["ID"]);
 		$ret = Room::addUserToSession($list["sessionInfo"]["ID"],intval($ID_USER));
 		//echo $list["sessionInfo"]["ID"],$ID_USER;
