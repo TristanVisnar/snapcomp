@@ -221,7 +221,7 @@ class Room{
 		echo "Uporabnik je zapustil sobo!";
 	}
 	
-	public function SessionViaRoomID($ID_ROOM){
+	public function SessionViaRoomID($ID_ROOM, $ID_USER){
 		//echo "V SESS MODEL";
 		$db = Db::getInstance();
 		$list = [];
@@ -244,6 +244,7 @@ class Room{
 		//var_dump($list["sessionInfo"]["ID"]);
 		//echo $list["sessionInfo"]["ID"];
 		$list["ROOMINFO"] = Room::returnSessionData($list["sessionInfo"]["ID"]);
+		Room::addUserToSession($list["sessionInfo"]["ID"],$ID_USER);
 		mysqli_stmt_close($stmt);
 		return $list;
 	}
