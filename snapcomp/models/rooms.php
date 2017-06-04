@@ -207,6 +207,7 @@ class Room{
 		  $result = mysqli_stmt_get_result();
       if($result){echo "Podvaja podatek\n";}
       else{
+        echo "Nov podatek \n";
     		if ($stmt2 = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
     			mysqli_stmt_bind_param($stmt2, "ii",intval($id_user),intval($id_session));
     			mysqli_stmt_execute($stmt2);
