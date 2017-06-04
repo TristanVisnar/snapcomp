@@ -203,14 +203,14 @@ class Room{
     if ($stmt = mysqli_prepare($db, "SELECT 1 FROM USER_IN_SESSION where ID_USER=? and ID_SESSION=?")) {
 			mysqli_stmt_bind_param($stmt, "ii",intval($id_user),intval($id_session));
 			mysqli_stmt_execute($stmt);
-			//echo "Uporabnika uspesno dodal v session_user\n";
+
 		  $result = mysqli_stmt_get_result();
-      if($row = mysqli_fetch_assoc($result)){/*podvajanje podatkov*/}
+      if($result){echo "Podvaja podatek\n";}
       else{
     		if ($stmt2 = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
     			mysqli_stmt_bind_param($stmt2, "ii",intval($id_user),intval($id_session));
     			mysqli_stmt_execute($stmt2);
-    			//echo "Uporabnika uspesno dodal v session_user\n";
+    			echo "Uporabnika uspesno dodal v session_user\n";
     		}
       }
 
