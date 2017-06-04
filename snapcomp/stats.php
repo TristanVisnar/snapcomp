@@ -26,18 +26,18 @@ function HaversineFormula()
 	print_r($groups);
 }
 
-function bestSource()
+function bestSource(){
 //REATE TEMPORARY TABLE IF NOT EXISTS AS temp (SELECT DISTINCT SOURCE FROM SUGGESTION)"{			
 
 	$sql = "SELECT DISTINCT SOURCE from SUGGESTION";
 	$db = Db::getInstance();
-	if ($stmt = mysqli_prepare($db, $sql)
+	if ($stmt = mysqli_prepare($db, $sql))
 	{
 		//echo "SUGGESTION INFO: ". $suggestion_info;
 		mysqli_stmt_bind_param($stmt);
 		mysqli_stmt_execute($stmt);
 		$result = mysqli_stmt_get_result($stmt);
-		if ($stmt2 = mysqli_prepare($db, "SELECT COUNT(*) as num FROM SUGGESTION WhERE SOURCE =?")
+		if ($stmt2 = mysqli_prepare($db, "SELECT COUNT(*) as num FROM SUGGESTION WhERE SOURCE =?"))
 		{
 			while($row = mysqli_fetch_assoc($result)){
 				//0cho "SUGGESTION INFO: ". $suggestion_info;
