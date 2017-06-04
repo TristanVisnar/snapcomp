@@ -226,7 +226,7 @@ class Room{
 		$db = Db::getInstance();
 		//Vpis usera v sejo igre
 		if ($stmt = mysqli_prepare($db, "SELECT * FROM SESSION WHERE ID = (SELECT MAX(ID) FROM SESSION WHERE ID_ROOM = ?)")) {
-			mysqli_stmt_bind_param($stmt, "i",intval($ID_ROOM));
+			/*mysqli_stmt_bind_param($stmt, "i",intval($ID_ROOM));
 			mysqli_stmt_execute($stmt);
 			//echo "Uporabnika uspesno dodal v session_user\n";
 			$result = mysqli_stmt_get_result($stmt);
@@ -238,6 +238,7 @@ class Room{
 										"ID_SELECTOR" =>row["ID_SELECTOR"],
 										"ID_ROOM" => row["ID_ROOM"],
 										"ID_SUGGESTION" => row["ID_SUGGESTION"]);
+										*/
 		}
 		/*
 		//ARRAY OF USERS
