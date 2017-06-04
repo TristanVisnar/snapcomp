@@ -1,5 +1,7 @@
 <?php 
 
+require_once("./connection.php");
+
 function HaversineFormula()
 {
 	$db = Db::getInstance();
@@ -49,4 +51,12 @@ function bestSource()
 		}
 	}
 }
+
+echo "Haversin: \n";
+echo HaversineFormula();
+echo "<br>";
+echo "Best Source: \n";
+echo BestSource();
+
+
 ?>
