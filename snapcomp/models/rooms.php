@@ -231,6 +231,7 @@ class Room{
 			//echo "Uporabnika uspesno dodal v session_user\n";
 			$result = mysqli_stmt_get_result($stmt);
 			$row = mysqli_fetch_assoc($result);
+			var_dump($row);
 			//SESSION DATA
 			/*$list["SessionINFO"] = array("ID" => row["ID"],
 										"SESSION_DURATION" =>row["SESSION_DURATION"],
