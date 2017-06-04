@@ -23,6 +23,8 @@ function HaversineFormula()
 		}
 	}
 	
+	array_multisort(array_column($groups, 'COUNT'), SORT_DESC, $groups);
+	
 	var_dump($groups);
 }
 
