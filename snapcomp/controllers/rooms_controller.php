@@ -8,17 +8,18 @@ class rooms_controller{
 		return $res;
 	}
 
+	//http://164.8.230.124/tmp/snapcomp/api.php/rooms/sessionData/:session_id/
 	public function sessionData($request,$input){
 		$info = Room::returnSessionData($request[2]);
 		echo json_encode($info);
 	}
-	
+
 	public function leaveSession($request,$input){
 		//Izpise iz seje z idjem $request[2] uporabnika z idjem $request[3]
 		Room::leaveSession($request[2], $request[3]);
 		echo "True";
 	}
-	
+
 	public function enterSession($request, $input){
 		//Vpise v sejo idjem $request[2] uporabnika z idjem $request[3]
 		$info = Room::addUserToSession($request[2],$request[3]);
@@ -51,6 +52,7 @@ class rooms_controller{
 	public function getAPI($request,$input){
 		//echo "Dostop do apija";
 		//Vnos uporabnika v sejo oz sobo, ter vračanje podatkov o seji
+		//Vhod ID_SESSION
 		if($request[1]=="sessionData"){
 			//echo "prehajam v sessions";
 			rooms_controller::sessionData($request,$input);
