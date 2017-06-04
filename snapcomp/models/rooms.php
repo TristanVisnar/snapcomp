@@ -220,7 +220,7 @@ class Room{
 		mysqli_stmt_close($stmt);
 		echo "Uporabnik je zapustil sobo!";
 	}
-	
+	/*
 	public function SessionViaRoomID($ID_ROOM){
 		echo "V SESS MODEL";
 		$db = Db::getInstance();
@@ -240,7 +240,7 @@ class Room{
 		mysqli_stmt_close($stmt);
 		return $list;
 	}
-	
+	*/
 	public function createRoom($name,$id_creator,$privateRoom,$nsfwRoom,$password){
 		$db = Db::getInstance();
 		//Vpis usera v sejo igre
