@@ -8,22 +8,23 @@ class rooms_controller{
 		return $res;
 	}
 
+	//http://164.8.230.124/tmp/snapcomp/api.php/rooms/sessionData/:session_id/
 	public function sessionData($request,$input){
 		$info = Room::returnSessionData($request[2]);
 		echo json_encode($info);
 	}
-	
+
 	public function leaveSession($request,$input){
 		//Izpise iz seje z idjem $request[2] uporabnika z idjem $request[3]
 		Room::leaveSession($request[2], $request[3]);
 		echo "True";
 	}
-	
+
 	public function enterSession($request, $input){
 		//Vpise v sejo idjem $request[2] uporabnika z idjem $request[3]
 		$info = Room::addUserToSession($request[2],$request[3]);
 		//info so informacije o seji, v katero vstavimo uporabnika
-		echo $info;
+		return $info;
 	}
 	public function updateSessionTheme($request, $input){
 		$info = Room::updateSessionTheme($request[2],$request[3]);
@@ -35,10 +36,23 @@ class rooms_controller{
 		$ret= Room::createRoom($input->NAME,$input->ID_CREATOR,$input->PRIVATEROOM,$input->NSFWROOM,$input->PASSWORD);
 		return $ret;
 	}
+	//$sessionDuration, $id_selectorja, $id_room, $id_suggestion
+	public function createSession($request, $input){
+		//echo "v controler funkciji";
+		$ret = Room::createSession($input->SESSION_DURATION, $input->ID_SELECTOR, $input->ID_ROOM, $input->ID_SUGGESTION);
+		return $ret;
+	}
+	public function getSessionViaRoomID($request, $input){
+		//echo "V KONT FUNK";
+		$ret = Room::SessionViaRoomID($request[2]);
+		header('Content-Type: application/json');
+		echo json_encode($ret);
+	}
 
 	public function getAPI($request,$input){
 		//echo "Dostop do apija";
 		//Vnos uporabnika v sejo oz sobo, ter vračanje podatkov o seji
+		//Vhod ID_SESSION
 		if($request[1]=="sessionData"){
 			//echo "prehajam v sessions";
 			rooms_controller::sessionData($request,$input);
@@ -49,13 +63,18 @@ class rooms_controller{
 			require_once("views/rooms/json.php");
 		}
 		elseif($request[1]=="enterSession"){
-			rooms_controller::enterSession($request, $input);
+			$ret = rooms_controller::enterSession($request, $input);
+			header('Content-Type: application/json');
+			echo json_encode($ret);
 		}
 		elseif($request[1]=="leaveSession"){
 			rooms_controller::leaveSession($request,$input);
 		}
 		elseif($request[1]=="sessionTheme"){
 			rooms_controller::updateSessionTheme($request,$input);
+		}
+		elseif($request[1]=="sessionViaRoomID"){
+			rooms_controller::getSessionViaRoomID($request,$input);
 		}
 	}
 	 public function postAPI($request,$input){
@@ -64,6 +83,12 @@ class rooms_controller{
 			header('Content-Type: application/json');
 			echo $id;
 			//echo json_encode($id);
+		}
+		if($request[1]=="createSession"){
+			$id = rooms_controller::createSession($request,$input);
+			header('Content-Type: application/json');
+			//echo $id;
+			echo json_encode($id);
 		}
     }
 

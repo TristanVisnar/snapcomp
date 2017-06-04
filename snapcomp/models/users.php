@@ -182,7 +182,6 @@ echo "Error!  ";
 
       $db = Db::getInstance();
       if ($stmt = mysqli_prepare($db, "INSERT into UPORABNIK (EMAIL,ACCNAME,USERNAME,PASS,DATEOFBIRTH,FIRSTNAME,SURNAME,COUNTRY,LANG,GENDER,NUMOFPOSTS,NUMOFWINS) Values (?,?,?,?,?,?,?,?,?,?,0,0);")) {
-
 			    mysqli_stmt_bind_param($stmt, "sssssssssi",$EMAIL,$ACC_NAME,$USERNAME,$PASS,$DATEOFBIRTH,$FIRSTNAME,$SURNAME,$COUNTRY,$LANG,$GENDER);
 			   //izvedemo poizvedbo
 			    mysqli_stmt_execute($stmt);
