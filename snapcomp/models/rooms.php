@@ -227,12 +227,12 @@ class Room{
 		//Vpis usera v sejo igre
 		if ($stmt = mysqli_prepare($db, "SELECT * FROM SESSION WHERE ID = (SELECT MAX(ID) FROM SESSION WHERE ID_ROOM = ?)")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($ID_ROOM));
-			/*mysqli_stmt_execute($stmt);
+			mysqli_stmt_execute($stmt);
 			//echo "Uporabnika uspesno dodal v session_user\n";
 			$result = mysqli_stmt_get_result($stmt);
 			$row = mysqli_fetch_assoc($result);
 			//SESSION DATA
-			$list["SessionINFO"] = array("ID" => row["ID"],
+			/*$list["SessionINFO"] = array("ID" => row["ID"],
 										"SESSION_DURATION" =>row["SESSION_DURATION"],
 										"DATEOFSTART" => row["DATEOFSTART"],
 										"ID_SELECTOR" =>row["ID_SELECTOR"],
