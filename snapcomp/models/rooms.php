@@ -222,6 +222,7 @@ class Room{
 	}
 	
 	public function SessionViaRoomID($ID_ROOM){
+		echo "V SESS MODEL";
 		$db = Db::getInstance();
 		//Vpis usera v sejo igre
 		if ($stmt = mysqli_prepare($db, "SELECT * FROM SESSION WHERE ID = (SELECT MAX(ID) FROM SESSION WHERE ID_ROOM = ?)")) {
