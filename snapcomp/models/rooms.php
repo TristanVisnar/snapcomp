@@ -207,7 +207,7 @@ class Room{
 		  $result = mysqli_stmt_get_result();
       mysqli_stmt_close($stmt);
       //var_dump($result);
-      if($result){}//echo "Podvaja podatek\n";}
+      if($row = mysqli_fetch_assoc($result)){}//echo "Podvaja podatek\n";}
       else{
         //echo "Nov podatek \n";
     		if ($stmt2 = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
