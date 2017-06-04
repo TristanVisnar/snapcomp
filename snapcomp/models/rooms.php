@@ -205,6 +205,8 @@ class Room{
 			mysqli_stmt_execute($stmt);
 
 		  $result = mysqli_stmt_get_result();
+      mysqli_stmt_close($stmt);
+      var_dump($result);
       if($result){echo "Podvaja podatek\n";}
       else{
         echo "Nov podatek \n";
@@ -212,10 +214,11 @@ class Room{
     			mysqli_stmt_bind_param($stmt2, "ii",intval($id_user),intval($id_session));
     			mysqli_stmt_execute($stmt2);
     			echo "Uporabnika uspesno dodal v session_user\n";
+
+          mysqli_stmt_close($stmt2);
     		}
       }
 
-		mysqli_stmt_close($stmt);
     }
   	$list["ROOMINFO"] = Room::returnSessionData($id_session);
 		return $list;
