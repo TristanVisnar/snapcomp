@@ -241,9 +241,8 @@ class Room{
 		
 		//ARRAY OF USERS
 		//VSI ID_JI OD USERJEV V SEJI
-		echo $list->sessionInfo->ID;
-		var_dump($list->sessionInfo->ID);
-		echo $list;
+		var_dump($list["sessionInfo"]);
+		echo "sessINFODUMP";
 		$list["ROOMINFO"] = Room::returnSessionData($list["sessionInfo"]->ID);
 		mysqli_stmt_close($stmt);
 		return $list;
