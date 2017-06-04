@@ -233,13 +233,8 @@ class Room{
 			$row = mysqli_fetch_assoc($result);
 			var_dump($row);
 			//SESSION DATA
-			/*$list["SessionINFO"] = array("ID" => row["ID"],
-										"SESSION_DURATION" =>row["SESSION_DURATION"],
-										"DATEOFSTART" => row["DATEOFSTART"],
-										"ID_SELECTOR" =>row["ID_SELECTOR"],
-										"ID_ROOM" => row["ID_ROOM"],
-										"ID_SUGGESTION" => row["ID_SUGGESTION"]);
-										*/
+			$list["SessionINFO"] = array("ID" => row["ID"],"SESSION_DURATION" =>row["SESSION_DURATION"],"DATEOFSTART" => row["DATEOFSTART"],"ID_SELECTOR" =>row["ID_SELECTOR"],"ID_ROOM" => row["ID_ROOM"],"ID_SUGGESTION" => row["ID_SUGGESTION"]);
+			var_dump($list);
 		}
 		/*
 		//ARRAY OF USERS
