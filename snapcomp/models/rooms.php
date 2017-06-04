@@ -220,10 +220,10 @@ class Room{
 		mysqli_stmt_close($stmt);
 		echo "Uporabnik je zapustil sobo!";
 	}
-	/
+	
 	public function SessionViaRoomID($ID_ROOM){
 		echo "V SESS MODEL";
-		/*$db = Db::getInstance();
+		$db = Db::getInstance();
 		//Vpis usera v sejo igre
 		if ($stmt = mysqli_prepare($db, "SELECT * FROM SESSION WHERE ID = (SELECT MAX(ID) FROM SESSION WHERE ID_ROOM = ?)")) {
 			mysqli_stmt_bind_param($stmt, "i",intval($ID_ROOM));
@@ -238,9 +238,9 @@ class Room{
 		//VSI ID_JI OD USERJEV V SEJI
 		$list["ROOMINFO"] = Room::returnSessionData($list["SessionINFO"]->ID);
 		mysqli_stmt_close($stmt);
-		return $list; */
+		return $list;
 	}
-	*/
+
 	public function createRoom($name,$id_creator,$privateRoom,$nsfwRoom,$password){
 		$db = Db::getInstance();
 		//Vpis usera v sejo igre
