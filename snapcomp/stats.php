@@ -9,7 +9,7 @@ function HaversineFormula()
 	{
 		for($latitude = 0; $latitude < 90; $latitude++)
 		{
-			for($longitude = 180; $longitude < -180; $longitude++)
+			for($longitude = -180; $longitude < 180; $longitude++)
 			{
 			
 			//echo "SUGGESTION INFO: ". $suggestion_info;
