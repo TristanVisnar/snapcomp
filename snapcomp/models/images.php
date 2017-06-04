@@ -417,10 +417,7 @@ class Image{
 
             mysqli_stmt_execute($stmt2);
             $result2 = mysqli_stmt_get_result($stmt2);
-            $query = "SELECT ID FROM ENDOFSESSION where ID_WINNING_PIC=".$row['ID_WINNING_PIC'];
-            $res= mysql_query($db,$query);
-
-            $id_novega_endofsessiona = intval($res["ID"]);
+            $id_novega_endofsessiona = mysqli_insert_id($db);
             echo " 3: $id_novega_endofsessiona \n";
             mysqli_stmt_close($stmt2);
         }
