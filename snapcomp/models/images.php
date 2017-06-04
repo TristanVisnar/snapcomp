@@ -414,7 +414,7 @@ class Image{
 
             mysqli_stmt_execute($stmt2);
             $result2 = mysqli_stmt_get_result($stmt2);
-              $id_novega_endofsessiona = mysqli_insert_id($db); //nevem če funkcija dela
+            $id_novega_endofsessiona = mysqli_query($db,"SELECT ID FROM ENDOFSESSION where ID_WINNING_PIC=$row['ID_WINNING_PIC']");
             mysqli_stmt_close($stmt2);
         }
       }
