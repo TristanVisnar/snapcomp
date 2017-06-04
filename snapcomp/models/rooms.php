@@ -27,7 +27,7 @@ class Room{
       $this->ID_CREATOR =$ID_CREATOR;
       $this->ID_SESSION = $ID_SESSION;
     }
-	
+
 	public function numOfUsersInSession($id_session){
 		$db = Db::getInstance();
 		//Izpise usernamein id za vsakega userja v dodani seji
@@ -40,7 +40,7 @@ class Room{
 			return $row3["numOfUsers"];
 		}
 	}
-	
+
 	//private = 0/1 nswf = 0/1 full = 0/1 (vrne sobe z manj kot 10, ali sobe tut z 10) sortbydate = 0, else sort by name
     public function all($private,$nsfw,$dateorname){
 		//echo "V allu";
@@ -72,10 +72,10 @@ class Room{
 			mysqli_stmt_close($stmt);
 			//var_dump($list);
 			return $list;
-		}	
+		}
     }
 	//Vračanje podatkov za določeno sobo ( v kater se logina uporabnik)
-	
+
 	public function updateSessionTheme($id_session, $suggestion_info){
 		$db = Db::getInstance();
 		//echo "SUGGESTION INFO: ". $suggestion_info;
@@ -86,7 +86,7 @@ class Room{
 		}
 		return "Updated row with id ".$id_session." in SESSION with entry ".$suggestion_info;
 	}
-	
+
 	public function returnSessionData($id_session){
 		$db = Db::getInstance();
 		$list = [];
@@ -174,7 +174,7 @@ class Room{
 		$list["NumOfPlayers"] = Room::numOfUsersInSession($id_session);
 		return $list;
 	}
-	
+
 	public function createSession($sessionDuration, $id_selectorja, $id_room, $id_suggestion){
 		$db = Db::getInstance();
 		//Vpis usera v sejo igre
@@ -184,33 +184,43 @@ class Room{
 			mysqli_stmt_execute($stmt);
 			//echo "v iffu";
 			$last_id = mysqli_insert_id($db);
-			$list['SESSION_ID'] = $last_id; 
+			$list['SESSION_ID'] = $last_id;
 			//echo $last_id;
-		}	
+		}
 		mysqli_stmt_close($stmt);
 		$list["ROOMINFO"] = Room::returnSessionData($last_id);
 		//echo "konec!";
 		//var_dump($list);
 		return $list;
 	}
-	
+
 	public function addUserToSession($id_session,$id_user){
 		//echo "prisel v sess";
 		$db = Db::getInstance();
 		//echo "ADDER: ".$id_session;
 		//echo "ADDER: ".$id_user;ASDA
 		//Vpis usera v sejo igre
-		if ($stmt = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
+    if ($stmt = mysqli_prepare($db, "SELECT 1 FROM USER_IN_SESSION where ID_USER=? and ID_SESSION=?")) {
 			mysqli_stmt_bind_param($stmt, "ii",intval($id_user),intval($id_session));
 			mysqli_stmt_execute($stmt);
 			//echo "Uporabnika uspesno dodal v session_user\n";
-		}	
+		  $result = mysqli_stmt_get_result();
+      if($row = mysqli_fetch_assoc($result)){/*podvajanje podatkov*/}
+      else{
+    		if ($stmt2 = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
+    			mysqli_stmt_bind_param($stmt2, "ii",intval($id_user),intval($id_session));
+    			mysqli_stmt_execute($stmt2);
+    			//echo "Uporabnika uspesno dodal v session_user\n";
+    		}
+      }
+
 		mysqli_stmt_close($stmt);
-		$list["ROOMINFO"] = Room::returnSessionData($id_session);
+    }
+  	$list["ROOMINFO"] = Room::returnSessionData($id_session);
 		return $list;
 		//Izpise usernamein id za vsakega userja v dodani seji
 	}
-	
+
 	public function leaveSession($id_session,$id_user){
 		$db = Db::getInstance();
 		//Vpis usera v sejo igre
@@ -218,11 +228,11 @@ class Room{
 			mysqli_stmt_bind_param($stmt, "ii",intval($id_user),intval($id_session));
 			mysqli_stmt_execute($stmt);
 			//echo "Uporabnika uspesno dodal v session_user\n";
-		}	
+		}
 		mysqli_stmt_close($stmt);
 		echo "Uporabnik je zapustil sobo!";
 	}
-	
+
 	public function SessionViaRoomID($ID_ROOM, $ID_USER){
 		//echo "V SESS MODEL";
 		$db = Db::getInstance();
@@ -236,18 +246,18 @@ class Room{
 			$row = mysqli_fetch_assoc($result);
 			//var_dump($row);
 			//SESSION DATA
-			
+
 			$list["sessionInfo"] = array("ID" => $row["ID"],"SESSION_DURATION" => $row["SESSION_DURATION"],"DATEOFSTART" => $row["DATEOFSTART"],"ID_SELECTOR" => $row["ID_SELECTOR"],"ID_ROOM" => $row["ID_ROOM"],"ID_SUGGESTION" => $row["ID_SUGGESTION"]);
 			//var_dump($list);
 		}
-		
+
 		//ARRAY OF USERS
 		//VSI ID_JI OD USERJEV V SEJI
 		//var_dump($list["sessionInfo"]["ID"]);
 		//echo $list["sessionInfo"]["ID"];
 		$list["ROOMINFO"] = Room::returnSessionData($list["sessionInfo"]["ID"]);
 		$ret = Room::addUserToSession($list["sessionInfo"]["ID"],$ID_USER);
-		
+
 		//echo $list["sessionInfo"]["ID"],$ID_USER;
 		mysqli_stmt_close($stmt);
 		return $list;
@@ -271,6 +281,5 @@ class Room{
 		//echo "Error";
 	}
 }
-
 
  ?>
