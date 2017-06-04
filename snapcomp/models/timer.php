@@ -19,8 +19,6 @@ class Timer{
     return "error: not prepared";
 
   }
-
-
 }
 
 
