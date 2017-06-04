@@ -41,6 +41,11 @@ class rooms_controller{
 		$ret = Room::createSession($input->SESSION_DURATION, $input->ID_SELECTOR, $input->ID_ROOM, $input->ID_SUGGESTION);
 		return $ret;
 	}
+	public function getSessionViaRoomID($request, $input){
+		$ret = ROOM::SessionViaRoomID($request[2]);
+		header('Content-Type: application/json');
+		echo json_encode($ret);
+	}
 
 	public function getAPI($request,$input){
 		//echo "Dostop do apija";
@@ -63,6 +68,9 @@ class rooms_controller{
 			rooms_controller::leaveSession($request,$input);
 		}
 		elseif($request[1]=="sessionTheme"){
+			rooms_controller::updateSessionTheme($request,$input);
+		}
+		elseif($request[1]=="sessionViaRoomID"){
 			rooms_controller::updateSessionTheme($request,$input);
 		}
 	}
