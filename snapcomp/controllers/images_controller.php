@@ -39,6 +39,27 @@ class images_controller{
   // vhod $_
   public function browse(){
 
+      if(!isset($_SESSION['ImageIndex']))
+        $_SESSION['ImageIndex']=0;
+      $steviloDodatnihSlik = 15;
+      $sort = "top";
+      if(isset($_GET['sort'])){
+        $sort=$_GET['sort'];
+      }
+
+      $nsfw = 0;
+      if(isset($_SESSION['NSFW'])){
+        $nsfw = $_SESSION['NSFW'];
+      }
+
+
+
+      $slike = Image::getXImages($_SESSION['ImageIndex'],$steviloDodatnihSlik,$sort,$nsfw);
+      $_SESSION['ImageIndex']+=$steviloDodatnihSlik;
+
+      images_controller::show($slike);
+
+/*
       $steviloDodatnihSlik = 15;
 
       //če je kategorija označena
@@ -88,6 +109,7 @@ class images_controller{
         }
         $_SESSION['ImageIndex']=$_SESSION['ImageIndex']+$steviloDodatnihSlik;
       }
+*/
   }
 
   // prikaze slike uporabnika
