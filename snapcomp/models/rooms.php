@@ -207,7 +207,7 @@ class Room{
 		  $result = mysqli_stmt_get_result();
 
       var_dump($result);
-      if(echo mysqli_fetch_assoc($result)){
+      if(mysqli_fetch_assoc($result)){
       mysqli_stmt_close($stmt);}//echo "Podvaja podatek\n";}
       else{
 
