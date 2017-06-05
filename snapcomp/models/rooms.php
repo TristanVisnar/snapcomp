@@ -197,8 +197,8 @@ class Room{
 	public function addUserToSession($id_session,$id_user){
 		//echo "prisel v sess";
 		$db = Db::getInstance();
-		//echo "ADDER: ".$id_session;
-		//echo "ADDER: ".$id_user;ASDA
+		echo "ADDER: ".$id_session;
+		echo "ADDER: ".$id_user;
 		//Vpis usera v sejo igre
     if ($stmt = mysqli_prepare($db, "SELECT 1 FROM USER_IN_SESSION where ID_USER=? and ID_SESSION=?")) {
 			mysqli_stmt_bind_param($stmt, "ii",intval($id_user),intval($id_session));
@@ -206,17 +206,17 @@ class Room{
 
 		  $result = mysqli_stmt_get_result();
 
-      //var_dump($result);
-      if(mysqli_fetch_assoc($result)){
+      var_dump($result);
+      if(echo mysqli_fetch_assoc($result)){
       mysqli_stmt_close($stmt);}//echo "Podvaja podatek\n";}
       else{
 
         mysqli_stmt_close($stmt);
-        //echo "Nov podatek \n";
+        echo "Nov podatek \n";
     		if ($stmt2 = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
     			mysqli_stmt_bind_param($stmt2, "ii",intval($id_user),intval($id_session));
     			mysqli_stmt_execute($stmt2);
-    			//echo "Uporabnika uspesno dodal v session_user\n";
+    			echo "Uporabnika uspesno dodal v session_user\n";
 
           mysqli_stmt_close($stmt2);
     		}
