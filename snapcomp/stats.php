@@ -95,12 +95,7 @@ function ovrednotiSelectorRating(){
 	}
 }
 
-	$tmp = array();
-	foreach ($list as $l)
-	{
-	    $tmp[$key] = $l['LIKE_DISLIKE'];
-	}
-	array_multisort($tmp, SORT_DESC, $list);
+	array_multisort(array_column($list, 'LIKES_DISLIKES'), SORT_DESC, $list);
 
 	return json_encode($list);
 
