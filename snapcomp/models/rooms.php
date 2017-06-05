@@ -205,10 +205,13 @@ class Room{
 			mysqli_stmt_execute($stmt);
 
 		  $result = mysqli_stmt_get_result();
-      mysqli_stmt_close($stmt);
+
       //var_dump($result);
-      if($row = mysqli_fetch_assoc($result)){}//echo "Podvaja podatek\n";}
+      if(mysqli_fetch_assoc($result)){
+      mysqli_stmt_close($stmt);}//echo "Podvaja podatek\n";}
       else{
+
+        mysqli_stmt_close($stmt);
         //echo "Nov podatek \n";
     		if ($stmt2 = mysqli_prepare($db, "INSERT INTO USER_IN_SESSION (ID_USER, ID_SESSION) VALUES (?,?)")) {
     			mysqli_stmt_bind_param($stmt2, "ii",intval($id_user),intval($id_session));
