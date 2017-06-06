@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col" style="width:500px">
+  <div class="col" style="width: 400px;margin:0 auto;">
     <ul class="list-group">
       <li style="padding-top:0px; padding-bottom:0px" class="list-group-item">
         <font size="5px">&nbsp;<?php echo $slika["ID_SUGGESTION"];?> (Theme)</font>
