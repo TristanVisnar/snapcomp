@@ -6,4 +6,4 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script></head>
 -->
 
-  <div style="margin:auto;">
+  <div style="margin:0 auto;">
