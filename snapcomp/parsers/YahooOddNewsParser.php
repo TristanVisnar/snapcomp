@@ -11,12 +11,12 @@
 		str_ireplace(' news', '', $vnos);
 		str_ireplace(' news ', '', $vnos);
 		str_ireplace('-- react-text --', '', $vnos);
-		echo $vnos;
 		if(str_word_count($vnos)>4){
 			$first4words = implode(' ', array_slice(str_word_count($vnos,1), 0, 4));
 			$vnos = $first4words;
 			$vnos = $vnos . " ...";
 		}
+		echo $vnos;
 		//echo $vnos;
 		$returnList[] = $vnos;
 	}
