@@ -5,7 +5,7 @@ class Timer{
   public function getDateOfStart($session_id){
     $db = Db::getInstance();
 
-    if ($stmt = mysqli_prepare($db, "SELECT (NOW() - ses.DATEOFSTART) as TIMEGOING ,r.GAMESTATE FROM SESSION as ses, ROOM as r where ses.ID_ROOM=r.ID and ses.ID=? ;")) {
+    if ($stmt = mysqli_prepare($db, "SELECT TIME_TO_SEC(TIMEDIFF(NOW(),ses.DATEOFSTART)) as TIMEGOING ,r.GAMESTATE FROM SESSION as ses, ROOM as r where ses.ID_ROOM=r.ID and ses.ID=? ;")) {
       mysqli_stmt_bind_param($stmt, "i",$session_id);
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
