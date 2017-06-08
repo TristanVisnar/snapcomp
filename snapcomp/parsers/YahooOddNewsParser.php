@@ -8,10 +8,10 @@
 		//var_dump($element);
 		$vnos = $element->getPlainText();
 		echo $vnos." VNOS1<br>";
-		str_ireplace(' news', '', $vnos);
+		/*str_ireplace(' news', '', $vnos);
 		str_ireplace(' news ', '', $vnos);
 		str_ireplace('-- react-text --', '', $vnos);
-		str_ireplace('--/react-text --', '', $vnos);
+		str_ireplace('--/react-text --', '', $vnos);*/
 		if(str_word_count($vnos)>4){
 			$first4words = implode(' ', array_slice(str_word_count($vnos,1), 0, 4));
 			$vnos = $first4words;
