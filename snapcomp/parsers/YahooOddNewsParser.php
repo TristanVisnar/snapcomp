@@ -14,6 +14,7 @@
 			$vnos = $first4words;
 			$vnos = $vnos . " ...";
 		}
+		echo $vnos;
 		$returnList[] = $vnos;
 	}
 	
