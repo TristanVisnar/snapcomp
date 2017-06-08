@@ -91,7 +91,7 @@
 </div>
 <div><a href="?controller=users&action=getUser&id=1">Krnekilink</a></div>
 <footer class="container-fluid text-center">
-  <p>Snapcomp - "Slogan" ™</p>
+  <p>Snapcomp - "Pick a pic" ™</p>
 </footer>
 <body>
 </html>

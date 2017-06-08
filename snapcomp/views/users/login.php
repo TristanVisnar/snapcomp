@@ -50,7 +50,7 @@
     <div class="container">
       <div class="panel-title text-center">
           <h1><font face="Segoe UI" size="30px">SnapComp</font></h1>
-          <p>*slogan*</p>
+          <p>Pick a pic</p>
       </div>
       <hr>
       <div>
@@ -66,9 +66,9 @@
             <input id="LoginPassword" type="password" required="true" class="form-control" name="PASS" placeholder="Password">
           </div>
           <br>
-		  
+
 		  <div style="width:250px; margin:auto">
-			<?php 
+			<?php
 				if(isset($_GET["error"]))
 					echo "<p><font color='red' size='2px'>Error logging in. Please, try again </font></p>";
 			?>
