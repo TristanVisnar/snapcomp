@@ -15,7 +15,7 @@
     .navbar {
 	  background-color: #333333;
 	  color: black;
-	  
+
       margin-bottom: 0;
       border-radius: 0;
     }
@@ -31,7 +31,7 @@
       color: white;
       padding: 15px;
 	  color: black;
-	  
+
     }
 
     @media screen and (max-width: 767px) {
@@ -43,7 +43,7 @@
 		  height:auto;
 	  }
     }
-	
+
     .test + .tooltip > .tooltip-inner {
        background-color: #000000;
        color: #FFFFFF;
@@ -59,13 +59,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="?controller=pages&action=home">Snapcomp</a>
+      <a class="navbar-brand" href="?controller=pages&action=home">SnapComp</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li><a href="?controller=pages&action=browse"><span class="glyphicon glyphicon-search"></span> Browse</a></li>
-		<li><a href="#">Highscores</a></li>
-        <li><a href="#">Picture of the day</a></li>
+		    <li><a href="#">Highscores</a></li>
+        <li><a href="#">Picture of the Day</a></li>
+        <li><a href="?controller=images&action=browse&sort=top">Top Content</a></li>
+        <li><a href="?controller=images&action=browse&sort=new">New Content</a></li>
       </ul>
 	   <ul class="nav navbar-nav navbar-right">
         <?php
