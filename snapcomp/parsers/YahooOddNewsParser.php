@@ -6,6 +6,7 @@
 // value of the class attribute
 	$returnList = [];
 	foreach($html('span[class="Fw(b) Fz(20px) Lh(23px) LineClamp(2,46px) Fz(17px)--sm1024 Lh(19px)--sm1024 LineClamp(2,38px)--sm1024 Td(n) C(#0078ff):h C(#000)"]') as $element) {
+		var_dump($element);
 		$vnos = $element->getPlainText(); 
 		str_ireplace(' news', '', $vnos);
 		str_ireplace(' news ', '', $vnos);
