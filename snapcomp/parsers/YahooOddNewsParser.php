@@ -6,10 +6,12 @@
 // value of the class attribute
 	foreach($html('a[class="Fw(b) Fz(20px) Lh(23px) LineClamp(2,46px) Fz(17px)--sm1024 Lh(19px)--sm1024 LineClamp(2,38px)--sm1024 Td(n) C(#0078ff):h C(#000)"]') as $element) {
 		//var_dump($element);
-		$vnos = $element->getPlainText(); 
+		$vnos = $element->getPlainText();
+		echo $vnos." VNOS1";
 		str_ireplace(' news', '', $vnos);
 		str_ireplace(' news ', '', $vnos);
 		str_ireplace('-- react-text --', '', $vnos);
+		echo $vnos;
 		if(str_word_count($vnos)>4){
 			$first4words = implode(' ', array_slice(str_word_count($vnos,1), 0, 4));
 			$vnos = $first4words;
@@ -20,8 +22,8 @@
 	}
 	
 	echo "Pharser konec";
-	foreach($returnList as $vns){
-		echo $vns."<br>";
-	}
+	//foreach($returnList as $vns){
+	//	echo $vns."<br>";
+	//}
 	//return $returnList;
 ?>
