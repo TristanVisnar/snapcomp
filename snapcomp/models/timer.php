@@ -19,7 +19,24 @@ class Timer{
     return "error: not prepared";
 
   }
+
+
+  public function setTime($session_id){
+    $db = Db::getInstance();
+
+    if($stmt = mysqli_prepare($db,"UPDATE SESSION set DATEOFSTART=NOW() where ID=?")){
+      mysqli_stmt_bind_param($stmt, "i",$session_id);
+      //izvedemo poizvedbo
+      mysqli_stmt_execute($stmt);
+      return "{\"status\": \"OK\"}";
+    }
+    return "{\"status\": \"error\"}";
+  }
+
+
+
+
+
+
 }
-
-
  ?>

@@ -12,13 +12,28 @@ class timer_controller{
   }
 
 
+  // http://164.8.230.124/tmp/snapcomp/api.php/timer/setStart/ID_SESSION(number)/
+  public function startTime($request, $require){
+    $out = Timer::setTime($request[2]);
+    echo $out;
+  }
+
+
   public function getAPI($request,$input){
     if($request[1]=="getStart"){
       timer_controller::getSessionStart($request,$input);
     }
+    elseif($request[1]=="setTime"){
+      timer_controller::startTime($request,$input);
+    }
   }
 
+
+
+
+
+
+
+
 }
-
-
- ?>
+?>
