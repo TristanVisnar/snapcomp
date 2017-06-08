@@ -12,7 +12,7 @@ class timer_controller{
   }
 
 
-  // http://164.8.230.124/tmp/snapcomp/api.php/timer/setStart/ID_SESSION(number)/
+  // http://164.8.230.124/tmp/snapcomp/api.php/timer/setTime/ID_SESSION(number)/
   public function startTime($request, $require){
     $out = Timer::setTime($request[2]);
     echo $out;
