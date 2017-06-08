@@ -28,9 +28,11 @@ class Timer{
       mysqli_stmt_bind_param($stmt, "i",$session_id);
       //izvedemo poizvedbo
       mysqli_stmt_execute($stmt);
-      return "{\"status\": \"OK\"}";
+      //return "{\"status\": \"OK\"}";
+      return Timer::getDateOfStart($session_id);
     }
-    return "{\"status\": \"error\"}";
+    return "error: not prepared";
+    //return "{\"status\": \"error\"}";
   }
 
 
