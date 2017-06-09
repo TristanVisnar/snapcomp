@@ -20,5 +20,5 @@ function TheGuardianParser(){
 	$new_arr = array_unique($exitArray, SORT_REGULAR);
 	return $new_arr;
 }
-echo TheGuardianParser();
+var_dump(TheGuardianParser());
 ?>
