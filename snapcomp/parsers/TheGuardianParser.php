@@ -19,9 +19,10 @@
 	}
 	//var_dump($exitArray);
 
-	foreach($exitArray as $vns){
+	/*foreach($exitArray as $vns){
 		var_dump($vns);
 	 	//echo $vns->INFO."//".$vns->SOURCE."<br>";
-	}
+	}*/
+	var_dump($exitArray);
 	echo "Pharser konec";
 ?>
