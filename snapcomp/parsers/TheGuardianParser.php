@@ -18,7 +18,7 @@
 		$exitArray[] = array("INFO" => $vnos, "SOURCE" => $source);
 	}
 	//var_dump($exitArray);
-	$result = array_unique($exitArray)
+	$result = array_unique($exitArray);
 	foreach($result as $vns){
 	//	echo '<pre>' . var_export($vns, true) . '</pre>';
 		//var_dump($vns);
