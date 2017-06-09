@@ -18,8 +18,8 @@
 		$exitArray[] = array("INFO" => $vnos, "SOURCE" => $source);
 	}
 	//var_dump($exitArray);
-
-	foreach($exitArray as $vns){
+	$result = array_unique($exitArray)
+	foreach($result as $vns){
 	//	echo '<pre>' . var_export($vns, true) . '</pre>';
 		//var_dump($vns);
 	 	echo $vns["INFO"]."//".$vns["SOURCE"]."<br>";
