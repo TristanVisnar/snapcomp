@@ -22,7 +22,7 @@
 	//var_dump($result);
 	foreach($exitArray as $vns){
 // organize the array by cusip
-    if(in_array($vns, $exitArray)){
+    if(in_array($vns, $exitArray, true)){
         echo "najdo duplikat";
 				var_dump($vns);
     }
