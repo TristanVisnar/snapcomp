@@ -23,6 +23,6 @@
 		var_dump($vns);
 	 	//echo $vns->INFO."//".$vns->SOURCE."<br>";
 	}*/
-	var_dump($exitArray);
+	echo '<pre>' . var_export($exitArray, true) . '</pre>';
 	echo "Pharser konec";
 ?>
