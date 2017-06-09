@@ -7,6 +7,7 @@ function TheSunShowbizzParser(){
 	// value of the class attribute
 	//var_dump($html('h2[class="teaser__headline theme__copy-color"]'));
 	$exitArray = [];
+	$source = "www.thesun.co.uk/tvandshowbiz";
 	foreach($html('h2[class="teaser__headline theme__copy-color"]') as $element) {
 		$vnos = $element->getPlainText();
 		str_ireplace(' news', '', $vnos);
