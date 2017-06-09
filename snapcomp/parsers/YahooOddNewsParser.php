@@ -10,7 +10,7 @@
 		var_dump($vnos);
 		echo "_____<br>";
 		$vnos = preg_replace('s/<!--[^>]*?-->//g','TEST', $vnos);
-		echo $vnos." VNOS2<br>";
+		var_dump($vnos);
 		/*str_ireplace(' news', '', $vnos);
 		str_ireplace(' news ', '', $vnos);
 		str_ireplace('-- react-text --', '', $vnos);
