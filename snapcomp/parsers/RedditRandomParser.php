@@ -1,21 +1,6 @@
-<?php 
+<?php
 	include('../../parser/pharse/pharse.php');
-	
-	//Konekcija
-	$servername = "localhost";
-	$username = "user";
-	$password = "joomladb";
-	$dbname = "snapcomp";
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	$conn->query("TRUNCATE TABLE DAILY_SUGGESTION;");
-	if ($conn->connect_error)
-	{
-		die("Connection failed: " . $conn->connect_error);
-	}
-	if($stmt = mysqli_prepare($conn,"INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES (?,?);"))
-	{
-		//Reddit random parser (počasen ko pes)
-		for ($x = 0; $x <= 50; $x++)
+	for ($x = 0; $x <= 50; $x++)
 		{
 			$html = Pharse::file_get_dom('https://www.reddit.com/r/random');
 			foreach($html('title') as $element) {
@@ -44,62 +29,8 @@
 			if(isset($html)){
 				unset($html);
 			}
-			
+
 		}
 		echo "Reddit//random parser finished!<br>";
-		//The sun Parser
-		$html = Pharse::file_get_dom('https://www.thesun.co.uk/');
-		foreach($html('h2[class="teaser__headline theme__copy-color"]') as $element) 
-		{
-			$vnos = $element->getPlainText();
-			$source = "thesun.co.uk";
-			str_ireplace(' news', '', $vnos);
-			str_ireplace(' news ', '', $vnos);
-			if(str_word_count($vnos)>4){
-				$first4words = implode(' ', array_slice(str_word_count($vnos,1), 0, 4));
-				$vnos = $first4words;
-				$vnos = $vnos . " ...";
-			}
-			mysqli_stmt_bind_param($stmt,"ss",$vnos,$source);
-			mysqli_stmt_execute($stmt);
-			//$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','thesun.co.uk')";
-			//if ($conn->query($sql) === TRUE) {
-			//	echo "Vnos ".$x." uspel!";
-			//} else {
-			//	echo "Error: " . $sql . "<br>" . $conn->error;
-			//}
-			//$x++;
-		}
-		echo "thesun.co.uk parser finished!<br>";
-		//The guardian parser
-		//$x = 1;
-		$html = Pharse::file_get_dom('https://www.theguardian.com/international');
-		foreach($html('span[class="fc-item__kicker"]') as $element) 
-		{
-			$vnos = $element->getPlainText();
-			$source = "theguardian.com";
-			str_ireplace(' news', '', $vnos);
-			str_ireplace(' news ', '', $vnos);
-			if(str_word_count($vnos)>4){
-				$first4words = implode(' ', array_slice(str_word_count($vnos,1), 0, 4));
-				$vnos = $first4words;
-				$vnos = $vnos . " ...";
-			}
-			mysqli_stmt_bind_param($stmt,"ss",$vnos,$source);
-			mysqli_stmt_execute($stmt);
-			//$sql = "INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES ('".$element->getPlainText()."','theguardian.com')";
-			//if ($conn->query($sql) === TRUE) {
-			//	echo "Vnos ".$x." uspel!";
-			//} else {
-			//	echo "Error: " . $sql . "<br>" . $conn->error;
-			//}		
-			//$x++;
-		}
-		echo "theguardian.com parser finished!<br>";
-		mysqli_stmt_close($stmt);
-	}
-	else
-		echo "Error mysqli_prepare ni deloval!";
-	$conn->close();
-	echo "All parsers finished. The database should be updated.";
+
 ?>

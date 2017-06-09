@@ -1,4 +1,5 @@
 <?php
+function TheGuardianParser(){
 	include('../../parser/pharse/pharse.php');
 	echo "TheGuardian Parser <br>";
 	$html = Pharse::file_get_dom('https://www.theguardian.com/international');
@@ -14,25 +15,9 @@
 			$vnos = $first4words;
 			$vnos = $vnos . " ...";
 		}
-		//var_dump($vnos);
 		$exitArray[] = array("INFO" => $vnos, "SOURCE" => $source);
 	}
-	//var_dump($exitArray);
-	//$result = array_unique($exitArray);
-	//var_dump($result);
-	foreach($exitArray as $vns){
-	// organize the array by cusip
-    if(in_array($vns, $exitArray, true)){
-        echo "najdo duplikat";
-				var_dump($vns);
-    }
-		//echo '<pre>' . var_export($vns, true) . '</pre>';
-		//var_dump($vns);
-	 	echo $vns["INFO"]."//".$vns["SOURCE"]."<br>";
-	}
 	$new_arr = array_unique($exitArray, SORT_REGULAR);
-	echo '<pre>' . var_export($new_arr, true) . '</pre>';
-	//var_dump($new_arr);
-	//echo '<pre>' . var_export($exitArray, true) . '</pre>';
-	echo "Pharser konec";
+	return $new_arr;
+}
 ?>
