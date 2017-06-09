@@ -19,6 +19,6 @@ function TheSunShowbizzParser(){
 		$exitArray[] = array("INFO" => $vnos, "SOURCE" => $source);
 	}
 	$new_arr = array_unique($exitArray, SORT_REGULAR);
-	echo $new_arr;
+	return $new_arr;
 }
 ?>
