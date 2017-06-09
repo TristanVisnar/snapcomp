@@ -9,8 +9,8 @@
 		$vnos = $element->getPlainText();
 		var_dump($vnos);
 		echo "_____<br>";
-		preg_replace('react-text','a', $vnos);
-		var_dump($vnos);
+		$vnos2 = preg_replace('react-text','a', $vnos);
+		var_dump($vnos2);
 		/*str_ireplace(' news', '', $vnos);
 		str_ireplace(' news ', '', $vnos);
 		str_ireplace('-- react-text --', '', $vnos);
