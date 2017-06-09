@@ -21,7 +21,7 @@
 	//$result = array_unique($exitArray);
 	//var_dump($result);
 	foreach($exitArray as $vns){
-// organize the array by cusip
+	// organize the array by cusip
     if(in_array($vns, $exitArray, true)){
         echo "najdo duplikat";
 				var_dump($vns);
@@ -30,6 +30,8 @@
 		//var_dump($vns);
 	 	echo $vns["INFO"]."//".$vns["SOURCE"]."<br>";
 	}
+	$new_arr = array_unique($exitArray, SORT_REGULAR);
+	var_dump($new_arr);
 	//echo '<pre>' . var_export($exitArray, true) . '</pre>';
 	echo "Pharser konec";
 ?>
