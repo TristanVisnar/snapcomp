@@ -20,10 +20,10 @@
 	//var_dump($exitArray);
 
 	foreach($exitArray as $vns){
-		echo '<pre>' . var_export($vns, true) . '</pre>';
+	//	echo '<pre>' . var_export($vns, true) . '</pre>';
 		//var_dump($vns);
-	 	//echo $vns->INFO."//".$vns->SOURCE."<br>";
+	 	echo $vns["INFO"]."//".$vns["SOURCE"]."<br>";
 	}
-	echo '<pre>' . var_export($exitArray, true) . '</pre>';
+	//echo '<pre>' . var_export($exitArray, true) . '</pre>';
 	echo "Pharser konec";
 ?>
