@@ -2,8 +2,8 @@
   include('../../parser/pharse/pharse.php');
   //include 'RedditRandomParser.php';
   include('TheGuardianParser.php');
-  include('TheSunParser.php');
-  include('TheSunShowbizparser.php');
+  //include('TheSunParser.php');
+  //include('TheSunShowbizparser.php');
 
   $servername = "localhost";
   $username = "user";
@@ -20,8 +20,8 @@
 	{
       //echo "TheGuardianParserVIncludu";
     $AllData[] = TheGuardianParser();
-    $AllData[] = TheSunParser();
-    $AllData[] = TheSunShowbizzParser();
+    //$AllData[] = TheSunParser();
+    //$AllData[] = TheSunShowbizzParser();
       /*
 				mysqli_stmt_bind_param($stmt,"ss",$vnos,$source);
 				mysqli_stmt_execute($stmt);
@@ -30,5 +30,6 @@
 	else
 		echo "Error mysqli_prepare ni deloval!";
 	$conn->close();
+  var_dump($AllData);
 	echo "All parsers finished. The database should be updated.";
 ?>
