@@ -20,9 +20,9 @@
   if($stmt = mysqli_prepare($conn,"INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES (?,?);"))
 	{
     echo "v iff";
-      echo TheGuardianParser();
-      echo TheSunParser();
-      echo TheSunShowbizzParser();
+      //echo TheGuardianParser();
+      //echo TheSunParser();
+      //echo TheSunShowbizzParser();
       /*
 				mysqli_stmt_bind_param($stmt,"ss",$vnos,$source);
 				mysqli_stmt_execute($stmt);
