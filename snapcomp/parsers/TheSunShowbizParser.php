@@ -26,10 +26,10 @@
 		//echo $vnos;
 		//		$returnList[] = $vnos;
 		//}
-
-		echo "Pharser konec";
 		//foreach($returnList as $vns){
 		//	echo $vns."<br>";
 	}
+
+			echo "Pharser konec";
 	//return $returnList;
 ?>
