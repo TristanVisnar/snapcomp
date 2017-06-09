@@ -14,8 +14,10 @@
 			$vnos = $first4words;
 			$vnos = $vnos . " ...";
 		}
+		var_dump($vnos);
 		$exitArray[] = array("INFO" => $vnos, "SOURCE" => $source);
 	}
+	var_dump($exitArray);
 	foreach($exitArray as $vns)
 	 	echo $vns->INFO."//".$vns->SOURCE."<br>";
 	echo "Pharser konec";
