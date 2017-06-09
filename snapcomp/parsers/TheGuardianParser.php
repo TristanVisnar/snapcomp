@@ -31,7 +31,8 @@
 	 	echo $vns["INFO"]."//".$vns["SOURCE"]."<br>";
 	}
 	$new_arr = array_unique($exitArray, SORT_REGULAR);
-	var_dump($new_arr);
+	echo '<pre>' . var_export($new_arr, true) . '</pre>'
+	//var_dump($new_arr);
 	//echo '<pre>' . var_export($exitArray, true) . '</pre>';
 	echo "Pharser konec";
 ?>
