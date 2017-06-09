@@ -9,7 +9,7 @@
 		$vnos = $element->getPlainText();
 		var_dump($vnos);
 		echo "_____<br>";
-		$vnos = preg_replace('s/<!--[^>]*-->//g','TEST', $vnos);
+		$vnos = preg_replace('s/<!--[^>]*?-->//g','TEST', $vnos);
 		echo $vnos." VNOS2<br>";
 		/*str_ireplace(' news', '', $vnos);
 		str_ireplace(' news ', '', $vnos);
