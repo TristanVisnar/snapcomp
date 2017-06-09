@@ -1,6 +1,6 @@
 <?php
 function TheSunShowbizzParser(){
-	include('../../parser/pharse/pharse.php');
+	//include('../../parser/pharse/pharse.php');
 	//echo "The Sun Showbizz parser <br>";
 	$html = Pharse::file_get_dom('https://www.thesun.co.uk/tvandshowbiz/');
 	// Find all the paragraph tags with a class attribute and print the
