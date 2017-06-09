@@ -18,13 +18,13 @@
 		$exitArray[] = array("INFO" => $vnos, "SOURCE" => $source);
 	}
 	//var_dump($exitArray);
-	$result = array_unique($exitArray);
-	var_dump($result);
-	///foreach($result as $vns){
-	//	echo '<pre>' . var_export($vns, true) . '</pre>';
+	//$result = array_unique($exitArray);
+	//var_dump($result);
+	foreach($exitArray as $vns){
+		//echo '<pre>' . var_export($vns, true) . '</pre>';
 		//var_dump($vns);
-	 //	echo $vns["INFO"]."//".$vns["SOURCE"]."<br>";
-	//}
+	 	echo $vns["INFO"]."//".$vns["SOURCE"]."<br>";
+	}
 	//echo '<pre>' . var_export($exitArray, true) . '</pre>';
 	echo "Pharser konec";
 ?>
