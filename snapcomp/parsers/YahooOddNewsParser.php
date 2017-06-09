@@ -1,4 +1,4 @@
-<?php 
+<?php
 	include('../../parser/pharse/pharse.php');
 	echo "Yahoo Odd News parser <br>";
 	$html = Pharse::file_get_dom('https://www.yahoo.com/news/odd/');
@@ -9,7 +9,7 @@
 		$vnos = $element->getPlainText();
 		var_dump($vnos);
 		
-		$vnos = preg_replace('s/<!--[^>]*-->//g','', $vnos);
+		$vnos = preg_replace('s/<!--[^>]*-->//g','TEST', $vnos);
 		echo $vnos." VNOS2<br>";
 		/*str_ireplace(' news', '', $vnos);
 		str_ireplace(' news ', '', $vnos);
@@ -24,7 +24,7 @@
 		//echo $vnos;
 		$returnList[] = $vnos;
 	}
-	
+
 	echo "Pharser konec";
 	//foreach($returnList as $vns){
 	//	echo $vns."<br>";
