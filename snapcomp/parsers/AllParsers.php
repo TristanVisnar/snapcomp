@@ -1,10 +1,10 @@
 
 <?php
   include('../../parser/pharse/pharse.php');
-  include 'RedditRandomParser.php';
-  include 'TheGuardianParser.php';
-  include 'TheSunParser.php';
-  include 'TheSunShowbizparser.php';
+  //include 'RedditRandomParser.php';
+  //include 'TheGuardianParser.php';
+  //include 'TheSunParser.php';
+  //include 'TheSunShowbizparser.php';
 
   $servername = "localhost";
   $username = "user";
