@@ -1,4 +1,3 @@
-
 <?php
   include('../../parser/pharse/pharse.php');
   //include 'RedditRandomParser.php';
@@ -17,7 +16,6 @@
   {
     die("Connection failed: " . $conn->connect_error);
   }
-  $
   if($stmt = mysqli_prepare($conn,"INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES (?,?);"))
 	{
       //echo "TheGuardianParserVIncludu";
