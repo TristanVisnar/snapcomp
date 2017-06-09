@@ -6,9 +6,9 @@ function TheGuardianParser(){
 	$html = Pharse::file_get_dom('https://www.theguardian.com/international');
 	// Find all the paragraph tags with a class attribute and print the
 // value of the class attribute
+	$source = "theguardian.com";
 	foreach($html('span[class="fc-item__kicker"]') as $element) {
 		$vnos = $element->getPlainText();
-		$source = "theguardian.com";
 		str_ireplace(' news', '', $vnos);
 		str_ireplace(' news ', '', $vnos);
 		if(str_word_count($vnos)>4){

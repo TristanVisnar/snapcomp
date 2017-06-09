@@ -4,10 +4,10 @@ function TheSunParser(){
 	//echo "The Sun parser__________________________________________________________:  <br>";
 	$html = Pharse::file_get_dom('https://www.thesun.co.uk/');
 	// Find all the paragraph tags with a class attribute and print the
-// value of the class attribute
+// value of the class attribut
+	$source = "thesun.co.uk";
 	foreach($html('h2[class="teaser__headline theme__copy-color"]') as $element) {
 		$vnos = $element->getPlainText();
-		$source = "thesun.co.uk";
 		str_ireplace(' news', '', $vnos);
 		str_ireplace(' news ', '', $vnos);
 		if(str_word_count($vnos)>4){
