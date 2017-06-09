@@ -1,6 +1,6 @@
 <?php
 	include('../../parser/pharse/pharse.php');
-	echo "The Sun Showbizz parser <br>";
+	//echo "The Sun Showbizz parser <br>";
 	$html = Pharse::file_get_dom('https://www.thesun.co.uk/tvandshowbiz/');
 	// Find all the paragraph tags with a class attribute and print the
 	// value of the class attribute
@@ -29,8 +29,8 @@
 		//foreach($returnList as $vns){
 		//	echo $vns."<br>";
 	}
-	foreach($exitArray as $vns)
-			echo $vns."<br>";
-	echo "Pharser konec";
-	//return $returnList;
+	//foreach($exitArray as $vns)
+	//		echo $vns."<br>";
+	//echo "Pharser konec";
+	return $exitArray;
 ?>
