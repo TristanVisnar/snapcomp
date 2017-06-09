@@ -21,6 +21,11 @@
 	//$result = array_unique($exitArray);
 	//var_dump($result);
 	foreach($exitArray as $vns){
+// organize the array by cusip
+    if(in_array($vns, $exitArray)){
+        echo "najdo duplikat";
+				var_dump($vns);
+    }
 		//echo '<pre>' . var_export($vns, true) . '</pre>';
 		//var_dump($vns);
 	 	echo $vns["INFO"]."//".$vns["SOURCE"]."<br>";
