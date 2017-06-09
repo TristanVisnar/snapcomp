@@ -13,14 +13,12 @@
 		//		echo "_____<br>";
 		//	$vnos2 = preg_replace("react-text","a",$vnos);
 		///	var_dump($vnos2);
-		/*str_ireplace(' news', '', $vnos);
+		str_ireplace(' news', '', $vnos);
 		str_ireplace(' news ', '', $vnos);
-		str_ireplace('-- react-text --', '', $vnos);
-		str_ireplace('--/react-text --', '', $vnos);*/
 		if(str_word_count($vnos)>4){
-		$first4words = implode(' ', array_slice(str_word_count($vnos,1), 0, 4));
-		$vnos = $first4words;
-		$vnos = $vnos . " ...";
+			$first4words = implode(' ', array_slice(str_word_count($vnos,1), 0, 4));
+			$vnos = $first4words;
+			$vnos = $vnos . " ...";
 		}
 		echo $vnos."<br>";
 		//echo $vnos;
