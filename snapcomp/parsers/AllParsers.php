@@ -3,7 +3,7 @@
   //include 'RedditRandomParser.php';
   include('TheGuardianParser.php');
   include('TheSunParser.php');
-  include('TheSunShowbizParser.php');
+  //include('TheSunShowbizParser.php');
 
   $servername = "localhost";
   $username = "user";
@@ -21,7 +21,7 @@
       //echo "TheGuardianParserVIncludu";
     $AllData[] = TheGuardianParser();
     $AllData[] = TheSunParser();
-    $AllData[] = TheSunShowbizzParser();
+    //$AllData[] = TheSunShowbizzParser();
       /*
 				mysqli_stmt_bind_param($stmt,"ss",$vnos,$source);
 				mysqli_stmt_execute($stmt);
