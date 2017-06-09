@@ -5,6 +5,7 @@
 	// Find all the paragraph tags with a class attribute and print the
 	// value of the class attribute
 	//var_dump($html('h2[class="teaser__headline theme__copy-color"]'));
+	$exitArray = [];
 	foreach($html('h2[class="teaser__headline theme__copy-color"]') as $element) {
 		//var_dump($element);
 
@@ -20,14 +21,16 @@
 			$vnos = $first4words;
 			$vnos = $vnos . " ...";
 		}
-		echo $vnos."<br>";
+		$exitArray[] = $vnos;
+		//echo $vnos."<br>";
 		//echo $vnos;
 		//		$returnList[] = $vnos;
 		//}
 		//foreach($returnList as $vns){
 		//	echo $vns."<br>";
 	}
-
-			echo "Pharser konec";
+	foreach($exitArray as $vns)
+			echo $vns."<br>";
+	echo "Pharser konec";
 	//return $returnList;
 ?>
