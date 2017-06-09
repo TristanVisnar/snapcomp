@@ -2,7 +2,7 @@
 <?php
   include('../../parser/pharse/pharse.php');
   //include 'RedditRandomParser.php';
-  //include 'TheGuardianParser.php';
+  include 'TheGuardianParser.php';
   //include 'TheSunParser.php';
   //include 'TheSunShowbizparser.php';
 
@@ -20,7 +20,7 @@
   if($stmt = mysqli_prepare($conn,"INSERT INTO DAILY_SUGGESTION (INFO, SOURCE) VALUES (?,?);"))
 	{
     echo "v iff";
-      //echo TheGuardianParser();
+      echo TheGuardianParser();
       //echo TheSunParser();
       //echo TheSunShowbizzParser();
       /*
