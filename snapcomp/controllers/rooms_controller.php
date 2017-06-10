@@ -49,6 +49,12 @@ class rooms_controller{
 		echo json_encode($ret);
 	}
 
+	//in $session_id, $gamemode
+	public function changeGamemode($request,$input){
+		$info = Room::changeGamemode($request[2],$request[3]);
+		echo $info;
+	}
+
 	public function getAPI($request,$input){
 		//echo "Dostop do apija";
 		//Vnos uporabnika v sejo oz sobo, ter vračanje podatkov o seji
@@ -75,6 +81,9 @@ class rooms_controller{
 		}
 		elseif($request[1]=="sessionViaRoomID"){
 			rooms_controller::getSessionViaRoomID($request,$input);
+		}
+		elseif($request[1]=="changeGamemode"){
+			rooms_controller::changeGamemode($request,$input);
 		}
 	}
 	 public function postAPI($request,$input){

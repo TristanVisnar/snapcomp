@@ -19,12 +19,22 @@ class timer_controller{
   }
 
 
+
+  // http://164.8.230.124/tmp/snapcomp/api.php/timer/endOTP/ID_SESSION(number)/
+  public function endOfTakingPics($request,$input){
+    echo Timer::endOfTakingPics($request[2]));
+  }
+
+
   public function getAPI($request,$input){
     if($request[1]=="getStart"){
       timer_controller::getSessionStart($request,$input);
     }
     elseif($request[1]=="setTime"){
       timer_controller::startTime($request,$input);
+    }
+    elseif($request[1]=="endOTP"){
+      timer_controller::endOfTakingPics($request,$input);
     }
   }
 
