@@ -36,9 +36,10 @@
 	//else
 	//	echo "Error mysqli_prepare ni deloval!";
 //	$conn->close();
+
 	//var_dump($TheGrd);
-	var_dump(TheSunParser());
 	var_dump(TheSunShowbizzParser());
+	var_dump(TheSunParser());
 	var_dump(TheGuardianParser());
     //var_dump($AllData);
 	echo "All parsers finished. The database should be updated.";
