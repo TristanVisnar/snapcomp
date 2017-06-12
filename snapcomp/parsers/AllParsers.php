@@ -26,7 +26,7 @@
 				mysqli_stmt_bind_param($stmt,"ss",$vnos,$source);
 				mysqli_stmt_execute($stmt);
         */
-  }
+	}
 	else
 		echo "Error mysqli_prepare ni deloval!";
 	$conn->close();

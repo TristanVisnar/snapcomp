@@ -1,5 +1,5 @@
 <?php
- include('../../parser/pharse/pharse.php');
+ //include('../../parser/pharse/pharse.php');
 function TheSunShowbizzParser(){
 	//include('../../parser/pharse/pharse.php');
 	//echo "The Sun Showbizz parser <br>";
@@ -21,8 +21,8 @@ function TheSunShowbizzParser(){
 		$exitArray[] = array("INFO" => $vnos, "SOURCE" => $source);
 	}
 	$new_arr = array_unique($exitArray, SORT_REGULAR);
-	var_dump($new_arr);
+	//var_dump($new_arr);
 	return $new_arr;
 }
-var_dump(TheSunShowbizzParser());
+//var_dump(TheSunShowbizzParser());
 ?>

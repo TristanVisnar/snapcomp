@@ -1,5 +1,5 @@
 <?php
-include('../../parser/pharse/pharse.php');
+//include('../../parser/pharse/pharse.php');
 function TheGuardianParser(){
 	//include('../../parser/pharse/pharse.php');
 	//echo "TheGuardian Parser <br>";
@@ -20,7 +20,7 @@ function TheGuardianParser(){
 		$exitArray[] = array("INFO" => $vnos, "SOURCE" => $source);
 	}
 	$new_arr = array_unique($exitArray, SORT_REGULAR);
-	var_dump($new_arr);
+	//var_dump($new_arr);
 	return $new_arr;
 }
 var_dump(TheGuardianParser());
