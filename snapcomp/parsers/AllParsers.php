@@ -2,7 +2,7 @@
   include('../../parser/pharse/pharse.php');
   //include 'RedditRandomParser.php';
   include('TheGuardianParser.php');
-  //include('TheSunParser.php');
+  include('TheSunParser.php');
   //include('TheSunShowbizParser.php');
 
   //$servername = "localhost";
@@ -13,7 +13,7 @@
   //$conn->query("TRUNCATE TABLE DAILY_SUGGESTION;");
   $AllData = [];
   $AllData[] = TheGuardianParser();
-  //$AllData[] = TheSunParser();
+  $AllData[] = TheSunParser();
   //$AllData[] = TheSunShowbizzParser();
   //if ($conn->connect_error)
   //{
