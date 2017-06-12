@@ -1,8 +1,8 @@
 <?php
   include('../../parser/pharse/pharse.php');
   //include 'RedditRandomParser.php';
-  include('TheGuardianParser.php');
-  include('TheSunParser.php');
+  //include('TheGuardianParser.php');
+  //include('TheSunParser.php');
   include('TheSunShowbizParser.php');
 
   //$servername = "localhost";
@@ -12,8 +12,8 @@
   //$conn = new mysqli($servername, $username, $password, $dbname);
   //$conn->query("TRUNCATE TABLE DAILY_SUGGESTION;");
   $AllData = [];
-  $AllData[] = TheGuardianParser();
-  $AllData[] = TheSunParser();
+  //$AllData[] = TheGuardianParser();
+  //$AllData[] = TheSunParser();
   $AllData[] = TheSunShowbizzParser();
   //if ($conn->connect_error)
   //{
