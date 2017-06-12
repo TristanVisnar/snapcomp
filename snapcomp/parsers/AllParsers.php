@@ -3,7 +3,7 @@
   //include 'RedditRandomParser.php';
   include('TheGuardianParser.php');
   include('TheSunParser.php');
-  //include('TheSunShowbizParser.php');
+  include('TheSunShowbizParser.php');
 
   //$servername = "localhost";
   //$username = "user";
@@ -14,7 +14,7 @@
   $AllData = [];
   $AllData[] = TheGuardianParser();
   $AllData[] = TheSunParser();
-  //$AllData[] = TheSunShowbizzParser();
+  $AllData[] = TheSunShowbizzParser();
   //if ($conn->connect_error)
   //{
   //  die("Connection failed: " . $conn->connect_error);
