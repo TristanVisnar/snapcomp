@@ -1,7 +1,7 @@
 <?php
  //include('../../parser/pharse/pharse.php');
 function TheSunShowbizzParser(){
-	echo "V showbizzu";
+	//echo "V showbizzu";
 	//include('../../parser/pharse/pharse.php');
 	//echo "The Sun Showbizz parser <br>";
 	$html = Pharse::file_get_dom('https://www.thesun.co.uk/tvandshowbiz/');
