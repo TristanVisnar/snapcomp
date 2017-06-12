@@ -38,7 +38,7 @@
 //	$conn->close();
 
 	//var_dump($TheGrd);
-	var_dump(ShowbizzFunkcija());
+	//var_dump(ShowbizzFunkcija());
 	var_dump(SunFunkcija());
 	var_dump(GuardianFunkcija());
     //var_dump($AllData);
