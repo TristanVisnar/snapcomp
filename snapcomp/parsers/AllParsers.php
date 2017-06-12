@@ -38,9 +38,9 @@
 //	$conn->close();
 
 	//var_dump($TheGrd);
-	var_dump(TheSunShowbizzParser());
-	var_dump(TheSunParser());
-	var_dump(TheGuardianParser());
+	var_dump(ShowbizzFunkcija());
+	var_dump(SunFunkcija());
+	var_dump(GuardianFunkcija());
     //var_dump($AllData);
 	echo "All parsers finished. The database should be updated.";
 ?>

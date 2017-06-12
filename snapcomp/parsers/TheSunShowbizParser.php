@@ -1,6 +1,6 @@
 <?php
  //include('../../parser/pharse/pharse.php');
-function TheSunShowbizzParser(){
+function ShowbizzFunkcija(){
 	//echo "V showbizzu";
 	//include('../../parser/pharse/pharse.php');
 	//echo "The Sun Showbizz parser <br>";

@@ -1,6 +1,6 @@
 <?php
 //include('../../parser/pharse/pharse.php');
-function TheSunParser(){
+function SunFunkcija(){
 	//include('../../parser/pharse/pharse.php');
 	//echo "The Sun parser__________________________________________________________:  <br>";
 	$html = Pharse::file_get_dom('https://www.thesun.co.uk/');
