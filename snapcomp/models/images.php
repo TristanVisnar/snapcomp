@@ -447,6 +447,23 @@ class Image{
 }
 
 
+  public function picIsChoosen($session_id){
+    $db = Db::getInstance();
+    if($stmt = mysqli_prepare($db,"SELECT w.USERNAME as WINNER, s.USERNAME as SELECTOR, sug.INFO, p.CONTENT FROM PICTURE as p,ENDOFSESSION as e,UPORABNIK as w,UPORABNIK as s,SUGGESTION as sug, ROOM as r, SESSION as ses WHERE e.ID_ROOM=r.ID and r.GAMESTATE=2 and r.ID=ses.ID_ROOM and ses.ID=? and p.ID=e.ID_WINNING_PIC and e.ID_WINNER = w.ID and e.ID_SELECTOR=s.ID and p.ID_SUGGESTION = sug.ID order by e.ID desc LIMIT 0,1;")){
+      mysqli_stmt_bind_param($stmt,"i",intval($session_id));
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+      mysqli_stmt_close($stmt);
+      $row = mysqli_fetch_assoc($result);
+      if($row){
+        return array("status"=>"true","WINNER"=>$row["WINNER"],"SELECTOR"=>$row["SELECTOR"],"INFO"=>$row["INFO"],"CONTENT"=>''.base64_encode($row["CONTENT"]));
+      }else{
+        return array("status"=>"false");
+      }
+    }
+    return array("status"=>"error");
+  }
+
 
 }
 

@@ -205,6 +205,11 @@ class images_controller{
       require_once("views/images/json.php");
   }
 
+  public function picIsChoosen($request,$input){
+    $info = Image::picIsChoosen($request[2]);  //potrebujem session_id // čekira če id == 2
+    echo json_encode($info);
+  }
+
   public function getAPI($request,$input){
     //Podatki za prikaz n slik za browse
     if($request[1] == "0"){
@@ -213,6 +218,9 @@ class images_controller{
     //Podatki in slike za stanje izbire
     elseif($request[1] == "1"){
         images_controller::getSelectionStatePictures($request,$input);
+    }
+    elseif($request[1] == "2"){
+        images_controller::picIsChoosen($request,$input);
     }
 
   }
