@@ -21,5 +21,5 @@ function TheSunParser(){
 	var_dump($new_arr);
 	return $new_arr;
 }
-TheSunParser();
+var_dump(TheSunParser());
 ?>
