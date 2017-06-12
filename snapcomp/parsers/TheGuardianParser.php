@@ -22,5 +22,6 @@ function TheGuardianParser(){
 	var_dump($new_arr);
 	return $new_arr;
 }
+TheGuardianParser();
 //var_dump(TheGuardianParser());
 ?>

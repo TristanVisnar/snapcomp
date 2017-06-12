@@ -24,5 +24,5 @@ function TheSunShowbizzParser(){
 	var_dump($new_arr);
 	return $new_arr;
 }
-//TheSunShowbizzParser();
+TheSunShowbizzParser();
 ?>
