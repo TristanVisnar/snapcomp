@@ -39,7 +39,8 @@
 
 	//var_dump($TheGrd);
 	//var_dump(ShowbizzFunkcija());
-	var_dump(SunFunkcija());
+	echo '<pre>' . var_export(SunFunkcija(), true) . '</pre>';
+	//var_dump(SunFunkcija());
 	//var_dump(GuardianFunkcija());
     //var_dump($AllData);
 	echo "All parsers finished. The database should be updated.";
