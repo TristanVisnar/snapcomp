@@ -1,5 +1,5 @@
 <?php
-//include('../../parser/pharse/pharse.php');
+include('../../parser/pharse/pharse.php');
 function TheGuardianParser(){
 	//include('../../parser/pharse/pharse.php');
 	//echo "TheGuardian Parser <br>";

@@ -1,5 +1,5 @@
 <?php
-  //include('../../parser/pharse/pharse.php');
+ include('../../parser/pharse/pharse.php');
 function TheSunShowbizzParser(){
 	//include('../../parser/pharse/pharse.php');
 	//echo "The Sun Showbizz parser <br>";

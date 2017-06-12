@@ -1,4 +1,5 @@
 <?php
+include('../../parser/pharse/pharse.php');
 function TheSunParser(){
 	//include('../../parser/pharse/pharse.php');
 	//echo "The Sun parser__________________________________________________________:  <br>";
