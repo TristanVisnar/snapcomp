@@ -1,9 +1,9 @@
 <?php
   include('../../parser/pharse/pharse.php');
   //include 'RedditRandomParser.php';
-  include('TheGuardianParser.php');
-  include('TheSunParser.php');
-  include('TheSunShowbizParser.php');
+  //include('TheGuardianParser.php');
+  //include('TheSunParser.php');
+  //include('TheSunShowbizParser.php');
 
   //$servername = "localhost";
   //$username = "user";
@@ -11,10 +11,10 @@
   //$dbname = "snapcomp";
   //$conn = new mysqli($servername, $username, $password, $dbname);
   //$conn->query("TRUNCATE TABLE DAILY_SUGGESTION;");
-  $AllData = [];
-  $AllData[] = TheGuardianParser();
-  $AllData[] = TheSunParser();
-  $AllData[] = TheSunShowbizzParser();
+  //$AllData = [];
+  //$AllData[] = TheGuardianParser();
+  //$AllData[] = TheSunParser();
+  //$AllData[] = TheSunShowbizzParser();
   //if ($conn->connect_error)
   //{
   //  die("Connection failed: " . $conn->connect_error);
@@ -33,6 +33,6 @@
 	//else
 	//	echo "Error mysqli_prepare ni deloval!";
 //	$conn->close();
-  var_dump($AllData);
+  // var_dump($AllData);
 	echo "All parsers finished. The database should be updated.";
 ?>
