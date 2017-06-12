@@ -3,7 +3,7 @@
   //include 'RedditRandomParser.php';
   //include('TheGuardianParser.php');
   include('TheSunParser.php');
-  //include('TheSunShowbizParser.php');
+  include('TheSunShowbizParser.php');
 
   //$servername = "localhost";
   //$username = "user";
@@ -13,11 +13,11 @@
   //$conn->query("TRUNCATE TABLE DAILY_SUGGESTION;");
   //$AllData = [];
   //$TheGrd = [];
-  //$TheSn = []; 
+  $TheSn = []; 
   $TheSnBz = []; 
   //$TheGrd[] = TheGuardianParser();
   $TheSn[] = TheSunParser();
-  //$TheSnBz[] = TheSunShowbizzParser();
+  $TheSnBz[] = TheSunShowbizzParser();
   //if ($conn->connect_error)
   //{
   //  die("Connection failed: " . $conn->connect_error);
@@ -38,7 +38,7 @@
 //	$conn->close();
 	//var_dump($TheGrd);
 	var_dump($TheSn);
-	//var_dump($TheSnBz);
+	var_dump($TheSnBz);
     //var_dump($AllData);
 	echo "All parsers finished. The database should be updated.";
 ?>
