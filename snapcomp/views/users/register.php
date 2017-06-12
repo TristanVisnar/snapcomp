@@ -1,10 +1,5 @@
 
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
@@ -33,7 +28,7 @@
     <div class="container">
       <div class="panel-title text-center">
           <h1><font face="Segoe UI" size="30px">SnapComp</font></h1>
-          <p>*slogan*</p>
+          <font face="Satisfy" size="5px"><p><i>"Pick a pic"</i></p></font>
       </div>
       <hr>
 
@@ -41,7 +36,7 @@
           <font size="5px">
             Registration form -
           </font>
-          <font color="#4f62c6" size="2px"><i><u>Note</u>: Fields marked with an asterisk (*) are required.</i></font>
+          <font color="#ff7b00" size="2px"><i><u>Note</u>: Fields marked with an asterisk (*) are required.</i></font>
         </p>
         <br>
 
@@ -59,16 +54,16 @@
               <input required="true" type="text" class="form-control" id="regAccountName" name="regAccountName" placeholder="Enter account name" data-toggle="tooltip" data-placement="right" title="This is your login name. It cannot be changed.">
             </div>
           </div>
-	
+
           <div class="form-group">
             <label class="control-label col-sm-2" for="regPassword">*Password:</label>
             <div class="col-sm-10">
               <input required="true" type="password" class="form-control" id="regPassword" name="regPassword" placeholder="Enter password">
             </div>
           </div>
-			
+
 		<div style="width:250px; margin:auto">
-			<?php 
+			<?php
 				if(isset($_GET["passcheckerror"]))
 					echo "<p><font color='red' size='2px'>Register error, passwords did not match, try again!</font></p>";
 			?>
@@ -132,7 +127,7 @@
 
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-primary btn-block">Register</button>
+              <button type="submit"  style="background-color:#9aff28; border:0px; color:black;"  class="btn btn-primary btn-block">Register</button>
             </div>
           </div>
 

@@ -7,7 +7,7 @@
     <div class="container">
       <div class="panel-title text-center">
           <h1><font face="Segoe UI" size="30px">SnapComp</font></h1>
-          <p><i>"Pick a pic"</i></p>
+          <font face="Satisfy" size="5px"><p><i>"Pick a pic"</i></p></font>
       </div>
       <hr>
       <div>

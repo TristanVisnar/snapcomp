@@ -8,6 +8,7 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet'>
   </head>
 
   <script>
@@ -142,7 +143,7 @@
 <div><a href="?controller=users&action=getUser&id=1">Krnekilink</a></div>
 <footer>
     <p style="width:178px; margin-left:auto; margin-right:auto;">
-      SnapComp - "Pick a pic" ™
+      SnapComp - <font face="Satisfy">"Pick a pic"</font> ™
     </p>
 </footer>
 <body>
