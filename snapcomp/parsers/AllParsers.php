@@ -2,7 +2,7 @@
   include('../../parser/pharse/pharse.php');
   //include 'RedditRandomParser.php';
   //include('TheGuardianParser.php');
-  include('TheSunParser.php');
+  //include('TheSunParser.php');
   include('TheSunShowbizParser.php');
 
   //$servername = "localhost";
@@ -13,10 +13,10 @@
   //$conn->query("TRUNCATE TABLE DAILY_SUGGESTION;");
   //$AllData = [];
   //$TheGrd = [];
-  $TheSn = []; 
+  //$TheSn = []; 
   $TheSnBz = []; 
   //$TheGrd[] = TheGuardianParser();
-  $TheSn[] = TheSunParser();
+  //$TheSn[] = TheSunParser();
   $TheSnBz[] = TheSunShowbizzParser();
   //if ($conn->connect_error)
   //{
@@ -37,7 +37,7 @@
 	//	echo "Error mysqli_prepare ni deloval!";
 //	$conn->close();
 	//var_dump($TheGrd);
-	var_dump($TheSn);
+	//var_dump($TheSn);
 	var_dump($TheSnBz);
     //var_dump($AllData);
 	echo "All parsers finished. The database should be updated.";
