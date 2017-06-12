@@ -1,8 +1,8 @@
 <?php
   include('../../parser/pharse/pharse.php');
   //include 'RedditRandomParser.php';
-  include('TheGuardianParser.php');
-  include('TheSunParser.php');
+  include 'TheGuardianParser.php';
+  include 'TheSunParser.php';
   //include('TheSunShowbizParser.php');
 
   //$servername = "localhost";
