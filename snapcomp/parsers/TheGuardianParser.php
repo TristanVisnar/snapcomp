@@ -19,6 +19,7 @@ function TheGuardianParser(){
 		$exitArray[] = array("INFO" => $vnos, "SOURCE" => $source);
 	}
 	$new_arr = array_unique($exitArray, SORT_REGULAR);
+	var_dump($new_arr);
 	return $new_arr;
 }
 //var_dump(TheGuardianParser());
