@@ -7,7 +7,7 @@ function GuardianFunkcija(){
 	// Find all the paragraph tags with a class attribute and print the
 // value of the class attribute
 	$source = "theguardian.com";
-	echo "test";
+	//echo "test";
 	foreach($html('span[class="fc-item__kicker"]') as $element) {
 		$vnos = $element->getPlainText();
 		str_ireplace(' news', '', $vnos);
