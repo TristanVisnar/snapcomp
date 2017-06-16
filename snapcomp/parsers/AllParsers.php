@@ -39,13 +39,13 @@
 
 	//var_dump($TheGrd);
 	//var_dump(ShowbizzFunkcija());
+
+	$result = array_merge($AllData, GuardianFunkcija());
+	$result = array_merge($result, ShowbizzFunkcija());
+	$result = array_merge($result, SunFunkcija());
 	
-	$AllData[] = GuardianFunkcija();
-	$AllData[] = ShowbizzFunkcija();
-	$AllData[] = SunFunkcija();
 	
-	
-	echo '<pre>' . var_export($AllData, true) . '</pre>';
+	echo '<pre>' . var_export($result, true) . '</pre>';
 	//echo '<pre>' . var_export(ShowbizzFunkcija(), true) . '</pre>';
 	//echo '<pre>' . var_export(SunFunkcija(), true) . '</pre>';
 	//var_dump(SunFunkcija());
