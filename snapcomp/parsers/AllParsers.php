@@ -13,7 +13,7 @@
   //$conn->query("TRUNCATE TABLE DAILY_SUGGESTION;");
   //$AllData = [];
   //$TheGrd = [];
- // $TheSn = []; 
+  //$TheSn = []; 
   //$TheSnBz = []; 
   //$TheGrd[] = TheGuardianParser();
   //$TheSn[] = TheSunParser();
