@@ -1,7 +1,7 @@
 <?php
   include('../../parser/pharse/pharse.php');
   //include 'RedditRandomParser.php';
-  //include 'TheGuardianParser.php';
+  include 'TheGuardianParser.php';
   include 'TheSunParser.php';
   include 'TheSunShowbizParser.php';
 
@@ -39,6 +39,7 @@
 
 	//var_dump($TheGrd);
 	//var_dump(ShowbizzFunkcija());
+	echo '<pre>' . var_export(GuardianFunkcija(), true) . '</pre>';
 	echo '<pre>' . var_export(ShowbizzFunkcija(), true) . '</pre>';
 	echo '<pre>' . var_export(SunFunkcija(), true) . '</pre>';
 	//var_dump(SunFunkcija());
