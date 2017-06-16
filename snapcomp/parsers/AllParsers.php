@@ -3,7 +3,7 @@
   //include 'RedditRandomParser.php';
   //include 'TheGuardianParser.php';
   include 'TheSunParser.php';
-  //include('TheSunShowbizParser.php');
+  include 'TheSunShowbizParser.php';
 
   //$servername = "localhost";
   //$username = "user";
@@ -39,6 +39,7 @@
 
 	//var_dump($TheGrd);
 	//var_dump(ShowbizzFunkcija());
+	echo '<pre>' . var_export(ShowbizzFunkcija(), true) . '</pre>';
 	echo '<pre>' . var_export(SunFunkcija(), true) . '</pre>';
 	//var_dump(SunFunkcija());
 	//var_dump(GuardianFunkcija());
