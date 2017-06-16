@@ -22,7 +22,8 @@ class timer_controller{
 
   // http://164.8.230.124/tmp/snapcomp/api.php/timer/endOTP/ID_SESSION(number)/
   public function endOfTakingPics($request,$input){
-    echo Timer::endOfTakingPics($request[2]);
+    $out = Timer::endOfTakingPics($request[2]);
+    echo json_encode($out);
   }
 
 
