@@ -11,7 +11,7 @@
   //$dbname = "snapcomp";
   //$conn = new mysqli($servername, $username, $password, $dbname);
   //$conn->query("TRUNCATE TABLE DAILY_SUGGESTION;");
-  //$AllData = [];
+  $AllData = [];
   //$TheGrd = [];
   //$TheSn = []; 
   //$TheSnBz = []; 
@@ -39,9 +39,15 @@
 
 	//var_dump($TheGrd);
 	//var_dump(ShowbizzFunkcija());
-	echo '<pre>' . var_export(GuardianFunkcija(), true) . '</pre>';
-	echo '<pre>' . var_export(ShowbizzFunkcija(), true) . '</pre>';
-	echo '<pre>' . var_export(SunFunkcija(), true) . '</pre>';
+	
+	$AllData[] = GuardianFunkcija();
+	$AllData[] = ShowbizzFunkcija();
+	$AllData[] = SunFunkcija();
+	
+	
+	echo '<pre>' . var_export($AllData, true) . '</pre>';
+	//echo '<pre>' . var_export(ShowbizzFunkcija(), true) . '</pre>';
+	//echo '<pre>' . var_export(SunFunkcija(), true) . '</pre>';
 	//var_dump(SunFunkcija());
 	//var_dump(GuardianFunkcija());
     //var_dump($AllData);
