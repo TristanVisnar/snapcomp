@@ -123,7 +123,7 @@ echo "Error!  ";
 				}
 			}
 		}
-		return json_encode($list);
+		return $list;
 	}
 
     // preveri account name, ki ga dobi na vhodu, če obstaja v bazi
