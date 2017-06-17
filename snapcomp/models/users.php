@@ -110,6 +110,7 @@ echo "Error!  ";
     }
 
 	function first10Winners(){
+		echo "krneki1";
 		$list=[];
 		$db = Db::getInstance();
 		while($row1 = mysqli_fetch_assoc($result1)){
