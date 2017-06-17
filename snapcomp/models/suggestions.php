@@ -14,12 +14,12 @@ class Suggestion{
 		}
 		return $list;
 	}
-	
+
 	public function insertPermaSuggestion($info,$userOrSuggestion,$id_uploader){
 		//je user
-		$db = Db::getInstance();	
+		$db = Db::getInstance();
 		$addedInfo = [];
-		
+
 		if($userOrSuggestion == "0"){
 			if ($stmt = mysqli_prepare($db, "Select USERNAME from UPORABNIK where ID = ?")) {
 				mysqli_stmt_bind_param($stmt, "i",intval($id_uploader));
@@ -27,7 +27,7 @@ class Suggestion{
 				$result = mysqli_stmt_get_result($stmt);
 				$row = mysqli_fetch_assoc($result);
 				$uploader = $row["USERNAME"];
-				
+
 			}
 			mysqli_stmt_close($stmt);
 		}
@@ -42,7 +42,7 @@ class Suggestion{
 			mysqli_stmt_close($stmt);
 		}
 		else $uploader = "NULL";
-		
+
 		$addedInfo["UPLOADER"] = $uploader;
 		$addedInfo["INFO"] = $info;
  		if ($stmt = mysqli_prepare($db, "INSERT INTO SUGGESTION (INFO, SOURCE) VALUES (?,?)")) {
@@ -54,6 +54,23 @@ class Suggestion{
 		mysqli_stmt_close($stmt);
 		echo json_encode($addedInfo);
 	}
+
+public function themeIsChoosen($session_id){
+	$db = Db::getInstance();
+	if($stmt = mysqli_prepare($db,"SELECT sug.INFO FROM SUGGESTION as sug, ROOM as r, SESSION as ses WHERE r.GAMESTATE=0 and r.ID=ses.ID_ROOM and ses.ID=? and ses.ID_SUGGESTION = sug.ID;")){
+		mysqli_stmt_bind_param($stmt,"i",intval($session_id));
+		mysqli_stmt_execute($stmt);
+		$result = mysqli_stmt_get_result($stmt);
+		mysqli_stmt_close($stmt);
+		$row = mysqli_fetch_assoc($result);
+		if($row){
+			return array("status"=>"true","THEME"=>$row["INFO"]);
+		}else{
+			return array("status"=>"false");
+		}
+	}
+	return array("status"=>"error");
+}
 
 }
 

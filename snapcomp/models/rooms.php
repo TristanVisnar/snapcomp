@@ -273,7 +273,6 @@ class Room{
     $db = Db::getInstance();
     //echo "SUGGESTION INFO: ". $suggestion_info;
     if ($stmt = mysqli_prepare($db, "UPDATE ROOM SET GAMESTATE=? where ID=(select ID_ROOM from SESSION where ID=?)")) {
-      echo intval($gamemode).','.intval($session_id);
       mysqli_stmt_bind_param($stmt, "ii",intval($gamemode),intval($session_id));
       mysqli_stmt_execute($stmt);
       mysqli_stmt_close($stmt);
