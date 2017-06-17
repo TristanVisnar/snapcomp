@@ -22,4 +22,5 @@
 			return $list;
 			//echo "passiveaggressivenotes parser finished!<br>";
 	}
+	echo '<pre>'.var_export(PSNParser()).'</pre>';
 ?>
