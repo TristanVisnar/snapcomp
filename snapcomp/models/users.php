@@ -110,7 +110,7 @@ echo "Error!  ";
     }
 
 	function first10Winners(){
-		echo "krneki1";
+		//echo "krneki1";
 		$list=[];
 		$db = Db::getInstance();
 		if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK ORDER BY NUMOFWINS DESC LIMIT 10"))
