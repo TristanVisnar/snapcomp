@@ -1,10 +1,10 @@
 <?php
 	include('../../parser/pharse/pharse.php');
 	$list = [];
-	for ($x = 1; $x <= 5; $x++)
+	for ($x = 2; $x <= 7; $x++)
 		{
 
-			$html = Pharse::file_get_dom('http://www.passiveaggressivenotes.com/page/' . $x);
+			$html = Pharse::file_get_dom('http://www.passiveaggressivenotes.com/page/'.$x'/');
 			foreach($html('a[ref="bookmark"]') as $element) {
 				$vnos = $element->getPlainText();
 				$source = "www.passiveaggressivenotes.com";
@@ -20,5 +20,4 @@
 		}
 		var_dump($list);
 		echo "passiveaggressivenotes parser finished!<br>";
-
 ?>
