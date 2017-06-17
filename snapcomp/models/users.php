@@ -113,14 +113,12 @@ echo "Error!  ";
 		echo "krneki1";
 		$list=[];
 		$db = Db::getInstance();
-		while($row1 = mysqli_fetch_assoc($result1)){
-			if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK ORDER BY NUMOFWINS DESC LIMIT 10"))
-			{
-				mysqli_stmt_execute($stmt);
-				$result2 = mysqli_stmt_get_result($stmt);
-				while($row2 = mysqli_fetch_assoc($result2)){
-					$list[]= array("ID"=>$row2["ID"],"USERNAME"=>$row2["USERNAME"],"NUMOFWINS"=>$row2["NUMOFWINS"]);
-				}
+		if ($stmt = mysqli_prepare($db, "SELECT * FROM UPORABNIK ORDER BY NUMOFWINS DESC LIMIT 10"))
+		{
+			mysqli_stmt_execute($stmt);
+			$result2 = mysqli_stmt_get_result($stmt);
+			while($row2 = mysqli_fetch_assoc($result2)){
+				$list[]= array("ID"=>$row2["ID"],"USERNAME"=>$row2["USERNAME"],"NUMOFWINS"=>$row2["NUMOFWINS"]);
 			}
 		}
 		return $list;
