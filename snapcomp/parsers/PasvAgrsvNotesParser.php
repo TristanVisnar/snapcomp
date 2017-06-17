@@ -3,7 +3,7 @@
 	$list = [];
 	for ($x = 2; $x <= 7; $x++)
 		{
-
+			echo "kevin";
 			$html = Pharse::file_get_dom('http://www.passiveaggressivenotes.com/page/'.$x.'/');
 			foreach($html('a[ref="bookmark"]') as $element) {
 				echo $x;
