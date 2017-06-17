@@ -40,6 +40,12 @@
 				header("Location: ?controller=pages&action=error");
 			}
 		}
+		
+		public function getTop10Users(){
+			$user = User::first10Winners();
+			require("views/users/highscores.php");
+			return $user;
+		}
 	// register se kliče, ko izpolnimo formo
 	public function register() {
 
@@ -113,7 +119,7 @@
 			}
 		}
 
-
+	
     public function loginAPI($request,$input){
       $id = User::login($input->accname,$input->pass);
       if($id=="error"){
