@@ -1,5 +1,4 @@
 <div class="row">
-	<?php echo var_dump($slika); ?>
   <div class="col" style="width: 400px;margin:0 auto;">
     <ul class="list-group">
       <li style="padding-top:0px; padding-bottom:0px" class="list-group-item">
