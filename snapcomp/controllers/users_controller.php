@@ -44,7 +44,7 @@
 		public function getTop10Users(){
 			$user = User::first10Winners();
 			require("views/users/highscores.php");
-			return $user;
+		
 		}
 	// register se kliče, ko izpolnimo formo
 	public function register() {
