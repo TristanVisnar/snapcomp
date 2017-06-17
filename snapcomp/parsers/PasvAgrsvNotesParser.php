@@ -1,8 +1,9 @@
 <?php
 	include('../../parser/pharse/pharse.php');
 	$list = [];
-	for ($x = 0; $x <= 5; $x++)
+	for ($x = 1; $x <= 5; $x++)
 		{
+
 			$html = Pharse::file_get_dom('http://www.passiveaggressivenotes.com/pages/' . $x);
 			foreach($html('a[ref="bookmark"]') as $element) {
 				$vnos = $element->getPlainText();
