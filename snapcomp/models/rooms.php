@@ -194,6 +194,21 @@ class Room{
 		return $list;
 	}
 
+  public function updateSession($sessionDuration, $id_selectorja, $id_room, $id_suggestion){
+		$db = Db::getInstance();
+		//Vpis usera v sejo igre
+		//echo "v creatu";
+		if ($stmt = mysqli_prepare($db, "UPDATE SESSION SET SESSION_DURATION=?, ID_SELECTOR=?, ID_SUGGESTION=? WHERE SESSION.ID_ROOM=?")) {
+			mysqli_stmt_bind_param($stmt, "iiii",intval($sessionDuration),intval($id_selectorja),intval($id_suggestion),intval($id_room));
+			mysqli_stmt_execute($stmt);
+			//echo "v iffu";
+			//echo $last_id;
+		}
+		mysqli_stmt_close($stmt);
+		//echo "konec!";
+	}
+
+
 	public function addUserToSession($id_session,$id_user){
 		//echo "prisel v sess";
 		$db = Db::getInstance();

@@ -42,6 +42,11 @@ class rooms_controller{
 		$ret = Room::createSession($input->SESSION_DURATION, $input->ID_SELECTOR, $input->ID_ROOM, $input->ID_SUGGESTION);
 		return $ret;
 	}
+
+	public function updateSession($request,$input){
+		Room::updateSession($input->SESSION_DURATION, $input->ID_SELECTOR, $input->ID_ROOM, $input->ID_SUGGESTION);
+	}
+
 	public function getSessionViaRoomID($request, $input){
 		//echo "V KONT FUNK";
 		$ret = Room::SessionViaRoomID($request[2],$request[3]);
@@ -54,6 +59,8 @@ class rooms_controller{
 		$info = Room::changeGamemode($request[2],$request[3]);
 		echo $info;
 	}
+
+
 
 	public function getAPI($request,$input){
 		//echo "Dostop do apija";
@@ -99,6 +106,10 @@ class rooms_controller{
 			//echo $id;
 			echo json_encode($id);
 		}
+		if($request[1]=="updateSession"){
+			rooms_controller::createSession($request,$input);
+		}
+
     }
 
 };
