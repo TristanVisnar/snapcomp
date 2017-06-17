@@ -32,6 +32,11 @@ class images_controller{
     require_once("views/images/browse_end.php");
   }
 
+  public function startBrowse(){
+	  $_SESSION['ImageIndex']=0;
+	  images_controller::browse();
+  }
+  
   // prikaze slike iz domace strani
   // vhod $_
   public function browse(){

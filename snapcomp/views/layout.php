@@ -140,7 +140,7 @@
   <?php require_once("routes.php"); ?>
   </div>
 </div>
-<div><a href="?controller=users&action=getUser&id=1">Krnekilink</a></div>
+<!--<div><a href="?controller=users&action=getUser&id=1">Krnekilink</a></div>-->
 <footer>
     <p style="width:178px; margin-left:auto; margin-right:auto;">
       SnapComp - <font face="Satisfy">"Pick a pic"</font> ™
