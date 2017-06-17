@@ -13,7 +13,8 @@
         <b>VOTE:&nbsp;</b>
         <button style="margin-bottom:4px" class="btn btn-success btn-xs glyphicon glyphicon-arrow-up"></button>
         <?php
-         echo "234";
+			$num = intval($slika["LIKES"]) - intval($slika["DISLIKES"]);
+         echo $num;
         ?>
         <button style="margin-bottom:4px" class="btn btn-danger btn-xs glyphicon glyphicon-arrow-down"></button>
         &nbsp;&nbsp;&nbsp;&nbsp;<b>WINNER: </b> <?php echo $slika["USERNAME"];?>
