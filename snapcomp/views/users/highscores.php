@@ -1,4 +1,4 @@
-<div style="width: 300px">
+<div style="width: 300px; margin:0 auto;">
 	<ul class="list-group">
 		<?php 
 			
