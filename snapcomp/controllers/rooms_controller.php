@@ -44,7 +44,8 @@ class rooms_controller{
 	}
 
 	public function updateSession($request,$input){
-		Room::updateSession($input->SESSION_DURATION, $input->ID_SELECTOR, $input->ID_ROOM, $input->ID_SUGGESTION);
+		$out = Room::updateSession($input->SESSION_DURATION, $input->ID_SELECTOR, $input->ID_ROOM, $input->ID_SUGGESTION);
+		echo $out;
 	}
 
 	public function getSessionViaRoomID($request, $input){
@@ -107,7 +108,7 @@ class rooms_controller{
 			echo json_encode($id);
 		}
 		if($request[1]=="updateSession"){
-			rooms_controller::createSession($request,$input);
+			rooms_controller::updateSession($request,$input);
 		}
 
     }

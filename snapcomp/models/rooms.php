@@ -201,10 +201,12 @@ class Room{
 		if ($stmt = mysqli_prepare($db, "UPDATE SESSION SET SESSION_DURATION=?, ID_SELECTOR=?, ID_SUGGESTION=? WHERE SESSION.ID_ROOM=?")) {
 			mysqli_stmt_bind_param($stmt, "iiii",intval($sessionDuration),intval($id_selectorja),intval($id_suggestion),intval($id_room));
 			mysqli_stmt_execute($stmt);
+      mysqli_stmt_close($stmt);
+      return "done";
 			//echo "v iffu";
 			//echo $last_id;
 		}
-		mysqli_stmt_close($stmt);
+    return "error";
 		//echo "konec!";
 	}
 
