@@ -6,6 +6,7 @@
 
 			$html = Pharse::file_get_dom('http://www.passiveaggressivenotes.com/page/'.$x.'/');
 			foreach($html('a[ref="bookmark"]') as $element) {
+				echo $x;
 				$vnos = $element->getPlainText();
 				$source = "www.passiveaggressivenotes.com";
 				if(str_word_count($vnos)>4){
