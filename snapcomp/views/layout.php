@@ -115,7 +115,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <!--<li><a href="?controller=pages&action=browse"><span class="glyphicon glyphicon-search"></span> Browse</a></li>-->
-		    <li><a style="color:black;"  href="?controller=users&action=getTop10Users">Highscores</a></li>
+		    <li><a style="color:black;" href="?controller=users&action=getTop10Users">Highscores</a></li>
         <li><a style="color:black;" href="#">Picture of the Day</a></li>
         <li><a style="color:black;" href="?controller=images&action=browse&sort=top">Top Content</a></li>
         <li><a style="color:black;" href="?controller=images&action=browse&sort=new">New Content</a></li>

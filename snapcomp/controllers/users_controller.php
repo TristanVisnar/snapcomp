@@ -43,6 +43,7 @@
 		
 		public function getTop10Users(){
 			$user = User::first10Winners();
+			echo "v top10";
 			require("views/users/highscores.php");
 		
 		}

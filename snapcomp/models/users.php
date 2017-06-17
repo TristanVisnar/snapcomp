@@ -120,10 +120,10 @@ echo "Error!  ";
 				while($row2 = mysqli_fetch_assoc($result2)){
 					$list[]= array("ID"=>$row2["ID"],"USERNAME"=>$row2["USERNAME"],"NUMOFWINS"=>$row2["NUMOFWINS"]);
 				}
+			}
 		}
+		return json_encode($list);
 	}
-	return json_encode($list);
-}
 
     // preveri account name, ki ga dobi na vhodu, če obstaja v bazi
     // vrne index uporabnika s tem ACC_NAME drugače "false", ob napaki pa "error"
