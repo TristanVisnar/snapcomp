@@ -3,7 +3,7 @@
   <div class="col" style="width: 400px;margin:0 auto;">
     <ul class="list-group">
       <li style="padding-top:0px; padding-bottom:0px" class="list-group-item">
-        <font size="5px">&nbsp;<?php echo $slika["ID_SUGGESTION"];?> (Theme)</font>
+        <font size="5px">&nbsp;<?php echo $slika["INFO"];?></font>
       </li>
       <li style="padding:0px;" class="list-group-item">
         <img src="data:image/png;base64,<?php echo $slika["CONTENT"];?>" alt="" width="100%" height="350px"/>';
@@ -17,8 +17,8 @@
          echo "234";
         ?>
         <button style="margin-bottom:4px" class="btn btn-danger btn-xs glyphicon glyphicon-arrow-down"></button>
-        &nbsp;&nbsp;&nbsp;&nbsp;<b>WINNER: </b> username
-        <div style="float:right; margin-top:1px">&nbsp;&nbsp;<b>NAME: </b>Room12345</div>
+        &nbsp;&nbsp;&nbsp;&nbsp;<b>WINNER: </b> <?php echo $slika["USERNAME"];?>
+        <div style="float:right; margin-top:1px">&nbsp;&nbsp;<b>NAME: </b><?php echo $slika["ROOMNAME"];?></div>
       </li>
     </ul>
   </div>
