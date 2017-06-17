@@ -3,10 +3,8 @@
 	$list = [];
 	for ($x = 2; $x <= 7; $x++)
 		{
-			echo "kevin";
 			$html = Pharse::file_get_dom('http://www.passiveaggressivenotes.com/page/'.$x.'/');
-			foreach($html('a[ref="bookmark"]') as $element) {
-				echo $x;
+			foreach($html('a[rel="bookmark"]') as $element) {
 				$vnos = $element->getPlainText();
 				$source = "www.passiveaggressivenotes.com";
 				if(str_word_count($vnos)>4){
