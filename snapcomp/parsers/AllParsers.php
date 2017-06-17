@@ -4,6 +4,7 @@
 	include 'TheGuardianParser.php';
 	include 'TheSunParser.php';
 	include 'TheSunShowbizParser.php';
+	include "PasvAgrsvNotesParser.php";
 
 	$servername = "localhost";
 	$username = "user";
@@ -15,6 +16,7 @@
 	$result = array_merge($AllData, GuardianFunkcija());
 	$result = array_merge($result, ShowbizzFunkcija());
 	$result = array_merge($result, SunFunkcija());
+	$result = array_merge($result, PSNParser());
 	if ($conn->connect_error)
 	{
 		die("Connection failed: " . $conn->connect_error);
@@ -28,6 +30,6 @@
 			mysqli_stmt_execute($stmt);
 		}
 
-	}  
+	}
 	echo "All parsers finished. The database should be updated.";
 ?>
