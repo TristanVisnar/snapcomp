@@ -1,4 +1,5 @@
 <?php
+	include('../../parser/pharse/pharse.php');
 	//function PSNParser()
 	//{
 		//$list = [];
