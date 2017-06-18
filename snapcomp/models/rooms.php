@@ -84,6 +84,7 @@ class Room{
 			mysqli_stmt_execute($stmt);
 			mysqli_stmt_close($stmt);
 		}
+
 		return "Updated row with id ".$id_session." in SESSION with entry ".$suggestion_info;
 	}
 

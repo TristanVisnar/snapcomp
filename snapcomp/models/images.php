@@ -424,6 +424,13 @@ class Image{
       }
     }
 
+    //odstrani temo
+    if($stmt = mysqli_prepare($db,"UPDATE SESSION SET ID_SUGGESTION=NULL WHERE ID=?;")){
+      mysqli_stmt_bind_param($stmt,"i",$session_id);
+      mysqli_stmt_execute($stmt);
+      mysqli_stmt_close($stmt);
+    }
+
     //ODSTRANI SLIKE IZ SESSIONA
     if($stmt = mysqli_prepare($db,"UPDATE PICTURE SET ID_SESSION = NULL WHERE ID_SESSION=?;")){
       mysqli_stmt_bind_param($stmt,"i",$session_id);
