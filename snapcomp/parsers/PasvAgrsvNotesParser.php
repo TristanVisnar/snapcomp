@@ -26,6 +26,6 @@
 			return $new_arr;
 			//echo "passiveaggressivenotes parser finished!<br>";
 	}
-
-	var_dump(PSNParser());
+	echo '<pre>' . var_export(PSNParser(), true) . '</pre>';
+	//var_dump(PSNParser());
 ?>
