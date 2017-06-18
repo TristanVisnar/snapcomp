@@ -1,7 +1,8 @@
 <?php
 	include('../../parser/pharse/pharse.php');
-	//function PSNParser()
-	//{
+	
+	function PSNParser()
+	{
 		//$list = [];
 		for ($x = 2; $x <= 7; $x++)
 			{
@@ -22,8 +23,9 @@
 				}
 			}
 			$new_arr = array_unique($list, SORT_REGULAR);
-			var_dump($new_arr);
-			//return $new_arr;
+			return $new_arr;
 			//echo "passiveaggressivenotes parser finished!<br>";
-	//}
+	}
+
+	var_dump(PSNParser());
 ?>
