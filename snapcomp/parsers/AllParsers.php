@@ -1,8 +1,8 @@
 <?php
 	include('../../parser/pharse/pharse.php');
 	//include 'RedditRandomParser.php';
-	//include 'TheGuardianParser.php';
-	include 'TheSunParser.php';
+	include 'TheGuardianParser.php';
+	//include 'TheSunParser.php';
 	//include 'TheSunShowbizParser.php';
 	//include 'PasvAgrsvNotesParser.php';
 
@@ -32,6 +32,6 @@
 
 	}*/
 
-	var_dump(SunFunkcija());
+	var_dump(GuardianFunkcija());
 	echo "All parsers finished. The database should be updated.";
 ?>
