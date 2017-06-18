@@ -1,8 +1,8 @@
-<!--Enostaven pogled, ki prikazuje, kako lahko uporabimo vrednosti spremenljivk, ki smo jih določili v kontrolerju -->
-<h2>About SnapComp</h2>
-<p><font face="Satisfy" size="4">"Pick a pic"</font></p>
+<div style="margin:5px; width:560px;" class="">
+  <h2>About SnapComp</h2>
+  <p><font face="Satisfy" size="4">"Pick a pic"</font></p>
 
-<div style="margin:5px; width:400px;" class="">
+
   <hr>
   <p>
     SnapComp is a real-time photography competition. It consists of two parts, the first one being the users' profile containg basic information.
