@@ -41,7 +41,7 @@ class images_controller{
   // vhod $_
   public function browse(){
 
-      if(!isset($_SESSION['ImageIndex']))
+      //if(!isset($_SESSION['ImageIndex']))
         $_SESSION['ImageIndex']=0;
       $steviloDodatnihSlik = 15;
       $sort = "top";
