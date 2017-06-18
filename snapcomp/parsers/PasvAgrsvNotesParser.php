@@ -1,5 +1,5 @@
 <?php
-	include('../../parser/pharse/pharse.php');
+	//include('../../parser/pharse/pharse.php');
 
 	function PSNParser()
 	{
@@ -26,6 +26,6 @@
 			return $new_arr;
 			//echo "passiveaggressivenotes parser finished!<br>";
 	}
-	echo '<pre>' . var_export(PSNParser(), true) . '</pre>';
+	//echo '<pre>' . var_export(PSNParser(), true) . '</pre>';
 	//var_dump(PSNParser());
 ?>

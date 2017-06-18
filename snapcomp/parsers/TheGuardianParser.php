@@ -1,5 +1,5 @@
 <?php
-include('../../parser/pharse/pharse.php');
+//include('../../parser/pharse/pharse.php');
 function GuardianFunkcija(){
 	//include('../../parser/pharse/pharse.php');
 	//echo "TheGuardian Parser <br>";
@@ -23,7 +23,7 @@ function GuardianFunkcija(){
 	//var_dump($new_arr);
 	return $new_arr;
 }
-echo '<pre>' . var_export(GuardianFunkcija(), true) . '</pre>';
+//echo '<pre>' . var_export(GuardianFunkcija(), true) . '</pre>';
 //var_dump(TheGuardianFunkcija()));
 //var_dump(TheGuardianParser());
 ?>
