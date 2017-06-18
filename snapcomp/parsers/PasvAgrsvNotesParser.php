@@ -1,7 +1,7 @@
 <?php
 	function PSNParser()
 	{
-		$list = [];
+		//$list = [];
 		for ($x = 2; $x <= 7; $x++)
 			{
 				$html = Pharse::file_get_dom('http://www.passiveaggressivenotes.com/page/'.$x.'/');
