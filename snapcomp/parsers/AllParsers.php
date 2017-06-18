@@ -1,10 +1,10 @@
 <?php
 	include('../../parser/pharse/pharse.php');
 	//include 'RedditRandomParser.php';
-	include 'TheGuardianParser.php';
-	include 'TheSunParser.php';
+	//include 'TheGuardianParser.php';
+	//include 'TheSunParser.php';
 	include 'TheSunShowbizParser.php';
-	include 'PasvAgrsvNotesParser.php';
+	//include 'PasvAgrsvNotesParser.php';
 
 	/*$servername = "localhost";
 	$username = "user";
@@ -32,12 +32,12 @@
 
 	}*/
 
-	var_dump(GuardianFunkcija());
-	echo "<br><br><br>";
-	var_dump(PSNParser());
-	echo "<br><br><br>";
-	var_dump(SunFunkcija());
-	echo "<br><br><br>";
+	//var_dump(GuardianFunkcija());
+	//echo "<br><br><br>";
+	//var_dump(PSNParser());
+	//echo "<br><br><br>";
+	//var_dump(SunFunkcija());
+	//echo "<br><br><br>";
 	var_dump(ShowbizzFunkcija());
 	echo "All parsers finished. The database should be updated.";
 ?>
