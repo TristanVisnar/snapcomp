@@ -16,7 +16,7 @@
 						$vnos = $first4words;
 						$vnos = $vnos . " ...";
 					}
-					
+
 					$list[] = array("INFO" => $vnos, "SOURCE" => $source);
 				}
 			}
@@ -24,4 +24,6 @@
 			return $new_arr;
 			//echo "passiveaggressivenotes parser finished!<br>";
 	}
+
+	var_dump(PSNParser());
 ?>
