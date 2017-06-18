@@ -6,7 +6,7 @@
 	include 'TheSunShowbizParser.php';
 	//include 'PasvAgrsvNotesParser.php';
 
-	/*$servername = "localhost";
+	$servername = "localhost";
 	$username = "user";
     $password = "joomladb";
 	$dbname = "snapcomp";
@@ -30,13 +30,6 @@
 			mysqli_stmt_execute($stmt);
 		}
 
-	}*/
-
-	var_dump(GuardianFunkcija());
-	echo "<br><br>";
-	var_dump(ShowbizzFunkcija());
-	echo "<br><br>";
-	var_dump(SunFunkcija());
-
+	}
 	echo "All parsers finished. The database should be updated.";
 ?>
