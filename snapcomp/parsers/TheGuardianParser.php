@@ -23,6 +23,6 @@ function GuardianFunkcija(){
 	//var_dump($new_arr);
 	return $new_arr;
 }
-//var_dump(TheGuardianParser());
+var_dump(TheGuardianFunkcija()));
 //var_dump(TheGuardianParser());
 ?>
