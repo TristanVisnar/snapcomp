@@ -3,7 +3,7 @@
 	//include 'RedditRandomParser.php';
 	include 'TheGuardianParser.php';
 	include 'TheSunParser.php';
-	//include 'TheSunShowbizParser.php';
+	include 'TheSunShowbizParser.php';
 	include 'PasvAgrsvNotesParser.php';
 
 	/*$servername = "localhost";
@@ -37,5 +37,7 @@
 	var_dump(PSNParser());
 	echo "<br><br><br>";
 	var_dump(SunFunkcija());
+	echo "<br><br><br>";
+	var_dump(ShowbizzFunkcija());
 	echo "All parsers finished. The database should be updated.";
 ?>
