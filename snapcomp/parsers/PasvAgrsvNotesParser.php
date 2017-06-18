@@ -1,6 +1,4 @@
 <?php
-	include('../../parser/pharse/pharse.php');
-	
 	function PSNParser()
 	{
 		//$list = [];
@@ -26,6 +24,4 @@
 			return $new_arr;
 			//echo "passiveaggressivenotes parser finished!<br>";
 	}
-
-	var_dump(PSNParser());
 ?>
