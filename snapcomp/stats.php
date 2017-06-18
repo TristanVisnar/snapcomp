@@ -63,11 +63,11 @@ function povprecje($likes,$dislikes,$count){
 	return 0;
 }
 */
-function ovrednotiSelectorRating(){
+function ovrednotiSelectorRating($id){
 
 	$list=[];
 	$db = Db::getInstance();
-	$result1 = mysqli_query($db,"Select ID from UPORABNIK ");
+	$result1 = mysqli_query($db,"Select ID from UPORABNIK where ID = $id");
 	while($row1 = mysqli_fetch_assoc($result1)){
 	/*
 	if ($stmt = mysqli_prepare($db, "Select user.ID,user.ACCNAME,SUM(pic.LIKES) as LIKES,SUM(pic.DISLIKES) as DISLIKES,COUNT(*) as ST_SLIK from UPORABNIK as user,ENDOFSESSION as eos,PICTURE as pic where user.ID=eos.ID_SELECTOR and eos.ID_WINNING_PIC=pic.ID and user.ID=?"))
@@ -101,13 +101,13 @@ function ovrednotiSelectorRating(){
 
 }
 
-echo "Haversin: \n";
+/*echo "Haversin: \n";
 echo HaversineFormula();
 echo "<br>";
 echo "Best Source: \n";
-echo BestSource();
+echo BestSource();*/
 echo "Ovrednoti selector rating: \n";
-echo ovrednotiSelectorRating();
+echo ovrednotiSelectorRating(6);
 
 
 ?>
