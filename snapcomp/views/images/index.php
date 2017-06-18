@@ -2,7 +2,7 @@
   <div class="col" style="width: 500px;margin:0 auto;">
     <ul class="list-group">
       <li style="padding-top:0px; padding-bottom:0px" class="list-group-item">
-        <font size="5px">&nbsp;<?php echo $slika["INFO"] . " ID: ".$slika["ID"];?></font>
+        <font size="5px">&nbsp;<?php echo $slika["INFO"]?></font>
       </li>
       <li style="padding:0px;" class="list-group-item">
 	  <div style="width: 500px">
