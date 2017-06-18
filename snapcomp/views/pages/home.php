@@ -13,9 +13,9 @@
     <br>
     <h4>The Game</h4>
   <p>
-    The game consists of room with sessions. The users can enter the room, where they can compete with other players by posting photgraphs relevant
+    The game consists of room with sessions. The users can enter the room, where they compete with other players by posting photgraphs relevant
     to the current theme. The room has two types of players, a selector and competitors. The selectors have the ability to select the theme for the next
-    round at the start of a session and choose the best picture at the end of the session. The competitors are the ones, who take the pictures.
+    round at the start of a session and choose the best picture at the end of a session. The competitors are the ones, who take the pictures.
     The user whose picture was selected then recieves a point and a new selector is chosen. The winning pictures are automatically posted onto the website.
   </p>
 </div>
