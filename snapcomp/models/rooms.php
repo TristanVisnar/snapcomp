@@ -315,6 +315,21 @@ class Room{
 		mysqli_stmt_close($stmt);
 		//echo "Error";
 	}
+/*
+  public function getRoomData($roomID){
+    $db = Db::getInstance();
+		//Vpis usera v sejo igre
+		if ($stmt = mysqli_prepare($db, "SELECT * FROM ROOM where ")) {
+			mysqli_stmt_bind_param($stmt, "siiis",$name, intval($id_creator),intval($privateRoom),intval($nsfwRoom),$password);
+			mysqli_stmt_execute($stmt);
+			//echo "Vstavil: INSERT INTO ROOM (NAME, ID_CREATOR, PRIVATEROOM, NSFWROOM, PASSWORD) VALUES (".$name.",".intval($id_creator).",".intval($privateRoom).",".intval($nsfwRoom).",".$password.")";
+			//echo "finished";
+			$last_id = mysqli_insert_id($db);
+			return '{ "ID" : '.$last_id.' }';
+		}
+
+  }
+  */ 
 }
 
  ?>
